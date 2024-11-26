@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+
+<html class="writer-html5" data-content_root="../../../../" lang="en">
+<head>
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MpcMeshGeometryControls — STKO Python API  documentation</title>
+<link href="../../../../_static/pygments.css?v=80d5e7a1" rel="stylesheet" type="text/css"/>
+<link href="../../../../_static/css/theme.css?v=e59714d7" rel="stylesheet" type="text/css"/>
+<link href="../../../../_static/css/custom.css?v=8a89d2a5" rel="stylesheet" type="text/css"/>
+<script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+<script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+<script src="../../../../_static/documentation_options.js?v=5929fcd5"></script>
+<script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+<script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../../../../_static/js/theme.js"></script>
+<link href="../../../../genindex.html" rel="index" title="Index"/>
+<link href="../../../../search.html" rel="search" title="Search"/>
+<link href="MpcMeshGeometryControlsCollection.html" rel="next" title="MpcMeshGeometryControlsCollection"/>
+<link href="MpcMeshFaceControlsVector.html" rel="prev" title="MpcMeshFaceControlsVector"/>
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a href="../../../../index.html">
+<img alt="Logo" class="logo" src="../../../../_static/logo.png"/>
+</a>
+<div role="search">
+<form action="../../../../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div><div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../../index.html">Python API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../PyMpc.html">PyMpc</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../../PyMpc.html#categories">Categories</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../../categories/PyMpc/Fx.html">Fx (PyMpc)</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../../categories/PyMpc/Mpc.html">Mpc (PyMpc)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../PyMpc.html#classes">Classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../PyMpc.html#functions">Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../PyMpc.App.html">PyMpc.App</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../PyMpc.FxOccBuilder.html">PyMpc.FxOccBuilder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../PyMpc.FxOccNurbs.html">PyMpc.FxOccNurbs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../PyMpc.FxOccQuery.html">PyMpc.FxOccQuery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../PyMpc.IO.html">PyMpc.IO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../PyMpc.Math.html">PyMpc.Math</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../PyMpc.Units.html">PyMpc.Units</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../PyMpc.Utils.html">PyMpc.Utils</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../_examples/1_call-types/index.html">1. Call Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../_examples/2_basics/index.html">2. Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../_examples/3_objects/index.html">3. Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../_examples/4_document/index.html">4. Document</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../_examples/5_mesh/index.html">5. Mesh</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../_examples/6_fiber-section/index.html">6. Fiber Section</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../_examples/7_cae-document/index.html">7. Cae document</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../_examples/8_post-processing/index.html">8. Post Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../_examples/9_application/index.html">9. Application</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift"><nav aria-label="Mobile navigation menu" class="wy-nav-top">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../../../../index.html">STKO Python API</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content">
+<div aria-label="Page navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Home" class="icon icon-home" href="../../../../index.html"></a></li>
+<li class="breadcrumb-item"><a href="../../../index.html">Python API Reference</a></li>
+<li class="breadcrumb-item"><a href="../../PyMpc.html">PyMpc</a></li>
+<li class="breadcrumb-item"><a href="../../categories/PyMpc/Mpc.html">Mpc (PyMpc)</a></li>
+<li class="breadcrumb-item active">MpcMeshGeometryControls</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div itemprop="articleBody">
+<section id="mpcmeshgeometrycontrols">
+<span id="id1"></span><h1>MpcMeshGeometryControls<a class="headerlink" href="#mpcmeshgeometrycontrols" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="PyMpc.MpcMeshGeometryControls">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><a class="reference internal" href="MpcMeshGeometryControls.html"><span class="pre">MpcMeshGeometryControls</span></a></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(object)arg1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PyMpc.MpcMeshGeometryControls" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">instance</span></code></p>
+<dl class="simple">
+<dt>C++ signature :</dt><dd><p>void __init__(struct _object * __ptr64)</p>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="PyMpc.MpcMeshGeometryControls.edgeControls">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">edgeControls</span></span><a class="headerlink" href="#PyMpc.MpcMeshGeometryControls.edgeControls" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="PyMpc.MpcMeshGeometryControls.edgeControlsVRep">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">edgeControlsVRep</span></span><a class="headerlink" href="#PyMpc.MpcMeshGeometryControls.edgeControlsVRep" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="PyMpc.MpcMeshGeometryControls.faceControls">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">faceControls</span></span><a class="headerlink" href="#PyMpc.MpcMeshGeometryControls.faceControls" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="PyMpc.MpcMeshGeometryControls.solidControls">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">solidControls</span></span><a class="headerlink" href="#PyMpc.MpcMeshGeometryControls.solidControls" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+</dd></dl>
+</section>
+</div>
+</div>
+<footer>
+<hr/>
+<div role="contentinfo">
+<p>© Copyright 2024 Asdea Software.</p>
+</div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+</div>
+</div>
+</section>
+</div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+</body>
+</html>

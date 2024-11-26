@@ -1,0 +1,10 @@
+.. _MpcElementCustomData:
+
+MpcElementCustomData
+====================
+
+.. autoclass:: PyMpc.MpcElementCustomData
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

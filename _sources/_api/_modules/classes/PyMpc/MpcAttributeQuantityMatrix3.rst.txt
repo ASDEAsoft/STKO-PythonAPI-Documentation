@@ -1,0 +1,10 @@
+.. _MpcAttributeQuantityMatrix3:
+
+MpcAttributeQuantityMatrix3
+===========================
+
+.. autoclass:: PyMpc.MpcAttributeQuantityMatrix3
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

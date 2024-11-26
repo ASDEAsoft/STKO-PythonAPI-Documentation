@@ -1,0 +1,16 @@
+Python API Reference
+=============================
+
+.. toctree::
+   :maxdepth: 1
+   :numbered: 0
+
+   _modules/PyMpc.rst
+   _modules/PyMpc.App.rst
+   _modules/PyMpc.FxOccBuilder.rst
+   _modules/PyMpc.FxOccNurbs.rst
+   _modules/PyMpc.FxOccQuery.rst
+   _modules/PyMpc.IO.rst
+   _modules/PyMpc.Math.rst
+   _modules/PyMpc.Units.rst
+   _modules/PyMpc.Utils.rst

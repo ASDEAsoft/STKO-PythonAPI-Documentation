@@ -1,0 +1,10 @@
+.. _MpcMeshEdgeSeedType:
+
+MpcMeshEdgeSeedType
+===================
+
+.. autoclass:: PyMpc.MpcMeshEdgeSeedType
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

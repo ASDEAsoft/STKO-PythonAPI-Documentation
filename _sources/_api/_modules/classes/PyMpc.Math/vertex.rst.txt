@@ -1,0 +1,10 @@
+.. _vertex:
+
+vertex
+======
+
+.. autoclass:: PyMpc.Math.vertex
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

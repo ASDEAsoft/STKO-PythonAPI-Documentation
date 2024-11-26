@@ -1,0 +1,10 @@
+.. _MpcPostDocument:
+
+MpcPostDocument
+===============
+
+.. autoclass:: PyMpc.MpcPostDocument
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

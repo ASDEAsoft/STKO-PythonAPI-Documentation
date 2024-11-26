@@ -1,0 +1,10 @@
+.. _MpcBeamFiberSectionScene:
+
+MpcBeamFiberSectionScene
+========================
+
+.. autoclass:: PyMpc.MpcBeamFiberSectionScene
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

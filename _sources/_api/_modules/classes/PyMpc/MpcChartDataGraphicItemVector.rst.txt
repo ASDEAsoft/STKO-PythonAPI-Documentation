@@ -1,0 +1,10 @@
+.. _MpcChartDataGraphicItemVector:
+
+MpcChartDataGraphicItemVector
+=============================
+
+.. autoclass:: PyMpc.MpcChartDataGraphicItemVector
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

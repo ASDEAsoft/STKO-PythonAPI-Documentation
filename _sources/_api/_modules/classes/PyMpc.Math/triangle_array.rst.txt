@@ -1,0 +1,10 @@
+.. _triangle_array:
+
+triangle_array
+==============
+
+.. autoclass:: PyMpc.Math.triangle_array
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

@@ -1,0 +1,10 @@
+.. _MpcBeamFiberSurfaceMeshSeedType:
+
+MpcBeamFiberSurfaceMeshSeedType
+===============================
+
+.. autoclass:: PyMpc.MpcBeamFiberSurfaceMeshSeedType
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

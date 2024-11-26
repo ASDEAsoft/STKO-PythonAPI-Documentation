@@ -1,0 +1,10 @@
+.. _MpcMeshEdgeControlsVector:
+
+MpcMeshEdgeControlsVector
+=========================
+
+.. autoclass:: PyMpc.MpcMeshEdgeControlsVector
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

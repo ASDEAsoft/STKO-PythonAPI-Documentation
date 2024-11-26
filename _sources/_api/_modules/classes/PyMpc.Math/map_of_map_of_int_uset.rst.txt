@@ -1,0 +1,10 @@
+.. _map_of_map_of_int_uset:
+
+map_of_map_of_int_uset
+======================
+
+.. autoclass:: PyMpc.Math.map_of_map_of_int_uset
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

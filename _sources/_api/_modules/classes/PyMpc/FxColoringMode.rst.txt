@@ -1,0 +1,10 @@
+.. _FxColoringMode:
+
+FxColoringMode
+==============
+
+.. autoclass:: PyMpc.FxColoringMode
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

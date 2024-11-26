@@ -1,0 +1,10 @@
+.. _MpcOdpTransformation:
+
+MpcOdpTransformation
+====================
+
+.. autoclass:: PyMpc.MpcOdpTransformation
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

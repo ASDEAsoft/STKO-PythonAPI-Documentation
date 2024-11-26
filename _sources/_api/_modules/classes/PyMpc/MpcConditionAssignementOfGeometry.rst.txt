@@ -1,0 +1,10 @@
+.. _MpcConditionAssignementOfGeometry:
+
+MpcConditionAssignementOfGeometry
+=================================
+
+.. autoclass:: PyMpc.MpcConditionAssignementOfGeometry
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

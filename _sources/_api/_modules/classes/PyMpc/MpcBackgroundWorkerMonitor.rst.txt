@@ -1,0 +1,10 @@
+.. _MpcBackgroundWorkerMonitor:
+
+MpcBackgroundWorkerMonitor
+==========================
+
+.. autoclass:: PyMpc.MpcBackgroundWorkerMonitor
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

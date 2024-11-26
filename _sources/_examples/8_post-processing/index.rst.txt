@@ -1,0 +1,224 @@
+8. Post Processing
+==================
+
+In this section, we will show a few example scripts which can be used to interact with the Postprocessor environment.The classes, functions and methods available in PyMpc will allow the user to access the Postprocessor document, the databases, plots, chart data sets and charts contained in it and customize them at will as parameters of their customized code.Moreover the user will be able to add new elements in the Postprocessor (plot groups, plot, chart data and charts) and import values from outside STKO, for example to operate comparisons and checks.
+
+##################
+8.1. Document
+##################
+
+The following example will guide you through the use of the possible interactions with the Postprocessor document, with the use of the thread utilities described in section ThreadUtils, the following script was written by calling such classes and functions explicitly, but they could be stored in the external file ThreadUtils and then exported to obtain a shorter version of the same code. It can be a useful exercise to practice python import of external functions. The Postprocessor document can be accessed as shown in the following snippet. You can choose to use a dialog to keep the script alive till the end of the thread, or simply an event loop. Then you get the Postprocessor document, defining it into a variable doc.
+
+.. code-block:: python
+
+    from PyMpc import *
+    import numpy as np
+    from time import sleep
+    from PySide2.QtCore import Qt, QObject, Signal, Slot, QThread, QEventLoop
+    from PySide2.QtWidgets import QDialog, QLabel, QProgressBar, QVBoxLayout, QApplication
+
+    use_dialog = True # True = Dialog, False = Event Loop
+
+    doc = App.postDocument()
+    Clear all existing setups in the Postprocessor and open a database.
+
+    doc.clearPlotGroups()
+    doc.clearCharts()
+    doc.clearChartData()
+    doc.commitChanges()
+    doc.dirty = True
+    doc.select(None)
+
+    App.runCommand(“OpenDatabase”, “C:/VBShared/di_michele/micro_inplane.mpco”)
+
+Create the simple QObject that wraps the user-defined function, and calls this function waiting for it to finish, as shown in section ThreadUtils. and then create the slots to be called on the main GUI thread, to add a plot group, chart data and charts.
+
+.. code-block:: python
+
+    class QBlockingSlot(QObject):
+        requestCall = Signal(tuple)
+        done = Signal()
+        def __init__(self, function, parent = None):
+            super(QBlockingSlot, self).__init__(parent)
+            self.requestCall.connect(self.run)
+            self.function = function
+        def run(self, data):
+            self.function(data)
+            self.done.emit()
+        def call(self, data):
+            loop = QEventLoop()
+            self.done.connect(loop.quit)
+            self.requestCall.emit(data)
+            loop.exec_()
+
+    def addPlotGroup_function(pgroup):
+        doc.addPlotGroup(pgroup)
+        doc.commitChanges()
+        doc.dirty = True
+        doc.select(pgroup)
+        doc.setActivePlotGroup(pgroup)
+        info = MpcOdpRegeneratorUpdateInfo()
+        info.onlyTexture = True
+        pgroup.update(info)
+
+    addPlotGroup = QBlockingSlot(addPlotGroup_function)
+
+    def addChartData_function(cdata):
+        doc.addChartData(cdata)
+        doc.commitChanges()
+        doc.dirty = True
+        doc.select(cdata)
+
+    addChartData = QBlockingSlot(addChartData_function)
+
+    def addChart_function(chart):
+        doc.addChart(chart)
+        doc.commitChanges()
+        doc.dirty = True
+        doc.select(chart)
+
+    addChart = QBlockingSlot(addChart_function)
+
+Then define the worker class. It will run the lengthy function on a working thread and emit signals for calling the connected slots on the main thread. The lengthy function is this case consists in the creation of 10 new items in terms of plot groups, chart data sets, chart items to insert in the charts and finally the charts.
+
+.. code-block:: python
+
+    class Worker(QObject):
+       sendPercentage = Signal(int)
+       finished = Signal()
+
+       @Slot()
+       def run(self):
+           for iter in range(10):
+               pgroup = MpcOdpGroup()
+               pgroup.id = doc.genNextIdForPlotGroup()
+               pgroup.name = "Test Plot Group %i" % iter
+               addPlotGroup.call(pgroup)
+
+               cdata = MpcChartData()
+               cdata.id = doc.genNextIdForChartData()
+               cdata.name = "Test Chart Data %i" % iter
+               cdata.xLabel = "XData"
+               cdata.xLabel = "YData"
+               x = np.linspace(0.0, 4.0*float(iter), 1000)
+               y = np.sin(x) * np.logspace(1.0, 1.0+float(iter)/10.0, 1000)
+               cdata.x = Math.double_array(x.tolist())
+               cdata.y = Math.double_array(y.tolist())
+               addChartData.call(cdata)
+               sleep(0.2)
+
+               cdata_item = MpcChartDataGraphicItem(cdata)
+               cdata_item.color = MpcQColor(255, 150, 0, 255)
+               cdata_item.thickness = 1.5
+               cdata_item.penStyle = MpcQPenStyle.SolidLine
+
+               chart = MpcChart()
+               chart.id = doc.genNextIdForChart()
+               chart.name = "Test Chart"
+               chart.addItem(cdata_item)
+               addChart.call(chart)
+               sleep(0.2)
+               self.sendPercentage.emit(int(float(iter+1)/10.0*100.0))
+
+           self.finished.emit()
+
+Create a dialog or an event loop that will block the script till the end. Then create the thread, the worker, and move the worker to the thread.
+
+.. code-block:: python
+
+    if use_dialog:
+        dialog = QDialog()
+        dialog.setLayout(QVBoxLayout())
+        dialog.layout().addWidget(QLabel("Work in progres. Please wait"))
+        pbar = QProgressBar()
+        pbar.setRange(1, 100)
+        pbar.setTextVisible(True)
+        dialog.layout().addWidget(pbar)
+    else:
+        loop = QEventLoop()
+
+Create the thread, the worker, and move the worker to the thread
+
+.. code-block:: python
+
+    thread = QThread()
+    worker = Worker()
+    worker.moveToThread(thread)
+    Set up worker and thread connections
+
+    worker.finished.connect(thread.quit)
+    worker.finished.connect(worker.deleteLater)
+    thread.started.connect(worker.run)
+    thread.finished.connect(thread.deleteLater)
+     ... for dialog or event loop
+    if use_dialog:
+        worker.sendPercentage.connect(pbar.setValue)
+        thread.finished.connect(dialog.accept)
+    else:
+        thread.finished.connect(loop.quit)
+    Start the thread and run dialog or event loop
+
+    thread.start()
+
+    if use_dialog:
+        dialog.exec_()
+    else:
+        loop.exec_()
+
+##################
+8.2. Output data plot 
+##################
+
+In PyMpc there are a series of classes and methods to interact with the plots, data plots and their types, the plot groups, and the visibility attributes of the data plots. An example of an interaction with the output data plot could be the variation of one of the plot editor parameters, such as the deformation scale factor of the render view. Try running the following script with a database open in your STKO Postprocessor and see what happens.
+
+.. code-block:: python
+
+    from PyMpc import *
+    from time import sleep
+    import traceback
+    import numpy as np
+    from PySide2.QtCore import QEventLoop, QTimer
+
+    App.clearTerminal()
+
+    class gui_auto_lock:
+        def __init__(self, components):
+            self.components = components
+        def __enter__(self):
+            App.setGUIComponentsEnabled(self.components, False)
+            App.setBusy(True)
+        def __exit__(self, exc_type, exc_val, exc_tb):
+            App.setGUIComponentsEnabled(self.components, True)
+            App.setBusy(False)
+
+    with gui_auto_lock(MpcGUIComponents.All) as guilock:
+        doc = App.postDocument()
+        group = doc.activePlotGroup
+        if group and len(group.plots) > 0:
+            info = MpcOdpRegeneratorUpdateInfo()
+
+            x = np.linspace(0.0, 30.0, 100)             # prepare scale factor history
+            y = x# np.sin(x)
+            for scale in y:
+
+                for _, plot in group.plots.items():         # update scale factor for each plot
+                    if plot:
+                        plot.plotData.scale = scale
+                        plot.commitChanges()
+
+                group.commitChanges() # redraw group
+                group.updateAndWait(info, 10000)
+
+Output data base
+
+.. note:: 
+    Coming soon.
+
+##################
+8.3. Results
+##################
+
+Results that can be created and manipulated in the Python API, are called virtual, as they are not stored when created, regardless of their content (information on fibers, nodes, or elements). A new result is called virtual in the sense that it does not belong to a database but it is calculated each time it is called. This can be an advantage as they do not occupy any storage space. On the other hand, it has to be kept in mind that calling such results could be costly in terms of computational capacity (cost of the reference of other results, plus the cost of the operation the user has set to calculate on it or with it).
+
+.. note::
+    Examples on results coming soon.

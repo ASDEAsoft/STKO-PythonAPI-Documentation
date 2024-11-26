@@ -1,0 +1,10 @@
+.. _MpcBoundaryEdgeElementVector:
+
+MpcBoundaryEdgeElementVector
+============================
+
+.. autoclass:: PyMpc.MpcBoundaryEdgeElementVector
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

@@ -1,0 +1,10 @@
+.. _FxShapeSolid:
+
+FxShapeSolid
+============
+
+.. autoclass:: PyMpc.FxShapeSolid
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

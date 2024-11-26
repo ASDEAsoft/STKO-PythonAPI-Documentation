@@ -1,0 +1,10 @@
+.. _MpcOdbResultOrientationType:
+
+MpcOdbResultOrientationType
+===========================
+
+.. autoclass:: PyMpc.MpcOdbResultOrientationType
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

@@ -1,0 +1,10 @@
+.. _MpcBeamFiberSectionObjGeometryCollection:
+
+MpcBeamFiberSectionObjGeometryCollection
+========================================
+
+.. autoclass:: PyMpc.MpcBeamFiberSectionObjGeometryCollection
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

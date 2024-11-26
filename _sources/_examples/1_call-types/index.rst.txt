@@ -1,0 +1,537 @@
+1. Call Types
+=============
+
+Using Python from a GUI (Graphic User Interface) presents differences compared to the normal usage that it is done of the programming language from a simple console application, and it requires a series of considerations.
+
+The following examples are not related to specific PyMpc classes, functions or methods, they are just proposed here to illustrate different ways of carrying out processes with Python for the STKO interface. Basics of GUI programming could be of use to explore the full potentials of the Python interface in STKO, and understand better how to program your scripts correctly both as a user and a programmer producing scripts for others. A series of examples on call types are provided in the following subsections. Call types are a series of different methods to, in fact, call a process from the GUI. A .zip file containing all the examples is provided at the end of the section.
+
+#############
+1.1. Standard
+#############
+
+The first example is a single standard call type with no additional setups. The function sleep is introduced to simulate a lengthy operation. If you run the following script you will notice your GUI blocks for 0.5 seconds when the sleep function is called. If you were to run the following script from a console application, the thread running the program is not occupied in generating any graphic interface, and it will not freeze the visualization during the process. It works simply as sequential programming.
+
+.. code-block:: python
+
+    import os
+    from time import sleep
+
+    print(__file__)
+    print(os.getcwd())
+
+    print("start")
+    counter = 0
+    for i in range(10):
+        sleep(0.5)
+        counter += 1
+        print('iteration {}'.format(counter))
+    print("end")
+
+A GUI works differently from a console application, as it does not run on a specific thread, simply from the beginning to the end of a script. Instead it creates an infinite loop called process events, on which it receives information from the actual interface, the windows with which the user interacts with the software. Therefore the thread on which we run a standard call type is not just sequentially operating our script, but it is also busy running the process events infinite loop. When we run a function that lasts more than one second, the STKO application will not respond, as it is busy with the script we just launched. This will not mean that the application is crushing, just that it is busy with the script and it cannot update the graphic.
+
+In order to perform finite element analysis using either **Tcl** or **Python**, the user must understand the existing commands available in the scripting languages (and here the **Tcl** and **Python** languages will differ) and the new commands.
+
+################
+1.2. Process events
+################
+
+There are different ways to avoid that the GUI will freeze as we are running our scripts, the easiest one is to use the processEvents method from the App sub-module. This function will allow to split the effort of the thread between our script and the GUI. Inserting it the standard call type example from before, just placing it at the end of each iteration we will now be able to interact with the GUI while our script is running, but experiencing some lagging. This way the user understands that there is not a problem with the software, it is just working. Including the processEvent, you can try to run the following script for yourself.
+
+.. code-block:: python
+
+    import os
+    from time import sleep
+    from PyMpc import App
+
+    print(__file__)
+    print(os.getcwd())
+
+    print("start")
+    counter = 0
+    for i in range(10):
+        sleep(0.5)
+        counter += 1
+        print('iteration {}'.format(counter))
+        App.processEvents()
+    print("end")
+
+################
+1.3. Working thread
+################
+
+Another way to call your process and avoid that the GUI will freeze while it is running, is using a working thread. Here, it is necessary to use the `PySide2 <https://pypi.org/project/PySide2/>`_ library, which is used to build the STKO GUI. The `PySide2 <https://pypi.org/project/PySide2/>`_ library is already installed on the Python embedded in STKO, if you are using another Python, reference this link for the installation of `PySide2 <https://pypi.org/project/PySide2/>`_. You will need to be familiar with the concepts of polymorphism in Python, child and parent classes and inheritance, to understand the following script. The same lengthy function used in the previous two examples is used here, but it is not called directly. First you need to create a Worker class, and use a mechanism available in `PySide2 <https://pypi.org/project/PySide2/>`_ called signal and slot delivery, which is used for communication between objects. A signal is emitted when a particular event occur and a function (the slot) is called in response to that particular signal. Check out more on signal and slot mechanisms in the `Qt Documentation <https://doc.qt.io/qtforpython/overviews/signalsandslots.html>`_  or through your own research. Therefore, the following script includes a worker class, a signal which will notify the main thread when our process is finished. Inside this class, a function called run is tagged as a slot with the symbol @, which will run the same lengthy function we used before on a parallel working thread.
+
+.. code-block:: python
+
+    import os
+    from time import sleep
+    from PySide2.QtCore import Qt, QObject, Signal, Slot, QThread, QEventLoop
+
+    class Worker(QObject):
+        finished = Signal()         #signals
+        @Slot()                     #lengthy function
+        def run(self):              #paste your function here, inside run...
+
+            print(__file__)
+            print(os.getcwd())
+
+            counter = 0
+            for i in range(10):
+                sleep(0.5)
+                counter += 1
+                print('iteration {}'.format(counter))
+
+            self.finished.emit()    # Done
+
+After defining this class, you can create an event loop that will block the script till the end. Then the thread, the worker, and move the worker to a parallel thread. Then you need to connect the signal to some slots, defining connections, telling the worker to stop the process, to delete itself as soon as it’s over. Further, set up a signal to start calling the run function on the parallel thread. If you were to call the run function directly in your script, without using the QThread class methods, it will run on the GUI thread and not on a parallel one. Same for the worker, you say to the thread to delete when finished and to quit. Then you start the thread, you wait for it to finish and finally run the event loop. Prints can be added to check what is happening in the terminal.
+
+.. code-block:: python
+
+    loop = QEventLoop()
+
+    thread = QThread()
+    worker = Worker()
+    worker.moveToThread(thread)
+
+    worker.finished.connect(thread.quit)
+    worker.finished.connect(worker.deleteLater)
+    thread.started.connect(worker.run)
+    thread.finished.connect(thread.deleteLater)
+    thread.finished.connect(loop.quit)
+
+    print('Starting thread...')
+    thread.start()
+    print('   Thread started')
+
+    loop.exec_()
+    print('DONE!')
+
+Using the function exec_() from the QEventLoop ensures that you have waited for the thread to finish. It is suggested to always use the event loop, to avoid crashing or other errors in STKO. If you run the example script just provided, you can see that interacting with STKO GUI is possible, as our lengthy function is running. What may happen is that the user decides to change the model, as the process is running, altering the data possibly needed by the script. This could result in the crushing of the application. Crushing could also occur if the same script is rerun before the first process is completed.
+
+###################################################
+1.4. Working thread with GUI-operation and callback
+###################################################
+
+All the operations that is related to the GUI can only be performing on the GUI thread, because that thread is the one that is listening to the operating system events. If you try to perform a GUI operation on a parallel working thread, your STKO will most probably crash. One of the most common GUI operation is the opening of a message box, communicating a message to the user and waiting for an input to continue. It is therefore a possible mistake to run a GUI operation on a parallel thread. See for example what happens if you run the following script in your STKO, where a GUI operation is added in the run function from the previous example.
+
+.. code-block:: python
+
+    import os
+    from time import sleep
+    from PySide2.QtCore import Qt, QObject, Signal, Slot, QThread, QEventLoop
+    from PySide2.QtWidgets import QMessageBox
+
+    class Worker(QObject):
+
+        finished = Signal()
+
+        @Slot()
+        def run(self):
+            QMessageBox.information(None, "Title", "Message: Hi there!")
+
+            print(__file__)
+            print(os.getcwd())
+
+            counter = 0
+            for i in range(10):
+                sleep(0.5)
+                counter += 1
+                print('iteration {}'.format(counter))
+
+            self.finished.emit()
+
+    loop = QEventLoop()
+
+    thread = QThread()
+    worker = Worker()
+    worker.moveToThread(thread)
+
+    worker.finished.connect(thread.quit)
+    worker.finished.connect(worker.deleteLater)
+    thread.started.connect(worker.run)
+    thread.finished.connect(thread.deleteLater)
+    thread.finished.connect(loop.quit)
+
+    print('Starting thread...')
+    thread.start()
+    print('   Thread started')
+
+    loop.exec_()
+    print('DONE!')
+
+It is possible to include in the worker class, a method to run specific functions on the main thread. You can see in the following script, where an additional class called QBlockingSlot, derived from QObject, is created to requests the call for a function, and connect it to the one running of the parallel thread. Whenever the call request is invoked, it will run on the thread that is hosting the class in which the call was created.
+
+.. code-block:: python
+
+    import os
+    from time import sleep
+    from PySide2.QtCore import Qt, QObject, Signal, Slot, QThread, QEventLoop
+    from PySide2.QtWidgets import QMessageBox, QApplication
+
+    class QBlockingSlot(QObject):
+    requestCall = Signal()
+    done = Signal()
+    def __init__(self, function, parent = None):
+    super(QBlockingSlot, self).__init__(parent)
+    self.requestCall.connect(self.run)
+    self.function = function
+    def run(self):
+    self.function()
+    self.done.emit()
+    def call(self):
+    loop = QEventLoop()
+    self.done.connect(loop.quit)
+    self.requestCall.emit()
+    loop.exec_()
+
+    def runOnMainThread(what):
+    bslot = QBlockingSlot(what)
+    bslot.moveToThread(QApplication.instance().thread())
+    bslot.call()
+
+    class Worker(QObject):
+
+    finished = Signal()
+
+    @Slot()
+    def run(self):
+    print(QThread.currentThread())
+    def what_to_run():
+    print(QThread.currentThread())
+    print(QApplication.instance().thread())
+    QMessageBox.information(None, 'Title', 'Hi There!')
+    runOnMainThread(lambda : what_to_run())
+
+    print(__file__)
+    print(os.getcwd())
+
+    counter = 0
+    for i in range(10):
+    sleep(0.5)
+    counter += 1
+    print('iteration {}'.format(counter))
+
+    self.finished.emit()
+
+    loop = QEventLoop()
+
+    thread = QThread()
+    worker = Worker()
+    worker.moveToThread(thread)
+
+    worker.finished.connect(thread.quit)
+    worker.finished.connect(worker.deleteLater)
+    thread.started.connect(worker.run)
+    thread.finished.connect(thread.deleteLater)
+    thread.finished.connect(loop.quit)
+
+    print('Starting thread...')
+    thread.start()
+    print('   Thread started')
+
+    loop.exec_()
+    print('DONE!')
+
+The prints set up in the script will show you that the first call is different from the others, and both the main and parallel working thread are involved in the operations.
+
+##################
+1.5. Blocking thread
+##################
+
+The blocking and working thread use the same concept, the only difference is that here you will have a dialog, which will prevent the user from interacting with the GUI, and notify him/her that a process is running and there will not be the doubt that the software is not responding anymore. You can see in the following script, which has the addition of the WorkerDialog function, derived for the PySide2 QDialog class. The dialog should not close when the user presses the button, or the Escape key, otherwise the thread would stop.
+
+.. code-block:: python
+
+    import os
+    from time import sleep
+    from PySide2.QtCore import Qt, QObject, Signal, Slot, QThread, QEventLoop, QTimer
+    from PySide2.QtWidgets import QMessageBox, QApplication, QDialog, QLabel, QProgressBar, QVBoxLayout
+
+    class QBlockingSlot(QObject):
+        requestCall = Signal()
+        done = Signal()
+        def __init__(self, function, parent = None):
+            super(QBlockingSlot, self).__init__(parent)
+            self.requestCall.connect(self.run)
+            self.function = function
+        def run(self):
+            self.function()
+            self.done.emit()
+        def call(self):
+            loop = QEventLoop()
+            self.done.connect(loop.quit)
+            self.requestCall.emit()
+            loop.exec_()
+
+    def runOnMainThread(what):
+        bslot = QBlockingSlot(what)
+        bslot.moveToThread(QApplication.instance().thread())
+        bslot.call()
+
+    class WorkerDialog(QDialog):
+        def __init__(self, parent = None):
+
+            super(WorkerDialog, self).__init__(parent)
+
+            self.setWindowFlags(Qt.Window | Qt.WindowTitleHint | Qt.CustomizeWindowHint)
+            self.setAttribute(Qt.WA_DeleteOnClose)
+            self.setLayout(QVBoxLayout())
+            self.layout().addWidget(QLabel("Work in progres. Please wait"))
+            self.pbar = QProgressBar()
+            self.pbar.setRange(1, 100)
+            self.pbar.setTextVisible(True)
+            self.layout().addWidget(self.pbar)
+
+            self.setWindowOpacity(0.0)
+            self.delay = 0.0
+            self.timer = QTimer(self)
+            self.timer.setInterval(25)
+            self.timer.timeout.connect(self.onTimerTimeOut)
+        def showEvent(self, event):
+
+            print('showEvent')
+            super(WorkerDialog, self).showEvent(event)
+            self.timer.start()
+
+    def reject(self):
+        pass
+    @Slot(int)
+    def setPercentage(self, value):
+        self.pbar.setValue(value)
+    @Slot()
+    def onTimerTimeOut(self):
+        if self.delay < 1.0:
+            self.delay += 0.05
+        else:
+            self.setWindowOpacity(self.windowOpacity() + 0.05)
+            if self.windowOpacity() == 1.0:
+                self.timer.stop()
+                self.timer.timeout.disconnect(self.onTimerTimeOut)
+
+    class Worker(QObject):
+        sendPercentage = Signal(int)
+        finished = Signal()
+
+        @Slot()
+        def run(self):
+            print(QThread.currentThread())
+            def what_to_run():
+                print(QThread.currentThread())
+                print(QApplication.instance().thread())
+                QMessageBox.information(None, 'Title', 'Hi There!')
+            runOnMainThread(lambda : what_to_run())
+
+            print(__file__)
+            print(os.getcwd())
+
+            counter = 0
+            for i in range(10):
+                sleep(0.5)
+                counter += 1
+                print('iteration {}'.format(counter))
+                self.sendPercentage.emit(int(float(i+1)/10.0*100.0))
+
+            self.finished.emit()
+
+The rest of the script is the same as the one shown in the working thread example, just instead of an event loop here we have a dialog, and there is new connection established in between the worker and the dialog to send the percentage of process completion, to understand how long it is taking to complete the operation.
+
+.. code-block:: python
+
+    dialog = WorkerDialog()
+
+    thread = QThread()
+    worker = Worker()
+    worker.moveToThread(thread)
+
+    worker.finished.connect(thread.quit)
+    worker.finished.connect(worker.deleteLater)
+    thread.started.connect(worker.run)
+    thread.finished.connect(thread.deleteLater)
+    worker.sendPercentage.connect(dialog.setPercentage)
+    thread.finished.connect(dialog.accept)
+
+    print('Starting thread...')
+    thread.start()
+    print('   Thread started')
+
+    dialog.exec_()
+    print('DONE!')
+
+With this script the GUI is blocked, visibly, and you can not interact with it as your process is running. This is the best and most reliable way to interact with STKO from the Python API.
+
+####################
+1.6. ThreadUtils
+####################
+
+Every time you need to run a new script you do not need to add all of this code to your programs. We created a specific file for you called TreadUtils.py that you can reference in your scripts, calling the following classes and functions and use the same concepts we just explained in a simple and direct manner.
+
+The classes and functions in ThreadUtils are shown below for clarity. The file starts importing everything you need:
+
+.. code-block:: python
+
+    from PySide2.QtCore import Qt, QObject, Signal, Slot, QThread, QEventLoop, QTimer
+    from PySide2.QtWidgets import QMessageBox, QApplication, QDialog, QLabel, QProgressBar, QVBoxLayout
+
+You can find the following:
+
+* A simple QObject that wraps a user-defined function, and calls this function waiting for it to finish.
+
+.. code-block:: python
+
+    class QBlockingSlot(QObject):
+        requestCall = Signal()
+        done = Signal()
+        def __init__(self, function, parent = None):
+            super(QBlockingSlot, self).__init__(parent)
+            self.requestCall.connect(self.run)
+            self.function = function
+        def run(self):
+            self.function()
+            self.done.emit()
+        def call(self):
+            loop = QEventLoop()
+            self.done.connect(loop.quit)
+            self.requestCall.emit()
+            loop.exec_()
+
+* A utility to run a function with a QBlockingSlot on the GUI thread.
+
+.. code-block:: python
+
+    def runOnMainThread(what):
+        bslot = QBlockingSlot(what)
+        bslot.moveToThread(QApplication.instance().thread())
+        bslot.call()
+
+* A simple worker dialog, with a progress bar to track the percentage of an operation.
+
+.. code-block:: python
+
+    class WorkerDialog(QDialog):
+        def __init__(self, parent = None):
+
+            super(WorkerDialog, self).__init__(parent)
+
+            self.setWindowFlags(Qt.Window | Qt.WindowTitleHint | Qt.CustomizeWindowHint)
+            self.setAttribute(Qt.WA_DeleteOnClose)
+            self.setLayout(QVBoxLayout())
+            self.layout().addWidget(QLabel("Work in progres. Please wait"))
+            self.pbar = QProgressBar()
+            self.pbar.setRange(1, 100)
+            self.pbar.setTextVisible(True)
+            self.layout().addWidget(self.pbar)
+
+            self.setWindowOpacity(0.0)
+            self.delay = 0.0
+            self.timer = QTimer(self)
+            self.timer.setInterval(25)
+            self.timer.timeout.connect(self.onTimerTimeOut)
+        def showEvent(self, event):
+
+            print('showEvent')
+            super(WorkerDialog, self).showEvent(event)
+            self.timer.start()
+
+    def reject(self):
+        pass
+    @Slot(int)
+    def setPercentage(self, value):
+        self.pbar.setValue(value)
+    @Slot()
+    def onTimerTimeOut(self):
+        if self.delay < 1.0:
+            self.delay += 0.05
+        else:
+            self.setWindowOpacity(self.windowOpacity() + 0.05)
+            if self.windowOpacity() == 1.0:
+                self.timer.stop()
+                self.timer.timeout.disconnect(self.onTimerTimeOut)
+
+* A function which runs the worker (an instance of a class derived from Worker) on a working thread using the provided dialog. The dialog should have the sendPercentage(int) signal defined and should derive from QDialog
+
+.. code-block:: python
+
+    def runOnWorkerThread(worker, dialog = WorkerDialog()):
+    # initial checks
+    if not isinstance(worker, QObject):
+        raise Exception('the worker object should inherit from QObject')
+    if not hasattr(worker, 'finished'):
+        raise Exception('the worker object should have the finished() signal')
+    if not hasattr(worker, 'sendPercentage'):
+        raise Exception('the worker object should have the sendPercentage(int) signal')
+    if not isinstance(dialog, QDialog):
+        raise Exception('the dialog object should inherit from QDialog')
+    if not hasattr(dialog, 'setPercentage'):
+        raise Exception('the dialog object should have a method called setPercentage(int)')
+    if not callable(dialog.setPercentage):
+        raise Exception('the dialog object setPercentage attribute is not a callable')
+
+    # create a dialog or an event loop that will block the script till the end
+    dialog = WorkerDialog()
+
+    # create the thread, the worker, and move the worker to the thread
+    thread = QThread()
+    worker.moveToThread(thread)
+
+    # set up worker and thread connections
+    worker.finished.connect(thread.quit)
+    worker.finished.connect(worker.deleteLater)
+    thread.started.connect(worker.run)
+    thread.finished.connect(thread.deleteLater)
+    worker.sendPercentage.connect(dialog.setPercentage)
+    thread.finished.connect(dialog.accept)
+
+    # start the thread
+    thread.start()
+
+    # run dialog event loop
+    dialog.exec_()
+
+Importing ThreadUtils in your script, after placing it in a folder named “utils” in the directory loaded in your Script Explored, you can use the blocking thread with a much lighter script as following.
+
+.. code-block:: python
+
+    import os
+    from time import sleep
+    import importlib
+    import utils.ThreadUtils
+    importlib.reload(utils.ThreadUtils)
+    import utils.ThreadUtils as tu
+    from PySide2.QtCore import Qt, QObject, Signal, Slot, QThread
+    from PySide2.QtWidgets import QMessageBox, QApplication
+
+    class Worker(QObject):
+        sendPercentage = Signal(int)
+        finished = Signal()
+
+        @Slot()
+        def run(self):
+            print(QThread.currentThread())
+            def what_to_run():
+                print(QThread.currentThread())
+                print(QApplication.instance().thread())
+                QMessageBox.information(None, 'Title', 'Hi There!')
+            tu.runOnMainThread(lambda : what_to_run())
+
+            print(__file__)
+            print(os.getcwd())
+
+            counter = 0
+            for i in range(10):
+                sleep(0.5)
+                counter += 1
+                print('iteration {}'.format(counter))
+                self.sendPercentage.emit(int(float(i+1)/10.0*100.0))
+
+            self.finished.emit()
+
+    tu.runOnWorkerThread(Worker())
+
+Additionally if you want to add an exception to your function before you emit the signal to the thread that the process is finished you can use the sub-module `IO <../../_api/_modules/PyMpc.IO.html>`_, referenced in section Input/Output, substituting the last line of codes in your run function with the following.
+
+.. code-block:: python
+
+    except Exception as ex:
+        IO.write_cerr(str(ex))
+    finally:
+        self.finished.emit() # Done

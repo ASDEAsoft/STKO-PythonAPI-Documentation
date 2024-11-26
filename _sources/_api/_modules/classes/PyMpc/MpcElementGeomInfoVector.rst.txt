@@ -1,0 +1,10 @@
+.. _MpcElementGeomInfoVector:
+
+MpcElementGeomInfoVector
+========================
+
+.. autoclass:: PyMpc.MpcElementGeomInfoVector
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

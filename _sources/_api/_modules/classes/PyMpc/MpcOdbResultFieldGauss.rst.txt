@@ -1,0 +1,10 @@
+.. _MpcOdbResultFieldGauss:
+
+MpcOdbResultFieldGauss
+======================
+
+.. autoclass:: PyMpc.MpcOdbResultFieldGauss
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

@@ -1,0 +1,53 @@
+PyMpc.FxOccBuilder
+==================
+
+.. automodule:: PyMpc.FxOccBuilder
+
+
+Classes
+-------
+
+.. toctree::
+   :maxdepth: 1
+   :numbered: 0
+
+   classes/PyMpc.FxOccBuilder/DistanceInfo
+Functions
+---------
+
+.. autofunction:: PyMpc.FxOccBuilder.BSplineSurfaceInfo
+
+.. autofunction:: PyMpc.FxOccBuilder.applyRandomDeformation
+
+.. autofunction:: PyMpc.FxOccBuilder.computeDistance
+
+.. autofunction:: PyMpc.FxOccBuilder.fillFace
+
+.. autofunction:: PyMpc.FxOccBuilder.increaseOrder
+
+.. autofunction:: PyMpc.FxOccBuilder.isBSplineSurface
+
+.. autofunction:: PyMpc.FxOccBuilder.makeCompound
+
+.. autofunction:: PyMpc.FxOccBuilder.makeEdge
+
+.. autofunction:: PyMpc.FxOccBuilder.makeFace
+
+.. autofunction:: PyMpc.FxOccBuilder.makeHelix
+
+.. autofunction:: PyMpc.FxOccBuilder.makeShell
+
+.. autofunction:: PyMpc.FxOccBuilder.makeSolid
+
+.. autofunction:: PyMpc.FxOccBuilder.makeVertex
+
+.. autofunction:: PyMpc.FxOccBuilder.makeWire
+
+.. autofunction:: PyMpc.FxOccBuilder.merge
+
+.. autofunction:: PyMpc.FxOccBuilder.toBSplineSurface
+
+.. autofunction:: PyMpc.FxOccBuilder.visualRepresentationControlPolygon
+
+.. autofunction:: PyMpc.FxOccBuilder.visualRepresentationSurface
+

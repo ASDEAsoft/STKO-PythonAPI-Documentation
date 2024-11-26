@@ -1,0 +1,10 @@
+.. _MpcBoundaryEdgeType:
+
+MpcBoundaryEdgeType
+===================
+
+.. autoclass:: PyMpc.MpcBoundaryEdgeType
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

@@ -1,0 +1,10 @@
+.. _FxOccFaceProperties:
+
+FxOccFaceProperties
+===================
+
+.. autoclass:: PyMpc.FxOccFaceProperties
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

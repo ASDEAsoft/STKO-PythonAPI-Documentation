@@ -1,0 +1,14 @@
+PyMpc.Utils
+===========
+
+.. automodule:: PyMpc.Utils
+
+Functions
+---------
+
+.. autofunction:: PyMpc.Utils.get_app_dir
+
+.. autofunction:: PyMpc.Utils.get_external_solvers_dir
+
+.. autofunction:: PyMpc.Utils.is_debug
+

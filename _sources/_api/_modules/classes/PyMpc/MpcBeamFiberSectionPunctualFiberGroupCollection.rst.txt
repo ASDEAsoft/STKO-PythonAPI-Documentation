@@ -1,0 +1,10 @@
+.. _MpcBeamFiberSectionPunctualFiberGroupCollection:
+
+MpcBeamFiberSectionPunctualFiberGroupCollection
+===============================================
+
+.. autoclass:: PyMpc.MpcBeamFiberSectionPunctualFiberGroupCollection
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

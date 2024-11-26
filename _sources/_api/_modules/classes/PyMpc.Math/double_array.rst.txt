@@ -1,0 +1,10 @@
+.. _double_array:
+
+double_array
+============
+
+.. autoclass:: PyMpc.Math.double_array
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

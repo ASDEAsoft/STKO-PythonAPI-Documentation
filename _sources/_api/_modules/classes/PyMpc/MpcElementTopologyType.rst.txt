@@ -1,0 +1,10 @@
+.. _MpcElementTopologyType:
+
+MpcElementTopologyType
+======================
+
+.. autoclass:: PyMpc.MpcElementTopologyType
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

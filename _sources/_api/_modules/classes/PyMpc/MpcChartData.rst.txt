@@ -1,0 +1,10 @@
+.. _MpcChartData:
+
+MpcChartData
+============
+
+.. autoclass:: PyMpc.MpcChartData
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

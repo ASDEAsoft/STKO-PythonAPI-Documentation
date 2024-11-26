@@ -1,0 +1,10 @@
+.. _FxTexturingMode:
+
+FxTexturingMode
+===============
+
+.. autoclass:: PyMpc.FxTexturingMode
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

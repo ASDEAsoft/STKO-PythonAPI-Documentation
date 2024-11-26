@@ -1,0 +1,10 @@
+.. _FxTexture:
+
+FxTexture
+=========
+
+.. autoclass:: PyMpc.FxTexture
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

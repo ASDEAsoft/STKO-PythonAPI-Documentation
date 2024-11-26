@@ -1,0 +1,10 @@
+.. _MpcAttributeCustomObjectInterface:
+
+MpcAttributeCustomObjectInterface
+=================================
+
+.. autoclass:: PyMpc.MpcAttributeCustomObjectInterface
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

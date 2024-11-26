@@ -1,0 +1,160 @@
+4. Document
+===========
+
+Four examples on how to define new and call existing property, geometry, selection sets and conditions are provided below
+
+##################
+4.1. Properties
+##################
+
+.. note::
+    Coming soon.
+
+##################
+4.2. Geometries
+##################
+
+With this example we will create new geometries in the Preprocessor, obtaining a result like this:
+
+.. figure:: ../../_static/img/examples/4_document/fig421.png
+    :align: center
+
+    Fig. 4.2.1 **Geometry created with the following script**
+
+Start out as follows and use the caeDocument function from the App sub-module to call the open .scd document.
+
+.. code-block:: python
+
+    from PyMpc import *
+    from random import random
+
+    App.clearTerminal()
+
+    doc = App.caeDocument()
+
+The function caeDocument calls the class MpcCaeDocument. All of its attributes and method are now available to be used. The geometries we will create need to be numbered in the model. It is important to make sure that the numbering will be consistent with the one of the geometries already present in the model. We initialize the id at 0 and then set an if loop which checks if there are existing geometries and resets the id to the greatest existing index plus one. Then we need a function to call and assign the id to new geometries.
+
+.. code-block:: python
+
+    id = 0
+    if len(doc.geometries) > 0:
+        id = doc.geometries.keys()[-1]
+    print(id)
+
+    def get_id():
+        global id
+        id += 1
+        return id
+
+After, you can create a new function to add geometries to the document, commit the changes and define the document as dirty (so STKO will recognize the presence of unsaved changes) and finally regenerate the render view, processing all the events waiting on the event loop.
+
+.. code-block:: python
+
+    def add_geom(geom):
+        doc.addGeometry(geom)
+        doc.commitChanges()
+        doc.dirty = True
+        App.runCommand("Regenerate")
+        App.processEvents()
+
+Initially we want to draw a face with a hole in the center, scaling the perimeters of the two shapes of 0.5 one in respect to the other. Therefore, another function show be set to create a wire, with an argument scale, to then quickly draw the 2 wires.
+
+.. code-block:: python
+
+    def wire(scale):
+
+        #Define the 4 vertices of the outer wire (each vertex coordinates in expressed as a function of scale):
+        v1 = FxOccBuilder.makeVertex(-50*scale, -25*scale, 0)
+        add_geom(MpcGeometry(get_id(), "V1", v1))
+        v2 = FxOccBuilder.makeVertex(50*scale, -25*scale, 0)
+        add_geom(MpcGeometry(get_id(), "V2", v2))
+        v3 = FxOccBuilder.makeVertex(50*scale, 25*scale, 0)
+        add_geom(MpcGeometry(get_id(), "V3", v3))
+        v4 = FxOccBuilder.makeVertex(-50*scale, 25*scale, 0)
+        add_geom(MpcGeometry(get_id(), "V4", v4))
+
+        #Define the edges connecting the vertices:
+        e1 = FxOccBuilder.makeEdge(v1, v2)
+        add_geom(MpcGeometry(get_id(), "E1", e1))
+        e2 = FxOccBuilder.makeEdge(v2, v3)
+        add_geom(MpcGeometry(get_id(), "E2", e2))
+        e3 = FxOccBuilder.makeEdge(v3, v4)
+        add_geom(MpcGeometry(get_id(), "E3", e3))
+        e4 = FxOccBuilder.makeEdge(v4, v1)
+        add_geom(MpcGeometry(get_id(), "E4", e4))
+
+        #Create the wire with the makeWire function from the sub-module FxOccBuilder:
+        w1 = FxOccBuilder.makeWire([e1, e2, e3, e4])
+        add_geom(MpcGeometry(get_id(), "W1", w1))
+        return w1
+
+The two wires can then be created, and after a face with a hole with reference to the second wire.
+
+.. code-block:: python
+
+    w1 = wire(1.0)
+    w2 = wire(0.5)
+
+    f1 = FxOccBuilder.makeFace(w1, [w2])
+    add_geom(MpcGeometry(get_id(), "F1", f1))
+
+Similarly, a solid can be created by defining its vertices, then the edges connecting them connected as wires, the faces on each side transformed in shells and finally the solid including all those shells.
+
+.. code-block:: python
+
+    v1 = FxOccBuilder.makeVertex(0 , -100, 0)           #vertices
+    v2 = FxOccBuilder.makeVertex(20, -100, 0)
+    v3 = FxOccBuilder.makeVertex(20,  -80, 0)
+    v4 = FxOccBuilder.makeVertex(0 ,  -80, 0)
+    v5 = FxOccBuilder.makeVertex(0 , -100, 20)
+    v6 = FxOccBuilder.makeVertex(20, -100, 20)
+    v7 = FxOccBuilder.makeVertex(20,  -80, 20)
+    v8 = FxOccBuilder.makeVertex(0 ,  -80, 20)
+
+    e1 = FxOccBuilder.makeEdge(v1,v2)                   #bottom edges, wire, face
+    e2 = FxOccBuilder.makeEdge(v2,v3)
+    e3 = FxOccBuilder.makeEdge(v3,v4)
+    e4 = FxOccBuilder.makeEdge(v4,v1)
+    w1 = FxOccBuilder.makeWire([e1,e2,e3,e4])
+    f1 = FxOccBuilder.makeFace(w1)
+
+    e5 = FxOccBuilder.makeEdge(v5,v6)                   #top edges, wire, face
+    e6 = FxOccBuilder.makeEdge(v6,v7)
+    e7 = FxOccBuilder.makeEdge(v7,v8)
+    e8 = FxOccBuilder.makeEdge(v8,v5)
+    w2 = FxOccBuilder.makeWire([e5,e6,e7,e8])
+    f2 = FxOccBuilder.makeFace(w2)
+
+    e9 = FxOccBuilder.makeEdge(v1,v5)                   #front edges, wire, face
+    e10 = FxOccBuilder.makeEdge(v2,v6)
+    w3 = FxOccBuilder.makeWire([e1,e10,e5,e9])
+    f3 = FxOccBuilder.makeFace(w3)
+
+    e11 = FxOccBuilder.makeEdge(v4,v8)                  #back edges, wire, face
+    e12 = FxOccBuilder.makeEdge(v3,v7)
+    w4 = FxOccBuilder.makeWire([e3,e12,e7,e11])
+    f4 = FxOccBuilder.makeFace(w4)
+
+    w5 = FxOccBuilder.makeWire([e4,e9,e8,e11])          #left wire, face
+    f5 = FxOccBuilder.makeFace(w5)
+
+    w6 = FxOccBuilder.makeWire([e2,e10,e6,e12])         #right wire, face
+    f6 = FxOccBuilder.makeFace(w6)
+    s1 = FxOccBuilder.makeShell([f1,f2,f3,f4,f5,f6])    #shell
+
+    so1 = FxOccBuilder.makeSolid(s1)                    #solid
+    add_geom(MpcGeometry(get_id(), "S1", so1))
+
+####################
+4.3. Selection Sets
+####################
+
+.. note::
+    Coming soon.
+
+####################
+4.4. Conditions
+####################
+
+.. note::
+    Coming soon.

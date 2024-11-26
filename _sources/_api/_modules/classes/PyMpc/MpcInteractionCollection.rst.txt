@@ -1,0 +1,10 @@
+.. _MpcInteractionCollection:
+
+MpcInteractionCollection
+========================
+
+.. autoclass:: PyMpc.MpcInteractionCollection
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

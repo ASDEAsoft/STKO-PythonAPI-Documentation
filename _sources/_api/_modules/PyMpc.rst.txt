@@ -1,0 +1,35 @@
+PyMpc
+=====
+
+.. automodule:: PyMpc
+
+Categories
+---------
+
+.. toctree::
+   :maxdepth: 1
+   :numbered: 0
+
+   categories/PyMpc/Fx
+   categories/PyMpc/Mpc
+
+Classes
+-------
+
+.. toctree::
+   :maxdepth: 1
+   :numbered: 0
+
+   classes/PyMpc/MeshCaeInfo
+   classes/PyMpc/TopAbs_ShapeEnum
+Functions
+---------
+
+.. autofunction:: PyMpc.MpcEditQuantityMatrixEditorDialog
+
+.. autofunction:: PyMpc.MpcEditQuantityVectorEditorDialog
+
+.. autofunction:: PyMpc.exec_
+
+.. autofunction:: PyMpc.oglv2
+

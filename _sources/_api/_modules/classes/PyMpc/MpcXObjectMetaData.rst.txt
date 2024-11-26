@@ -1,0 +1,10 @@
+.. _MpcXObjectMetaData:
+
+MpcXObjectMetaData
+==================
+
+.. autoclass:: PyMpc.MpcXObjectMetaData
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

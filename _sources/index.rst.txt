@@ -1,0 +1,53 @@
+STKO Python API Documentation
+=============================
+
+STKO, the **Scientific ToolKit for** `OpenSees <https://opensees.berkeley.edu>`_, is an advanced **Graphical User Interface (GUI)** for structural engineering. It empowers companies, scientists, researchers, academics, and individuals the ability to harness the full power of OpenSees. STKO is the only **pre and postprocessor** that provides full integration with OpenSees, it includes **ALL** materials, elements, conditions, and interactions offered in OpenSees, allowing you to leverage its powerful capabilities. 
+
+As you create your model using STKO’s graphic interface, the software creates an input **(Tool Command Language, TCL)** and output file with the information contained in your model. Once you have built the model, you can create and run the analysis of your choice. The software will build an **HDF5-based output database** with the analysis results, which can be opened and processed in the postprocessor. The **Python scripting interface** means that the already powerful pre and postprocessors can be customized and programmed as needed. 
+
+* `Python API Reference <./_api/index.html>`_
+
+.. toctree::
+   :hidden:
+   :caption: API Reference
+   :maxdepth: 0
+   :numbered: 0
+
+   _api/index.rst
+
+########
+Examples
+########
+
+Using Python from a GUI (Graphical User Interface) presents differences compared to the normal usage of the programming language.
+
+Examples below are provided to showcase the different ways of carrying out processes using the Python STKO API.
+
+For any questions and/or suggestions you may have regarding the use of the STKO Python API, you can use the `related forum section <https://asdeasoft.net/forum/viewforum.php?f=44>`_
+
+* `1. Call Types <./_examples/1_call-types/index.html>`_ 
+* `2. Basics <./_examples/2_basics/index.html>`_ 
+* `3. Objects <./_examples/3_objects/index.html>`_ 
+* `4. Document <./_examples/4_document/index.html>`_ 
+* `5. Mesh <./_examples/5_mesh/index.html>`_ 
+* `6. Fiber Section <./_examples/6_fiber-section/index.html>`_ 
+* `7. Cae Document <./_examples/7_cae-document/index.html>`_ 
+* `8. Post Processing <./_examples/8_post-processing/index.html>`_ 
+* `9. Application <./_examples/9_application/index.html>`_ 
+
+.. toctree::
+   :hidden:
+   :caption: Examples
+   :maxdepth: 0
+   :numbered: 0
+
+   _examples/1_call-types/index.rst
+   _examples/2_basics/index.rst
+   _examples/3_objects/index.rst
+   _examples/4_document/index.rst
+   _examples/5_mesh/index.rst
+   _examples/6_fiber-section/index.rst
+   _examples/7_cae-document/index.rst
+   _examples/8_post-processing/index.rst
+   _examples/9_application/index.rst
+   

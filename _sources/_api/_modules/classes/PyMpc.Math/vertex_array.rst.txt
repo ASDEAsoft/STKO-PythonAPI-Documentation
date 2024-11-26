@@ -1,0 +1,10 @@
+.. _vertex_array:
+
+vertex_array
+============
+
+.. autoclass:: PyMpc.Math.vertex_array
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

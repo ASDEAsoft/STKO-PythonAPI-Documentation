@@ -1,0 +1,10 @@
+.. _MpcElementPropertyAssignmentMap:
+
+MpcElementPropertyAssignmentMap
+===============================
+
+.. autoclass:: PyMpc.MpcElementPropertyAssignmentMap
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

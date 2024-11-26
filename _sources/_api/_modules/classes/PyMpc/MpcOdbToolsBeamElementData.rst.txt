@@ -1,0 +1,10 @@
+.. _MpcOdbToolsBeamElementData:
+
+MpcOdbToolsBeamElementData
+==========================
+
+.. autoclass:: PyMpc.MpcOdbToolsBeamElementData
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

@@ -1,0 +1,10 @@
+.. _MpcQuantityScalar:
+
+MpcQuantityScalar
+=================
+
+.. autoclass:: PyMpc.Units.MpcQuantityScalar
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

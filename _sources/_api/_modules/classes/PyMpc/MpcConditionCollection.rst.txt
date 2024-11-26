@@ -1,0 +1,10 @@
+.. _MpcConditionCollection:
+
+MpcConditionCollection
+======================
+
+.. autoclass:: PyMpc.MpcConditionCollection
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

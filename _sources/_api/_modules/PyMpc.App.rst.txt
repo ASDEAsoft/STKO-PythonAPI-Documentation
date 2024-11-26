@@ -1,0 +1,65 @@
+PyMpc.App
+=========
+
+.. automodule:: PyMpc.App
+
+
+Classes
+-------
+
+.. toctree::
+   :maxdepth: 1
+   :numbered: 0
+
+   classes/PyMpc.App/MpcBackgroundWorkerProgressMonitorInterface
+Functions
+---------
+
+.. autofunction:: PyMpc.App.caeDocument
+
+.. autofunction:: PyMpc.App.clearTerminal
+
+.. autofunction:: PyMpc.App.currentSolverCommand
+
+.. autofunction:: PyMpc.App.currentSolverName
+
+.. autofunction:: PyMpc.App.getReferencedComponents
+
+.. autofunction:: PyMpc.App.getReferencingComponents
+
+.. autofunction:: PyMpc.App.hasCurrentSolver
+
+.. autofunction:: PyMpc.App.isBusy
+
+.. autofunction:: PyMpc.App.monitor
+
+.. autofunction:: PyMpc.App.postDocument
+
+.. autofunction:: PyMpc.App.processEvents
+
+.. autofunction:: PyMpc.App.promptBusyMessage
+
+.. autofunction:: PyMpc.App.quit
+
+.. autofunction:: PyMpc.App.requestUpdateActiveView
+
+.. autofunction:: PyMpc.App.requestUpdateAllViewsOfTheActiveDocument
+
+.. autofunction:: PyMpc.App.runCommand
+
+.. autofunction:: PyMpc.App.runOnBlockingWorkingThread
+
+.. autofunction:: PyMpc.App.setActiveContext
+
+.. autofunction:: PyMpc.App.setBusy
+
+.. autofunction:: PyMpc.App.setColorWorkTreeByUsageFlag
+
+.. autofunction:: PyMpc.App.setGUIComponentsEnabled
+
+.. autofunction:: PyMpc.App.setRegenerateOnWorkingThreadFlag
+
+.. autofunction:: PyMpc.App.updateActiveView
+
+.. autofunction:: PyMpc.App.updateAllViewsOfTheActiveDocument
+

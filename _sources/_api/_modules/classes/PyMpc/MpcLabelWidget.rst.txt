@@ -1,0 +1,10 @@
+.. _MpcLabelWidget:
+
+MpcLabelWidget
+==============
+
+.. autoclass:: PyMpc.MpcLabelWidget
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

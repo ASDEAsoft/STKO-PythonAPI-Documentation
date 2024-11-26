@@ -1,0 +1,10 @@
+.. _MpcMeshOfInteractionCollection:
+
+MpcMeshOfInteractionCollection
+==============================
+
+.. autoclass:: PyMpc.MpcMeshOfInteractionCollection
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

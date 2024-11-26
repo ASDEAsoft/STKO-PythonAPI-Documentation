@@ -1,0 +1,10 @@
+.. _MpcElementTriangle3D3N:
+
+MpcElementTriangle3D3N
+======================
+
+.. autoclass:: PyMpc.MpcElementTriangle3D3N
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

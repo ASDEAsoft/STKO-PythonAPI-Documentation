@@ -1,0 +1,10 @@
+.. _MpcBeamFiberPunctualEdgeDataInputType:
+
+MpcBeamFiberPunctualEdgeDataInputType
+=====================================
+
+.. autoclass:: PyMpc.MpcBeamFiberPunctualEdgeDataInputType
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

@@ -1,0 +1,10 @@
+.. _MpcOdbResultExtraComponentType:
+
+MpcOdbResultExtraComponentType
+==============================
+
+.. autoclass:: PyMpc.MpcOdbResultExtraComponentType
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

@@ -1,0 +1,10 @@
+.. _MpcElementTetrahedron3D10N:
+
+MpcElementTetrahedron3D10N
+==========================
+
+.. autoclass:: PyMpc.MpcElementTetrahedron3D10N
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

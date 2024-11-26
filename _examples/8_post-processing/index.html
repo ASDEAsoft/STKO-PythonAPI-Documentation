@@ -1,0 +1,330 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>8. Post Processing &mdash; STKO Python API  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=8a89d2a5" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="9. Application" href="../9_application/index.html" />
+    <link rel="prev" title="7. Cae document" href="../7_cae-document/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_api/index.html">Python API Reference</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../1_call-types/index.html">1. Call Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_basics/index.html">2. Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_objects/index.html">3. Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_document/index.html">4. Document</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_mesh/index.html">5. Mesh</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_fiber-section/index.html">6. Fiber Section</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7_cae-document/index.html">7. Cae document</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">8. Post Processing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#document">8.1. Document</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#output-data-plot">8.2. Output data plot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#results">8.3. Results</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../9_application/index.html">9. Application</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">STKO Python API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">8. Post Processing</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="post-processing">
+<h1>8. Post Processing<a class="headerlink" href="#post-processing" title="Link to this heading"></a></h1>
+<p>In this section, we will show a few example scripts which can be used to interact with the Postprocessor environment.The classes, functions and methods available in PyMpc will allow the user to access the Postprocessor document, the databases, plots, chart data sets and charts contained in it and customize them at will as parameters of their customized code.Moreover the user will be able to add new elements in the Postprocessor (plot groups, plot, chart data and charts) and import values from outside STKO, for example to operate comparisons and checks.</p>
+<section id="document">
+<h2>8.1. Document<a class="headerlink" href="#document" title="Link to this heading"></a></h2>
+<p>The following example will guide you through the use of the possible interactions with the Postprocessor document, with the use of the thread utilities described in section ThreadUtils, the following script was written by calling such classes and functions explicitly, but they could be stored in the external file ThreadUtils and then exported to obtain a shorter version of the same code. It can be a useful exercise to practice python import of external functions. The Postprocessor document can be accessed as shown in the following snippet. You can choose to use a dialog to keep the script alive till the end of the thread, or simply an event loop. Then you get the Postprocessor document, defining it into a variable doc.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PyMpc</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="kn">from</span> <span class="nn">PySide2.QtCore</span> <span class="kn">import</span> <span class="n">Qt</span><span class="p">,</span> <span class="n">QObject</span><span class="p">,</span> <span class="n">Signal</span><span class="p">,</span> <span class="n">Slot</span><span class="p">,</span> <span class="n">QThread</span><span class="p">,</span> <span class="n">QEventLoop</span>
+<span class="kn">from</span> <span class="nn">PySide2.QtWidgets</span> <span class="kn">import</span> <span class="n">QDialog</span><span class="p">,</span> <span class="n">QLabel</span><span class="p">,</span> <span class="n">QProgressBar</span><span class="p">,</span> <span class="n">QVBoxLayout</span><span class="p">,</span> <span class="n">QApplication</span>
+
+<span class="n">use_dialog</span> <span class="o">=</span> <span class="kc">True</span> <span class="c1"># True = Dialog, False = Event Loop</span>
+
+<span class="n">doc</span> <span class="o">=</span> <span class="n">App</span><span class="o">.</span><span class="n">postDocument</span><span class="p">()</span>
+<span class="n">Clear</span> <span class="nb">all</span> <span class="n">existing</span> <span class="n">setups</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">Postprocessor</span> <span class="ow">and</span> <span class="nb">open</span> <span class="n">a</span> <span class="n">database</span><span class="o">.</span>
+
+<span class="n">doc</span><span class="o">.</span><span class="n">clearPlotGroups</span><span class="p">()</span>
+<span class="n">doc</span><span class="o">.</span><span class="n">clearCharts</span><span class="p">()</span>
+<span class="n">doc</span><span class="o">.</span><span class="n">clearChartData</span><span class="p">()</span>
+<span class="n">doc</span><span class="o">.</span><span class="n">commitChanges</span><span class="p">()</span>
+<span class="n">doc</span><span class="o">.</span><span class="n">dirty</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">doc</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+
+<span class="n">App</span><span class="o">.</span><span class="n">runCommand</span><span class="p">(</span><span class="err">“</span><span class="n">OpenDatabase</span><span class="err">”</span><span class="p">,</span> <span class="err">“</span><span class="n">C</span><span class="p">:</span><span class="o">/</span><span class="n">VBShared</span><span class="o">/</span><span class="n">di_michele</span><span class="o">/</span><span class="n">micro_inplane</span><span class="o">.</span><span class="n">mpco</span><span class="err">”</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Create the simple QObject that wraps the user-defined function, and calls this function waiting for it to finish, as shown in section ThreadUtils. and then create the slots to be called on the main GUI thread, to add a plot group, chart data and charts.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">QBlockingSlot</span><span class="p">(</span><span class="n">QObject</span><span class="p">):</span>
+    <span class="n">requestCall</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">(</span><span class="nb">tuple</span><span class="p">)</span>
+    <span class="n">done</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">()</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function</span><span class="p">,</span> <span class="n">parent</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">QBlockingSlot</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">requestCall</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">run</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">function</span> <span class="o">=</span> <span class="n">function</span>
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">done</span><span class="o">.</span><span class="n">emit</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="n">loop</span> <span class="o">=</span> <span class="n">QEventLoop</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">done</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">loop</span><span class="o">.</span><span class="n">quit</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">requestCall</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="n">loop</span><span class="o">.</span><span class="n">exec_</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">addPlotGroup_function</span><span class="p">(</span><span class="n">pgroup</span><span class="p">):</span>
+    <span class="n">doc</span><span class="o">.</span><span class="n">addPlotGroup</span><span class="p">(</span><span class="n">pgroup</span><span class="p">)</span>
+    <span class="n">doc</span><span class="o">.</span><span class="n">commitChanges</span><span class="p">()</span>
+    <span class="n">doc</span><span class="o">.</span><span class="n">dirty</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">doc</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">pgroup</span><span class="p">)</span>
+    <span class="n">doc</span><span class="o">.</span><span class="n">setActivePlotGroup</span><span class="p">(</span><span class="n">pgroup</span><span class="p">)</span>
+    <span class="n">info</span> <span class="o">=</span> <span class="n">MpcOdpRegeneratorUpdateInfo</span><span class="p">()</span>
+    <span class="n">info</span><span class="o">.</span><span class="n">onlyTexture</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">pgroup</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">info</span><span class="p">)</span>
+
+<span class="n">addPlotGroup</span> <span class="o">=</span> <span class="n">QBlockingSlot</span><span class="p">(</span><span class="n">addPlotGroup_function</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">addChartData_function</span><span class="p">(</span><span class="n">cdata</span><span class="p">):</span>
+    <span class="n">doc</span><span class="o">.</span><span class="n">addChartData</span><span class="p">(</span><span class="n">cdata</span><span class="p">)</span>
+    <span class="n">doc</span><span class="o">.</span><span class="n">commitChanges</span><span class="p">()</span>
+    <span class="n">doc</span><span class="o">.</span><span class="n">dirty</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">doc</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">cdata</span><span class="p">)</span>
+
+<span class="n">addChartData</span> <span class="o">=</span> <span class="n">QBlockingSlot</span><span class="p">(</span><span class="n">addChartData_function</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">addChart_function</span><span class="p">(</span><span class="n">chart</span><span class="p">):</span>
+    <span class="n">doc</span><span class="o">.</span><span class="n">addChart</span><span class="p">(</span><span class="n">chart</span><span class="p">)</span>
+    <span class="n">doc</span><span class="o">.</span><span class="n">commitChanges</span><span class="p">()</span>
+    <span class="n">doc</span><span class="o">.</span><span class="n">dirty</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">doc</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">chart</span><span class="p">)</span>
+
+<span class="n">addChart</span> <span class="o">=</span> <span class="n">QBlockingSlot</span><span class="p">(</span><span class="n">addChart_function</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Then define the worker class. It will run the lengthy function on a working thread and emit signals for calling the connected slots on the main thread. The lengthy function is this case consists in the creation of 10 new items in terms of plot groups, chart data sets, chart items to insert in the charts and finally the charts.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Worker</span><span class="p">(</span><span class="n">QObject</span><span class="p">):</span>
+   <span class="n">sendPercentage</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+   <span class="n">finished</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">()</span>
+
+   <span class="nd">@Slot</span><span class="p">()</span>
+   <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+       <span class="k">for</span> <span class="nb">iter</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+           <span class="n">pgroup</span> <span class="o">=</span> <span class="n">MpcOdpGroup</span><span class="p">()</span>
+           <span class="n">pgroup</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">genNextIdForPlotGroup</span><span class="p">()</span>
+           <span class="n">pgroup</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Test Plot Group </span><span class="si">%i</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">iter</span>
+           <span class="n">addPlotGroup</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">pgroup</span><span class="p">)</span>
+
+           <span class="n">cdata</span> <span class="o">=</span> <span class="n">MpcChartData</span><span class="p">()</span>
+           <span class="n">cdata</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">genNextIdForChartData</span><span class="p">()</span>
+           <span class="n">cdata</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Test Chart Data </span><span class="si">%i</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">iter</span>
+           <span class="n">cdata</span><span class="o">.</span><span class="n">xLabel</span> <span class="o">=</span> <span class="s2">&quot;XData&quot;</span>
+           <span class="n">cdata</span><span class="o">.</span><span class="n">xLabel</span> <span class="o">=</span> <span class="s2">&quot;YData&quot;</span>
+           <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="o">*</span><span class="nb">float</span><span class="p">(</span><span class="nb">iter</span><span class="p">),</span> <span class="mi">1000</span><span class="p">)</span>
+           <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="o">+</span><span class="nb">float</span><span class="p">(</span><span class="nb">iter</span><span class="p">)</span><span class="o">/</span><span class="mf">10.0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+           <span class="n">cdata</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="n">double_array</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+           <span class="n">cdata</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="n">double_array</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+           <span class="n">addChartData</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">cdata</span><span class="p">)</span>
+           <span class="n">sleep</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>
+
+           <span class="n">cdata_item</span> <span class="o">=</span> <span class="n">MpcChartDataGraphicItem</span><span class="p">(</span><span class="n">cdata</span><span class="p">)</span>
+           <span class="n">cdata_item</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">MpcQColor</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span>
+           <span class="n">cdata_item</span><span class="o">.</span><span class="n">thickness</span> <span class="o">=</span> <span class="mf">1.5</span>
+           <span class="n">cdata_item</span><span class="o">.</span><span class="n">penStyle</span> <span class="o">=</span> <span class="n">MpcQPenStyle</span><span class="o">.</span><span class="n">SolidLine</span>
+
+           <span class="n">chart</span> <span class="o">=</span> <span class="n">MpcChart</span><span class="p">()</span>
+           <span class="n">chart</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">genNextIdForChart</span><span class="p">()</span>
+           <span class="n">chart</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Test Chart&quot;</span>
+           <span class="n">chart</span><span class="o">.</span><span class="n">addItem</span><span class="p">(</span><span class="n">cdata_item</span><span class="p">)</span>
+           <span class="n">addChart</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">chart</span><span class="p">)</span>
+           <span class="n">sleep</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>
+           <span class="bp">self</span><span class="o">.</span><span class="n">sendPercentage</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="nb">iter</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mf">10.0</span><span class="o">*</span><span class="mf">100.0</span><span class="p">))</span>
+
+       <span class="bp">self</span><span class="o">.</span><span class="n">finished</span><span class="o">.</span><span class="n">emit</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Create a dialog or an event loop that will block the script till the end. Then create the thread, the worker, and move the worker to the thread.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">use_dialog</span><span class="p">:</span>
+    <span class="n">dialog</span> <span class="o">=</span> <span class="n">QDialog</span><span class="p">()</span>
+    <span class="n">dialog</span><span class="o">.</span><span class="n">setLayout</span><span class="p">(</span><span class="n">QVBoxLayout</span><span class="p">())</span>
+    <span class="n">dialog</span><span class="o">.</span><span class="n">layout</span><span class="p">()</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">QLabel</span><span class="p">(</span><span class="s2">&quot;Work in progres. Please wait&quot;</span><span class="p">))</span>
+    <span class="n">pbar</span> <span class="o">=</span> <span class="n">QProgressBar</span><span class="p">()</span>
+    <span class="n">pbar</span><span class="o">.</span><span class="n">setRange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+    <span class="n">pbar</span><span class="o">.</span><span class="n">setTextVisible</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">dialog</span><span class="o">.</span><span class="n">layout</span><span class="p">()</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">pbar</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">loop</span> <span class="o">=</span> <span class="n">QEventLoop</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Create the thread, the worker, and move the worker to the thread</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">thread</span> <span class="o">=</span> <span class="n">QThread</span><span class="p">()</span>
+<span class="n">worker</span> <span class="o">=</span> <span class="n">Worker</span><span class="p">()</span>
+<span class="n">worker</span><span class="o">.</span><span class="n">moveToThread</span><span class="p">(</span><span class="n">thread</span><span class="p">)</span>
+<span class="n">Set</span> <span class="n">up</span> <span class="n">worker</span> <span class="ow">and</span> <span class="n">thread</span> <span class="n">connections</span>
+
+<span class="n">worker</span><span class="o">.</span><span class="n">finished</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">thread</span><span class="o">.</span><span class="n">quit</span><span class="p">)</span>
+<span class="n">worker</span><span class="o">.</span><span class="n">finished</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">worker</span><span class="o">.</span><span class="n">deleteLater</span><span class="p">)</span>
+<span class="n">thread</span><span class="o">.</span><span class="n">started</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">worker</span><span class="o">.</span><span class="n">run</span><span class="p">)</span>
+<span class="n">thread</span><span class="o">.</span><span class="n">finished</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">thread</span><span class="o">.</span><span class="n">deleteLater</span><span class="p">)</span>
+ <span class="o">...</span> <span class="k">for</span> <span class="n">dialog</span> <span class="ow">or</span> <span class="n">event</span> <span class="n">loop</span>
+<span class="k">if</span> <span class="n">use_dialog</span><span class="p">:</span>
+    <span class="n">worker</span><span class="o">.</span><span class="n">sendPercentage</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">pbar</span><span class="o">.</span><span class="n">setValue</span><span class="p">)</span>
+    <span class="n">thread</span><span class="o">.</span><span class="n">finished</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">dialog</span><span class="o">.</span><span class="n">accept</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">thread</span><span class="o">.</span><span class="n">finished</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">loop</span><span class="o">.</span><span class="n">quit</span><span class="p">)</span>
+<span class="n">Start</span> <span class="n">the</span> <span class="n">thread</span> <span class="ow">and</span> <span class="n">run</span> <span class="n">dialog</span> <span class="ow">or</span> <span class="n">event</span> <span class="n">loop</span>
+
+<span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="n">use_dialog</span><span class="p">:</span>
+    <span class="n">dialog</span><span class="o">.</span><span class="n">exec_</span><span class="p">()</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">loop</span><span class="o">.</span><span class="n">exec_</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="output-data-plot">
+<h2>8.2. Output data plot<a class="headerlink" href="#output-data-plot" title="Link to this heading"></a></h2>
+<p>In PyMpc there are a series of classes and methods to interact with the plots, data plots and their types, the plot groups, and the visibility attributes of the data plots. An example of an interaction with the output data plot could be the variation of one of the plot editor parameters, such as the deformation scale factor of the render view. Try running the following script with a database open in your STKO Postprocessor and see what happens.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PyMpc</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="kn">import</span> <span class="nn">traceback</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">PySide2.QtCore</span> <span class="kn">import</span> <span class="n">QEventLoop</span><span class="p">,</span> <span class="n">QTimer</span>
+
+<span class="n">App</span><span class="o">.</span><span class="n">clearTerminal</span><span class="p">()</span>
+
+<span class="k">class</span> <span class="nc">gui_auto_lock</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">components</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">components</span> <span class="o">=</span> <span class="n">components</span>
+    <span class="k">def</span> <span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">App</span><span class="o">.</span><span class="n">setGUIComponentsEnabled</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">components</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="n">App</span><span class="o">.</span><span class="n">setBusy</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_val</span><span class="p">,</span> <span class="n">exc_tb</span><span class="p">):</span>
+        <span class="n">App</span><span class="o">.</span><span class="n">setGUIComponentsEnabled</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">components</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+        <span class="n">App</span><span class="o">.</span><span class="n">setBusy</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">gui_auto_lock</span><span class="p">(</span><span class="n">MpcGUIComponents</span><span class="o">.</span><span class="n">All</span><span class="p">)</span> <span class="k">as</span> <span class="n">guilock</span><span class="p">:</span>
+    <span class="n">doc</span> <span class="o">=</span> <span class="n">App</span><span class="o">.</span><span class="n">postDocument</span><span class="p">()</span>
+    <span class="n">group</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">activePlotGroup</span>
+    <span class="k">if</span> <span class="n">group</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">group</span><span class="o">.</span><span class="n">plots</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">info</span> <span class="o">=</span> <span class="n">MpcOdpRegeneratorUpdateInfo</span><span class="p">()</span>
+
+        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">30.0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>             <span class="c1"># prepare scale factor history</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="c1"># np.sin(x)</span>
+        <span class="k">for</span> <span class="n">scale</span> <span class="ow">in</span> <span class="n">y</span><span class="p">:</span>
+
+            <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">plot</span> <span class="ow">in</span> <span class="n">group</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>         <span class="c1"># update scale factor for each plot</span>
+                <span class="k">if</span> <span class="n">plot</span><span class="p">:</span>
+                    <span class="n">plot</span><span class="o">.</span><span class="n">plotData</span><span class="o">.</span><span class="n">scale</span> <span class="o">=</span> <span class="n">scale</span>
+                    <span class="n">plot</span><span class="o">.</span><span class="n">commitChanges</span><span class="p">()</span>
+
+            <span class="n">group</span><span class="o">.</span><span class="n">commitChanges</span><span class="p">()</span> <span class="c1"># redraw group</span>
+            <span class="n">group</span><span class="o">.</span><span class="n">updateAndWait</span><span class="p">(</span><span class="n">info</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Output data base</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Coming soon.</p>
+</div>
+</section>
+<section id="results">
+<h2>8.3. Results<a class="headerlink" href="#results" title="Link to this heading"></a></h2>
+<p>Results that can be created and manipulated in the Python API, are called virtual, as they are not stored when created, regardless of their content (information on fibers, nodes, or elements). A new result is called virtual in the sense that it does not belong to a database but it is calculated each time it is called. This can be an advantage as they do not occupy any storage space. On the other hand, it has to be kept in mind that calling such results could be costly in terms of computational capacity (cost of the reference of other results, plus the cost of the operation the user has set to calculate on it or with it).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Examples on results coming soon.</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024 Asdea Software.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

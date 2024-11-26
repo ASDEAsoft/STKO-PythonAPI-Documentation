@@ -1,0 +1,10 @@
+.. _FxOccFactorySurfaces:
+
+FxOccFactorySurfaces
+====================
+
+.. autoclass:: PyMpc.FxOccFactorySurfaces
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

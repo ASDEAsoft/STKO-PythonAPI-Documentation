@@ -1,0 +1,10 @@
+.. _MpcOdbResultFieldFiber:
+
+MpcOdbResultFieldFiber
+======================
+
+.. autoclass:: PyMpc.MpcOdbResultFieldFiber
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

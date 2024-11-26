@@ -1,0 +1,13 @@
+PyMpc.Units
+===========
+
+.. automodule:: PyMpc.Units
+
+Categories
+---------
+
+.. toctree::
+   :maxdepth: 1
+   :numbered: 0
+
+   categories/PyMpc.Units/Mpc

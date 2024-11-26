@@ -1,0 +1,146 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3. Objects &mdash; STKO Python API  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=8a89d2a5" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="4. Document" href="../4_document/index.html" />
+    <link rel="prev" title="2. Basics" href="../2_basics/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_api/index.html">Python API Reference</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../1_call-types/index.html">1. Call Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_basics/index.html">2. Basics</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">3. Objects</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#indexed-objects">3.1. Indexed Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#x-objects">3.2. X-objects</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../4_document/index.html">4. Document</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_mesh/index.html">5. Mesh</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_fiber-section/index.html">6. Fiber Section</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7_cae-document/index.html">7. Cae document</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../8_post-processing/index.html">8. Post Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../9_application/index.html">9. Application</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">STKO Python API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">3. Objects</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="objects">
+<h1>3. Objects<a class="headerlink" href="#objects" title="Link to this heading"></a></h1>
+<section id="indexed-objects">
+<h2>3.1. Indexed Objects<a class="headerlink" href="#indexed-objects" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Coming soon.</p>
+</div>
+</section>
+<section id="x-objects">
+<h2>3.2. X-objects<a class="headerlink" href="#x-objects" title="Link to this heading"></a></h2>
+<p>X-Objects in STKO refer to 6 basic categories: conditions, selection sets, definitions, element properties, physical properties and analysis steps. The simplest operations that can be carried out interacting from the Python Scripting Interface with the Preprocessor, using PyMpc, are basic calls of X-objects properties already existing in the model. Imagine you wish to create a graph or a table and you want to include information that are already stored in the Preprocessor document, the cae document, like for example the increment and values of a timeSeries or the physical properties of a section. To automatically import such parameters you can use a simple script as following. Import PyMpc and define a instance of the caeDocument with the caeDocument method in the App sub-module. This operation is simply calling the document you have already open in STKO</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PyMpc</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">doc</span> <span class="o">=</span> <span class="n">App</span><span class="o">.</span><span class="n">caeDocument</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Assuming you already defined a timeSeries.Path in your model. You can define variables corresponding to metadata existing in such definitions by getting the definition, defining the X-Object and getting the corresponding attribute.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">timeSeries</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">getDefinition</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">xobj_timeS</span> <span class="o">=</span> <span class="n">timeSeries</span><span class="o">.</span><span class="n">XObject</span>
+<span class="n">increment</span> <span class="o">=</span> <span class="n">xobj_timeS</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s1">&#39;dt&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">real</span>
+<span class="n">series</span> <span class="o">=</span> <span class="n">xobj_timeS</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s2">&quot;list_of_values&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">quantityVector</span><span class="o">.</span><span class="n">value</span>
+</pre></div>
+</div>
+<p>It is important to notice that the method getDefinition (and the same goes for other methods such as getPhysicalProperty or getCondition) takes as an argument the corresponding index visible in the Work Tree. In fact, all X-Objects in STKO have as an attribute and index value, an integer. When created manually, these indices are created starting from 1. If an X-Object is erased, the counter will not update the indices of the others. In each of the 6 categories of X-Objects the counter is restarted. Therefore, in the example about, the definition selected in the second added to the Work Tree. Another aspect to be noted, is that in order to obtain the value of an attribute, you need to know the correspondent type of that attribute. If necessary, you can always use the method type to query the attribute and the Python function dir() to return the list of the attributes and methods of the object.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024 Asdea Software.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

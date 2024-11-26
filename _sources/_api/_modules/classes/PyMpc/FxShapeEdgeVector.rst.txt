@@ -1,0 +1,10 @@
+.. _FxShapeEdgeVector:
+
+FxShapeEdgeVector
+=================
+
+.. autoclass:: PyMpc.FxShapeEdgeVector
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

@@ -1,0 +1,10 @@
+.. _MpcConditionRepresentationData:
+
+MpcConditionRepresentationData
+==============================
+
+.. autoclass:: PyMpc.MpcConditionRepresentationData
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

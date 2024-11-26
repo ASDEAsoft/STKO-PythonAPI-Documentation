@@ -1,0 +1,144 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>STKO Python API Documentation &mdash; STKO Python API  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=8a89d2a5" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Python API Reference" href="_api/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="#">
+            
+              <img src="_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="_api/index.html">Python API Reference</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="_examples/1_call-types/index.html">1. Call Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_examples/2_basics/index.html">2. Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_examples/3_objects/index.html">3. Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_examples/4_document/index.html">4. Document</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_examples/5_mesh/index.html">5. Mesh</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_examples/6_fiber-section/index.html">6. Fiber Section</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_examples/7_cae-document/index.html">7. Cae document</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_examples/8_post-processing/index.html">8. Post Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_examples/9_application/index.html">9. Application</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">STKO Python API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">STKO Python API Documentation</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="stko-python-api-documentation">
+<h1>STKO Python API Documentation<a class="headerlink" href="#stko-python-api-documentation" title="Link to this heading"></a></h1>
+<p>STKO, the <strong>Scientific ToolKit for</strong> <a class="reference external" href="https://opensees.berkeley.edu">OpenSees</a>, is an advanced <strong>Graphical User Interface (GUI)</strong> for structural engineering. It empowers companies, scientists, researchers, academics, and individuals the ability to harness the full power of OpenSees. STKO is the only <strong>pre and postprocessor</strong> that provides full integration with OpenSees, it includes <strong>ALL</strong> materials, elements, conditions, and interactions offered in OpenSees, allowing you to leverage its powerful capabilities.</p>
+<p>As you create your model using STKO’s graphic interface, the software creates an input <strong>(Tool Command Language, TCL)</strong> and output file with the information contained in your model. Once you have built the model, you can create and run the analysis of your choice. The software will build an <strong>HDF5-based output database</strong> with the analysis results, which can be opened and processed in the postprocessor. The <strong>Python scripting interface</strong> means that the already powerful pre and postprocessors can be customized and programmed as needed.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="./_api/index.html">Python API Reference</a></p></li>
+</ul>
+<div class="toctree-wrapper compound">
+</div>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
+<p>Using Python from a GUI (Graphical User Interface) presents differences compared to the normal usage of the programming language.</p>
+<p>Examples below are provided to showcase the different ways of carrying out processes using the Python STKO API.</p>
+<p>For any questions and/or suggestions you may have regarding the use of the STKO Python API, you can use the <a class="reference external" href="https://asdeasoft.net/forum/viewforum.php?f=44">related forum section</a></p>
+<ul class="simple">
+<li><p><a class="reference external" href="./_examples/1_call-types/index.html">1. Call Types</a></p></li>
+<li><p><a class="reference external" href="./_examples/2_basics/index.html">2. Basics</a></p></li>
+<li><p><a class="reference external" href="./_examples/3_objects/index.html">3. Objects</a></p></li>
+<li><p><a class="reference external" href="./_examples/4_document/index.html">4. Document</a></p></li>
+<li><p><a class="reference external" href="./_examples/5_mesh/index.html">5. Mesh</a></p></li>
+<li><p><a class="reference external" href="./_examples/6_fiber-section/index.html">6. Fiber Section</a></p></li>
+<li><p><a class="reference external" href="./_examples/7_cae-document/index.html">7. Cae Document</a></p></li>
+<li><p><a class="reference external" href="./_examples/8_post-processing/index.html">8. Post Processing</a></p></li>
+<li><p><a class="reference external" href="./_examples/9_application/index.html">9. Application</a></p></li>
+</ul>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024 Asdea Software.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

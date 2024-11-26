@@ -1,0 +1,10 @@
+.. _MpcInteractionTypeVector:
+
+MpcInteractionTypeVector
+========================
+
+.. autoclass:: PyMpc.MpcInteractionTypeVector
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

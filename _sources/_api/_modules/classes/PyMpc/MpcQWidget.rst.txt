@@ -1,0 +1,10 @@
+.. _MpcQWidget:
+
+MpcQWidget
+==========
+
+.. autoclass:: PyMpc.MpcQWidget
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

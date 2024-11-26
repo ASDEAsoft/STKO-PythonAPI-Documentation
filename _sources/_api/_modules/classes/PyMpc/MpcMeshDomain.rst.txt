@@ -1,0 +1,10 @@
+.. _MpcMeshDomain:
+
+MpcMeshDomain
+=============
+
+.. autoclass:: PyMpc.MpcMeshDomain
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

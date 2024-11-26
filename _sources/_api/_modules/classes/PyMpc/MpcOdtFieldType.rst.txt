@@ -1,0 +1,10 @@
+.. _MpcOdtFieldType:
+
+MpcOdtFieldType
+===============
+
+.. autoclass:: PyMpc.MpcOdtFieldType
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

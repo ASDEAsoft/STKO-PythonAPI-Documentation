@@ -1,0 +1,10 @@
+.. _MpcConditionAssignementOfInteraction:
+
+MpcConditionAssignementOfInteraction
+====================================
+
+.. autoclass:: PyMpc.MpcConditionAssignementOfInteraction
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

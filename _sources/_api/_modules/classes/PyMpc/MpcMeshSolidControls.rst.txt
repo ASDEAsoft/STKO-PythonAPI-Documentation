@@ -1,0 +1,10 @@
+.. _MpcMeshSolidControls:
+
+MpcMeshSolidControls
+====================
+
+.. autoclass:: PyMpc.MpcMeshSolidControls
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

@@ -1,0 +1,42 @@
+PyMpc.Math
+==========
+
+.. automodule:: PyMpc.Math
+
+
+Classes
+-------
+
+.. toctree::
+   :maxdepth: 1
+   :numbered: 0
+
+   classes/PyMpc.Math/array_of_int_array
+   classes/PyMpc.Math/double_array
+   classes/PyMpc.Math/int_array
+   classes/PyMpc.Math/int_set
+   classes/PyMpc.Math/int_uset
+   classes/PyMpc.Math/map_of_int_uset
+   classes/PyMpc.Math/map_of_map_of_int_uset
+   classes/PyMpc.Math/mat
+   classes/PyMpc.Math/mat2
+   classes/PyMpc.Math/mat2_array
+   classes/PyMpc.Math/mat3
+   classes/PyMpc.Math/mat3_array
+   classes/PyMpc.Math/mat4
+   classes/PyMpc.Math/mat4_array
+   classes/PyMpc.Math/mat_array
+   classes/PyMpc.Math/quaternion
+   classes/PyMpc.Math/string_array
+   classes/PyMpc.Math/triangle
+   classes/PyMpc.Math/triangle_array
+   classes/PyMpc.Math/vec
+   classes/PyMpc.Math/vec2
+   classes/PyMpc.Math/vec2_array
+   classes/PyMpc.Math/vec3
+   classes/PyMpc.Math/vec3_array
+   classes/PyMpc.Math/vec4
+   classes/PyMpc.Math/vec4_array
+   classes/PyMpc.Math/vec_array
+   classes/PyMpc.Math/vertex
+   classes/PyMpc.Math/vertex_array

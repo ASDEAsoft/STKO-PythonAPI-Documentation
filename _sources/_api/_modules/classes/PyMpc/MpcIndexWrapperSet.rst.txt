@@ -1,0 +1,10 @@
+.. _MpcIndexWrapperSet:
+
+MpcIndexWrapperSet
+==================
+
+.. autoclass:: PyMpc.MpcIndexWrapperSet
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

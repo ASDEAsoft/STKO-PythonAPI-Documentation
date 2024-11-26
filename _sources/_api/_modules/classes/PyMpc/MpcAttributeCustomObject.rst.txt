@@ -1,0 +1,10 @@
+.. _MpcAttributeCustomObject:
+
+MpcAttributeCustomObject
+========================
+
+.. autoclass:: PyMpc.MpcAttributeCustomObject
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

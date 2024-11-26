@@ -1,0 +1,10 @@
+.. _FxShapeTransformation:
+
+FxShapeTransformation
+=====================
+
+.. autoclass:: PyMpc.FxShapeTransformation
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

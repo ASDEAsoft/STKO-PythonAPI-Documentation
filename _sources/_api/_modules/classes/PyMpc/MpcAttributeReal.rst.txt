@@ -1,0 +1,10 @@
+.. _MpcAttributeReal:
+
+MpcAttributeReal
+================
+
+.. autoclass:: PyMpc.MpcAttributeReal
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

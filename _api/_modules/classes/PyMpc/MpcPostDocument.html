@@ -1,0 +1,477 @@
+
+<!DOCTYPE html>
+
+<html class="writer-html5" data-content_root="../../../../" lang="en">
+<head>
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MpcPostDocument — STKO Python API  documentation</title>
+<link href="../../../../_static/pygments.css?v=80d5e7a1" rel="stylesheet" type="text/css"/>
+<link href="../../../../_static/css/theme.css?v=e59714d7" rel="stylesheet" type="text/css"/>
+<link href="../../../../_static/css/custom.css?v=8a89d2a5" rel="stylesheet" type="text/css"/>
+<script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+<script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+<script src="../../../../_static/documentation_options.js?v=5929fcd5"></script>
+<script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+<script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../../../../_static/js/theme.js"></script>
+<link href="../../../../genindex.html" rel="index" title="Index"/>
+<link href="../../../../search.html" rel="search" title="Search"/>
+<link href="MpcPostScene.html" rel="next" title="MpcPostScene"/>
+<link href="MpcOdtVectorOfInt.html" rel="prev" title="MpcOdtVectorOfInt"/>
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a href="../../../../index.html">
+<img alt="Logo" class="logo" src="../../../../_static/logo.png"/>
+</a>
+<div role="search">
+<form action="../../../../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div><div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../../index.html">Python API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../PyMpc.html">PyMpc</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../../PyMpc.html#categories">Categories</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../../categories/PyMpc/Fx.html">Fx (PyMpc)</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../../categories/PyMpc/Mpc.html">Mpc (PyMpc)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../PyMpc.html#classes">Classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../PyMpc.html#functions">Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../PyMpc.App.html">PyMpc.App</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../PyMpc.FxOccBuilder.html">PyMpc.FxOccBuilder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../PyMpc.FxOccNurbs.html">PyMpc.FxOccNurbs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../PyMpc.FxOccQuery.html">PyMpc.FxOccQuery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../PyMpc.IO.html">PyMpc.IO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../PyMpc.Math.html">PyMpc.Math</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../PyMpc.Units.html">PyMpc.Units</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../PyMpc.Utils.html">PyMpc.Utils</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../_examples/1_call-types/index.html">1. Call Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../_examples/2_basics/index.html">2. Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../_examples/3_objects/index.html">3. Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../_examples/4_document/index.html">4. Document</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../_examples/5_mesh/index.html">5. Mesh</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../_examples/6_fiber-section/index.html">6. Fiber Section</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../_examples/7_cae-document/index.html">7. Cae document</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../_examples/8_post-processing/index.html">8. Post Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../_examples/9_application/index.html">9. Application</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift"><nav aria-label="Mobile navigation menu" class="wy-nav-top">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../../../../index.html">STKO Python API</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content">
+<div aria-label="Page navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Home" class="icon icon-home" href="../../../../index.html"></a></li>
+<li class="breadcrumb-item"><a href="../../../index.html">Python API Reference</a></li>
+<li class="breadcrumb-item"><a href="../../PyMpc.html">PyMpc</a></li>
+<li class="breadcrumb-item"><a href="../../categories/PyMpc/Mpc.html">Mpc (PyMpc)</a></li>
+<li class="breadcrumb-item active">MpcPostDocument</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div itemprop="articleBody">
+<section id="mpcpostdocument">
+<span id="id1"></span><h1>MpcPostDocument<a class="headerlink" href="#mpcpostdocument" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="PyMpc.MpcPostDocument">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><a class="reference internal" href="MpcPostDocument.html"><span class="pre">MpcPostDocument</span></a></span><a class="headerlink" href="#PyMpc.MpcPostDocument" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="MpcFileDocument.html#PyMpc.MpcFileDocument" title="PyMpc.MpcFileDocument"><code class="xref py py-class docutils literal notranslate"><span class="pre">MpcFileDocument</span></code></a></p>
+<p>Raises an exception
+This class cannot be instantiated from Python</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="PyMpc.MpcPostDocument.activePlotGroup">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">activePlotGroup</span></span><a class="headerlink" href="#PyMpc.MpcPostDocument.activePlotGroup" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcPostDocument.addChart">
+<span class="sig-name descname"><span class="pre">addChart</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcPostDocument.html"><span class="pre">MpcPostDocument</span></a><span class="pre">)arg1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcChart.html"><span class="pre">MpcChart</span></a><span class="pre">)arg2</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcPostDocument.addChart" title="Link to this definition"></a></dt>
+<dd><blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void addChart(class MpcPostDocument {lvalue},class boost::shared_ptr&lt;class MpcChart&gt;)</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>addChart( (MpcPostDocument)arg1, (MpcChartCollection)arg2) -&gt; None :</p>
+<blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void addChart(class MpcPostDocument {lvalue},class std::map&lt;int,class boost::shared_ptr&lt;class MpcChart&gt;,struct std::less&lt;int&gt;,class std::allocator&lt;struct std::pair&lt;int const ,class boost::shared_ptr&lt;class MpcChart&gt; &gt; &gt; &gt;)</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcPostDocument.addChartData">
+<span class="sig-name descname"><span class="pre">addChartData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcPostDocument.html"><span class="pre">MpcPostDocument</span></a><span class="pre">)arg1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcChartData.html"><span class="pre">MpcChartData</span></a><span class="pre">)arg2</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcPostDocument.addChartData" title="Link to this definition"></a></dt>
+<dd><blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void addChartData(class MpcPostDocument {lvalue},class boost::shared_ptr&lt;class MpcChartData&gt;)</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>addChartData( (MpcPostDocument)arg1, (MpcChartDataCollection)arg2) -&gt; None :</p>
+<blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void addChartData(class MpcPostDocument {lvalue},class std::map&lt;int,class boost::shared_ptr&lt;class MpcChartData&gt;,struct std::less&lt;int&gt;,class std::allocator&lt;struct std::pair&lt;int const ,class boost::shared_ptr&lt;class MpcChartData&gt; &gt; &gt; &gt;)</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcPostDocument.addCustomDrawableEntity">
+<span class="sig-name descname"><span class="pre">addCustomDrawableEntity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcPostDocument.html"><span class="pre">MpcPostDocument</span></a><span class="pre">)arg1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="FxShape.html"><span class="pre">FxShape</span></a><span class="pre">)arg2</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcPostDocument.addCustomDrawableEntity" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void addCustomDrawableEntity(class MpcPostDocument {lvalue},class boost::shared_ptr&lt;class FxShape&gt;)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcPostDocument.addDatabase">
+<span class="sig-name descname"><span class="pre">addDatabase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcPostDocument.html"><span class="pre">MpcPostDocument</span></a><span class="pre">)arg1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcOdb.html"><span class="pre">MpcOdb</span></a><span class="pre">)arg2</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcPostDocument.addDatabase" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void addDatabase(class MpcPostDocument {lvalue},class boost::shared_ptr&lt;class MpcOdb&gt;)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcPostDocument.addPlotGroup">
+<span class="sig-name descname"><span class="pre">addPlotGroup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcPostDocument.html"><span class="pre">MpcPostDocument</span></a><span class="pre">)arg1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcOdpGroup.html"><span class="pre">MpcOdpGroup</span></a><span class="pre">)arg2</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcPostDocument.addPlotGroup" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void addPlotGroup(class MpcPostDocument {lvalue},class boost::shared_ptr&lt;class MpcOdpGroup&gt;)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="PyMpc.MpcPostDocument.chartData">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">chartData</span></span><a class="headerlink" href="#PyMpc.MpcPostDocument.chartData" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="PyMpc.MpcPostDocument.charts">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">charts</span></span><a class="headerlink" href="#PyMpc.MpcPostDocument.charts" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcPostDocument.clearChartData">
+<span class="sig-name descname"><span class="pre">clearChartData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcPostDocument.html"><span class="pre">MpcPostDocument</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcPostDocument.clearChartData" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void clearChartData(class MpcPostDocument {lvalue})</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcPostDocument.clearCharts">
+<span class="sig-name descname"><span class="pre">clearCharts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcPostDocument.html"><span class="pre">MpcPostDocument</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcPostDocument.clearCharts" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void clearCharts(class MpcPostDocument {lvalue})</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcPostDocument.clearCustomDrawableEntities">
+<span class="sig-name descname"><span class="pre">clearCustomDrawableEntities</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcPostDocument.html"><span class="pre">MpcPostDocument</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcPostDocument.clearCustomDrawableEntities" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void clearCustomDrawableEntities(class MpcPostDocument {lvalue})</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcPostDocument.clearPlotGroups">
+<span class="sig-name descname"><span class="pre">clearPlotGroups</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcPostDocument.html"><span class="pre">MpcPostDocument</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcPostDocument.clearPlotGroups" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void clearPlotGroups(class MpcPostDocument {lvalue})</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcPostDocument.commitChanges">
+<span class="sig-name descname"><span class="pre">commitChanges</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcPostDocument.html"><span class="pre">MpcPostDocument</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcPostDocument.commitChanges" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void commitChanges(class MpcPostDocument {lvalue})</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="PyMpc.MpcPostDocument.databases">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">databases</span></span><a class="headerlink" href="#PyMpc.MpcPostDocument.databases" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="PyMpc.MpcPostDocument.dirty">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dirty</span></span><a class="headerlink" href="#PyMpc.MpcPostDocument.dirty" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="PyMpc.MpcPostDocument.documentName">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">documentName</span></span><a class="headerlink" href="#PyMpc.MpcPostDocument.documentName" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="PyMpc.MpcPostDocument.fileName">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">fileName</span></span><a class="headerlink" href="#PyMpc.MpcPostDocument.fileName" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcPostDocument.genNextIdForChart">
+<span class="sig-name descname"><span class="pre">genNextIdForChart</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcPostDocument.html"><span class="pre">MpcPostDocument</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">int</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcPostDocument.genNextIdForChart" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>int genNextIdForChart(class MpcPostDocument {lvalue})</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcPostDocument.genNextIdForChartData">
+<span class="sig-name descname"><span class="pre">genNextIdForChartData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcPostDocument.html"><span class="pre">MpcPostDocument</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">int</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcPostDocument.genNextIdForChartData" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>int genNextIdForChartData(class MpcPostDocument {lvalue})</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcPostDocument.genNextIdForDatabase">
+<span class="sig-name descname"><span class="pre">genNextIdForDatabase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcPostDocument.html"><span class="pre">MpcPostDocument</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">int</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcPostDocument.genNextIdForDatabase" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>int genNextIdForDatabase(class MpcPostDocument {lvalue})</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcPostDocument.genNextIdForPlotGroup">
+<span class="sig-name descname"><span class="pre">genNextIdForPlotGroup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcPostDocument.html"><span class="pre">MpcPostDocument</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">int</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcPostDocument.genNextIdForPlotGroup" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>int genNextIdForPlotGroup(class MpcPostDocument {lvalue})</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcPostDocument.getChart">
+<span class="sig-name descname"><span class="pre">getChart</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcPostDocument.html"><span class="pre">MpcPostDocument</span></a><span class="pre">)arg1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(int)arg2</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="MpcChart.html"><span class="pre">MpcChart</span></a> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcPostDocument.getChart" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class boost::shared_ptr&lt;class MpcChart&gt; getChart(class MpcPostDocument {lvalue},int)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcPostDocument.getChartData">
+<span class="sig-name descname"><span class="pre">getChartData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcPostDocument.html"><span class="pre">MpcPostDocument</span></a><span class="pre">)arg1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(int)arg2</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="MpcChartData.html"><span class="pre">MpcChartData</span></a> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcPostDocument.getChartData" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class boost::shared_ptr&lt;class MpcChartData&gt; getChartData(class MpcPostDocument {lvalue},int)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcPostDocument.getDatabase">
+<span class="sig-name descname"><span class="pre">getDatabase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcPostDocument.html"><span class="pre">MpcPostDocument</span></a><span class="pre">)arg1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(int)arg2</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="MpcOdb.html"><span class="pre">MpcOdb</span></a> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcPostDocument.getDatabase" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class boost::shared_ptr&lt;class MpcOdb&gt; getDatabase(class MpcPostDocument {lvalue},int)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcPostDocument.getFileExtension">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">getFileExtension</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcPostDocument.html"><span class="pre">MpcPostDocument</span></a><span class="pre">)arg1</span></span></em><span class="optional">]</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">str</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcPostDocument.getFileExtension" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class std::basic_string&lt;char,struct std::char_traits&lt;char&gt;,class std::allocator&lt;char&gt; &gt; getFileExtension([ class MpcPostDocument {lvalue}])</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcPostDocument.getFileFilter">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">getFileFilter</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcPostDocument.html"><span class="pre">MpcPostDocument</span></a><span class="pre">)arg1</span></span></em><span class="optional">]</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">str</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcPostDocument.getFileFilter" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class std::basic_string&lt;char,struct std::char_traits&lt;char&gt;,class std::allocator&lt;char&gt; &gt; getFileFilter([ class MpcPostDocument {lvalue}])</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcPostDocument.getPlotGroup">
+<span class="sig-name descname"><span class="pre">getPlotGroup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcPostDocument.html"><span class="pre">MpcPostDocument</span></a><span class="pre">)arg1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(int)arg2</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="MpcOdpGroup.html"><span class="pre">MpcOdpGroup</span></a> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcPostDocument.getPlotGroup" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class boost::shared_ptr&lt;class MpcOdpGroup&gt; getPlotGroup(class MpcPostDocument {lvalue},int)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="PyMpc.MpcPostDocument.new">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">new</span></span><a class="headerlink" href="#PyMpc.MpcPostDocument.new" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="PyMpc.MpcPostDocument.plotGroups">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">plotGroups</span></span><a class="headerlink" href="#PyMpc.MpcPostDocument.plotGroups" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcPostDocument.removeChart">
+<span class="sig-name descname"><span class="pre">removeChart</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcPostDocument.html"><span class="pre">MpcPostDocument</span></a><span class="pre">)arg1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(int)arg2</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcPostDocument.removeChart" title="Link to this definition"></a></dt>
+<dd><blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void removeChart(class MpcPostDocument {lvalue},int)</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>removeChart( (MpcPostDocument)arg1, (MpcChart)arg2) -&gt; None :</p>
+<blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void removeChart(class MpcPostDocument {lvalue},class boost::shared_ptr&lt;class MpcChart&gt;)</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcPostDocument.removeChartData">
+<span class="sig-name descname"><span class="pre">removeChartData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcPostDocument.html"><span class="pre">MpcPostDocument</span></a><span class="pre">)arg1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(int)arg2</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcPostDocument.removeChartData" title="Link to this definition"></a></dt>
+<dd><blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void removeChartData(class MpcPostDocument {lvalue},int)</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>removeChartData( (MpcPostDocument)arg1, (MpcChartData)arg2) -&gt; None :</p>
+<blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void removeChartData(class MpcPostDocument {lvalue},class boost::shared_ptr&lt;class MpcChartData&gt;)</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcPostDocument.removeCustomDrawableEntity">
+<span class="sig-name descname"><span class="pre">removeCustomDrawableEntity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcPostDocument.html"><span class="pre">MpcPostDocument</span></a><span class="pre">)arg1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="FxShape.html"><span class="pre">FxShape</span></a><span class="pre">)arg2</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcPostDocument.removeCustomDrawableEntity" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void removeCustomDrawableEntity(class MpcPostDocument {lvalue},class boost::shared_ptr&lt;class FxShape&gt;)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcPostDocument.removeDatabase">
+<span class="sig-name descname"><span class="pre">removeDatabase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcPostDocument.html"><span class="pre">MpcPostDocument</span></a><span class="pre">)arg1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcOdb.html"><span class="pre">MpcOdb</span></a><span class="pre">)arg2</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcPostDocument.removeDatabase" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void removeDatabase(class MpcPostDocument {lvalue},class boost::shared_ptr&lt;class MpcOdb&gt;)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcPostDocument.removePlotGroup">
+<span class="sig-name descname"><span class="pre">removePlotGroup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcPostDocument.html"><span class="pre">MpcPostDocument</span></a><span class="pre">)arg1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(int)arg2</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcPostDocument.removePlotGroup" title="Link to this definition"></a></dt>
+<dd><blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void removePlotGroup(class MpcPostDocument {lvalue},int)</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>removePlotGroup( (MpcPostDocument)arg1, (MpcOdpGroup)arg2) -&gt; None :</p>
+<blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void removePlotGroup(class MpcPostDocument {lvalue},class boost::shared_ptr&lt;class MpcOdpGroup&gt;)</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcPostDocument.requestUpdateView">
+<span class="sig-name descname"><span class="pre">requestUpdateView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcPostDocument.html"><span class="pre">MpcPostDocument</span></a><span class="pre">)arg1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(bool)arg2</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcPostDocument.requestUpdateView" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void requestUpdateView(class MpcPostDocument {lvalue},bool)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="PyMpc.MpcPostDocument.scene">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">scene</span></span><a class="headerlink" href="#PyMpc.MpcPostDocument.scene" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcPostDocument.select">
+<span class="sig-name descname"><span class="pre">select</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcPostDocument.html"><span class="pre">MpcPostDocument</span></a><span class="pre">)arg1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcOdp.html"><span class="pre">MpcOdp</span></a><span class="pre">)arg2</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcPostDocument.select" title="Link to this definition"></a></dt>
+<dd><blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void select(class boost::shared_ptr&lt;class MpcPostDocument&gt;,class boost::shared_ptr&lt;class MpcOdp&gt;)</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>select( (MpcPostDocument)arg1, (MpcOdpGroup)arg2) -&gt; None :</p>
+<blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void select(class boost::shared_ptr&lt;class MpcPostDocument&gt;,class boost::shared_ptr&lt;class MpcOdpGroup&gt;)</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>select( (MpcPostDocument)arg1, (MpcChartData)arg2) -&gt; None :</p>
+<blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void select(class boost::shared_ptr&lt;class MpcPostDocument&gt;,class boost::shared_ptr&lt;class MpcChartData&gt;)</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>select( (MpcPostDocument)arg1, (MpcChart)arg2) -&gt; None :</p>
+<blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void select(class boost::shared_ptr&lt;class MpcPostDocument&gt;,class boost::shared_ptr&lt;class MpcChart&gt;)</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcPostDocument.setActivePlotGroup">
+<span class="sig-name descname"><span class="pre">setActivePlotGroup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcPostDocument.html"><span class="pre">MpcPostDocument</span></a><span class="pre">)arg1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(int)arg2</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">bool</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcPostDocument.setActivePlotGroup" title="Link to this definition"></a></dt>
+<dd><blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>bool setActivePlotGroup(class MpcPostDocument {lvalue},int)</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>setActivePlotGroup( (MpcPostDocument)arg1, (MpcOdpGroup)arg2) -&gt; bool :</p>
+<blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>bool setActivePlotGroup(class MpcPostDocument {lvalue},class boost::shared_ptr&lt;class MpcOdpGroup&gt;)</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="PyMpc.MpcPostDocument.uuid">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">uuid</span></span><a class="headerlink" href="#PyMpc.MpcPostDocument.uuid" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+</dd></dl>
+</section>
+</div>
+</div>
+<footer>
+<hr/>
+<div role="contentinfo">
+<p>© Copyright 2024 Asdea Software.</p>
+</div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+</div>
+</div>
+</section>
+</div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+</body>
+</html>

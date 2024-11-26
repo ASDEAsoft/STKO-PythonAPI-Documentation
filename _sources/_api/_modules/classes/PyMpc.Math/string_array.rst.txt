@@ -1,0 +1,10 @@
+.. _string_array:
+
+string_array
+============
+
+.. autoclass:: PyMpc.Math.string_array
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

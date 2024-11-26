@@ -1,0 +1,10 @@
+.. _FxFloatingFace:
+
+FxFloatingFace
+==============
+
+.. autoclass:: PyMpc.FxFloatingFace
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

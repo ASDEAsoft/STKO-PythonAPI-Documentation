@@ -1,0 +1,10 @@
+.. _MpcBeamFiberCollection:
+
+MpcBeamFiberCollection
+======================
+
+.. autoclass:: PyMpc.MpcBeamFiberCollection
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

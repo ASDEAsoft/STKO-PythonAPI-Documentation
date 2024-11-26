@@ -1,0 +1,10 @@
+.. _MpcOdbVirtualOperatorBase:
+
+MpcOdbVirtualOperatorBase
+=========================
+
+.. autoclass:: PyMpc.MpcOdbVirtualOperatorBase
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

@@ -1,0 +1,10 @@
+.. _FxShapeFace:
+
+FxShapeFace
+===========
+
+.. autoclass:: PyMpc.FxShapeFace
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

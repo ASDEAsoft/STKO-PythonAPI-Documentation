@@ -1,0 +1,10 @@
+.. _MpcOdbResultDataType:
+
+MpcOdbResultDataType
+====================
+
+.. autoclass:: PyMpc.MpcOdbResultDataType
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

@@ -1,0 +1,10 @@
+.. _MpcElementTriangle2D6N:
+
+MpcElementTriangle2D6N
+======================
+
+.. autoclass:: PyMpc.MpcElementTriangle2D6N
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

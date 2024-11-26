@@ -1,0 +1,38 @@
+Fx (PyMpc)
+===========
+
+.. toctree::
+   :maxdepth: 1
+   :numbered: 0
+
+   ../../classes/PyMpc/FxBndBox
+   ../../classes/PyMpc/FxColor
+   ../../classes/PyMpc/FxColoringMode
+   ../../classes/PyMpc/FxFloatingEdge
+   ../../classes/PyMpc/FxFloatingEdgeVector
+   ../../classes/PyMpc/FxFloatingFace
+   ../../classes/PyMpc/FxFloatingFaceVector
+   ../../classes/PyMpc/FxMaterial
+   ../../classes/PyMpc/FxMaterialVisibilityOptions
+   ../../classes/PyMpc/FxOccFaceProperties
+   ../../classes/PyMpc/FxOccFactory
+   ../../classes/PyMpc/FxOccFactoryCurve
+   ../../classes/PyMpc/FxOccFactorySurfaces
+   ../../classes/PyMpc/FxOccShape
+   ../../classes/PyMpc/FxOccShapeVector
+   ../../classes/PyMpc/FxSelectionResult
+   ../../classes/PyMpc/FxShaderSessionType
+   ../../classes/PyMpc/FxShape
+   ../../classes/PyMpc/FxShapeEdge
+   ../../classes/PyMpc/FxShapeEdgeType
+   ../../classes/PyMpc/FxShapeEdgeVector
+   ../../classes/PyMpc/FxShapeFace
+   ../../classes/PyMpc/FxShapeFaceMap
+   ../../classes/PyMpc/FxShapeFaceVector
+   ../../classes/PyMpc/FxShapeIndexedSubSet
+   ../../classes/PyMpc/FxShapePoints
+   ../../classes/PyMpc/FxShapeSolid
+   ../../classes/PyMpc/FxShapeSolidVector
+   ../../classes/PyMpc/FxShapeTransformation
+   ../../classes/PyMpc/FxTexture
+   ../../classes/PyMpc/FxTexturingMode

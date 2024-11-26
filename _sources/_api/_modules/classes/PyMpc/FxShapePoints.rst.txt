@@ -1,0 +1,10 @@
+.. _FxShapePoints:
+
+FxShapePoints
+=============
+
+.. autoclass:: PyMpc.FxShapePoints
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

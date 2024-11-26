@@ -1,0 +1,10 @@
+.. _MpcElementHexahedron3D20N:
+
+MpcElementHexahedron3D20N
+=========================
+
+.. autoclass:: PyMpc.MpcElementHexahedron3D20N
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

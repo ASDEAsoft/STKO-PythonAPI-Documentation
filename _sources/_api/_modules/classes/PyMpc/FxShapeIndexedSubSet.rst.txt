@@ -1,0 +1,10 @@
+.. _FxShapeIndexedSubSet:
+
+FxShapeIndexedSubSet
+====================
+
+.. autoclass:: PyMpc.FxShapeIndexedSubSet
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

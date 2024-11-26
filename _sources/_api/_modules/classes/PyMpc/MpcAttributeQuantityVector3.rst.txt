@@ -1,0 +1,10 @@
+.. _MpcAttributeQuantityVector3:
+
+MpcAttributeQuantityVector3
+===========================
+
+.. autoclass:: PyMpc.MpcAttributeQuantityVector3
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

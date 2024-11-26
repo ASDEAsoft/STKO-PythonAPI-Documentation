@@ -1,0 +1,328 @@
+
+<!DOCTYPE html>
+
+<html class="writer-html5" data-content_root="../../../../" lang="en">
+<head>
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MpcOdb — STKO Python API  documentation</title>
+<link href="../../../../_static/pygments.css?v=80d5e7a1" rel="stylesheet" type="text/css"/>
+<link href="../../../../_static/css/theme.css?v=e59714d7" rel="stylesheet" type="text/css"/>
+<link href="../../../../_static/css/custom.css?v=8a89d2a5" rel="stylesheet" type="text/css"/>
+<script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+<script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+<script src="../../../../_static/documentation_options.js?v=5929fcd5"></script>
+<script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+<script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../../../../_static/js/theme.js"></script>
+<link href="../../../../genindex.html" rel="index" title="Index"/>
+<link href="../../../../search.html" rel="search" title="Search"/>
+<link href="MpcOdbCollection.html" rel="next" title="MpcOdbCollection"/>
+<link href="MpcNodeFlags.html" rel="prev" title="MpcNodeFlags"/>
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a href="../../../../index.html">
+<img alt="Logo" class="logo" src="../../../../_static/logo.png"/>
+</a>
+<div role="search">
+<form action="../../../../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div><div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../../index.html">Python API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../PyMpc.html">PyMpc</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../../PyMpc.html#categories">Categories</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../../categories/PyMpc/Fx.html">Fx (PyMpc)</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../../categories/PyMpc/Mpc.html">Mpc (PyMpc)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../PyMpc.html#classes">Classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../PyMpc.html#functions">Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../PyMpc.App.html">PyMpc.App</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../PyMpc.FxOccBuilder.html">PyMpc.FxOccBuilder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../PyMpc.FxOccNurbs.html">PyMpc.FxOccNurbs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../PyMpc.FxOccQuery.html">PyMpc.FxOccQuery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../PyMpc.IO.html">PyMpc.IO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../PyMpc.Math.html">PyMpc.Math</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../PyMpc.Units.html">PyMpc.Units</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../PyMpc.Utils.html">PyMpc.Utils</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../_examples/1_call-types/index.html">1. Call Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../_examples/2_basics/index.html">2. Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../_examples/3_objects/index.html">3. Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../_examples/4_document/index.html">4. Document</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../_examples/5_mesh/index.html">5. Mesh</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../_examples/6_fiber-section/index.html">6. Fiber Section</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../_examples/7_cae-document/index.html">7. Cae document</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../_examples/8_post-processing/index.html">8. Post Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../_examples/9_application/index.html">9. Application</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift"><nav aria-label="Mobile navigation menu" class="wy-nav-top">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../../../../index.html">STKO Python API</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content">
+<div aria-label="Page navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Home" class="icon icon-home" href="../../../../index.html"></a></li>
+<li class="breadcrumb-item"><a href="../../../index.html">Python API Reference</a></li>
+<li class="breadcrumb-item"><a href="../../PyMpc.html">PyMpc</a></li>
+<li class="breadcrumb-item"><a href="../../categories/PyMpc/Mpc.html">Mpc (PyMpc)</a></li>
+<li class="breadcrumb-item active">MpcOdb</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div itemprop="articleBody">
+<section id="mpcodb">
+<span id="id1"></span><h1>MpcOdb<a class="headerlink" href="#mpcodb" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="PyMpc.MpcOdb">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><a class="reference internal" href="MpcOdb.html"><span class="pre">MpcOdb</span></a></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(object)arg1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(int)arg2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(str)arg3</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PyMpc.MpcOdb" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">instance</span></code></p>
+<dl class="simple">
+<dt>C++ signature :</dt><dd><p>void __init__(struct _object * __ptr64,int,class std::basic_string&lt;char,struct std::char_traits&lt;char&gt;,class std::allocator&lt;char&gt; &gt;)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyMpc.MpcOdb.Contains">
+<span class="sig-name descname"><span class="pre">Contains</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#PyMpc.MpcOdb.Contains" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyMpc.MpcOdb.EndsWith">
+<span class="sig-name descname"><span class="pre">EndsWith</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#PyMpc.MpcOdb.EndsWith" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyMpc.MpcOdb.ExactMatch">
+<span class="sig-name descname"><span class="pre">ExactMatch</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#PyMpc.MpcOdb.ExactMatch" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyMpc.MpcOdb.RegEx">
+<span class="sig-name descname"><span class="pre">RegEx</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></em><a class="headerlink" href="#PyMpc.MpcOdb.RegEx" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyMpc.MpcOdb.StartsWith">
+<span class="sig-name descname"><span class="pre">StartsWith</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#PyMpc.MpcOdb.StartsWith" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcOdb.addVirtualResult">
+<span class="sig-name descname"><span class="pre">addVirtualResult</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcOdb.html"><span class="pre">MpcOdb</span></a><span class="pre">)arg1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a><span class="pre">)arg2</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="MpcOdbResultLocation.html"><span class="pre">MpcOdbResultLocation</span></a> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcOdb.addVirtualResult" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>struct MpcOdbResultLocation addVirtualResult(class MpcOdb {lvalue},class MpcOdbVirtualResult)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="PyMpc.MpcOdb.elementInfo">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">elementInfo</span></span><a class="headerlink" href="#PyMpc.MpcOdb.elementInfo" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="PyMpc.MpcOdb.fileName">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">fileName</span></span><a class="headerlink" href="#PyMpc.MpcOdb.fileName" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcOdb.getElementalResult">
+<span class="sig-name descname"><span class="pre">getElementalResult</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcOdb.html"><span class="pre">MpcOdb</span></a><span class="pre">)self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(int)i</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcOdbVirtualResultTimeInfo.html"><span class="pre">MpcOdbVirtualResultTimeInfo</span></a><span class="pre">)time</span></span></em><span class="optional">]</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcOdb.getElementalResult" title="Link to this definition"></a></dt>
+<dd><blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class MpcOdbVirtualResult getElementalResult(class boost::shared_ptr&lt;class MpcOdb&gt;,int [,struct MpcOdbVirtualResultUtils::TimeInfo])</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>getElementalResult( (MpcOdb)self, (str)name [, (MpcOdbVirtualResultTimeInfo)time [, (int)match]]) -&gt; MpcOdbVirtualResult :</p>
+<blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class MpcOdbVirtualResult getElementalResult(class boost::shared_ptr&lt;class MpcOdb&gt;,class std::basic_string&lt;char,struct std::char_traits&lt;char&gt;,class std::allocator&lt;char&gt; &gt; [,struct MpcOdbVirtualResultUtils::TimeInfo [,int]])</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>getElementalResult( (MpcOdb)self, (str)name [, (int)match [, (MpcOdbVirtualResultTimeInfo)time]]) -&gt; MpcOdbVirtualResult :</p>
+<blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class MpcOdbVirtualResult getElementalResult(class boost::shared_ptr&lt;class MpcOdb&gt;,class std::basic_string&lt;char,struct std::char_traits&lt;char&gt;,class std::allocator&lt;char&gt; &gt; [,int [,struct MpcOdbVirtualResultUtils::TimeInfo]])</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcOdb.getElementalResultIds">
+<span class="sig-name descname"><span class="pre">getElementalResultIds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcOdb.html"><span class="pre">MpcOdb</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">int_array</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcOdb.getElementalResultIds" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class std::vector&lt;int,class std::allocator&lt;int&gt; &gt; getElementalResultIds(class MpcOdb {lvalue})</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcOdb.getNodalResult">
+<span class="sig-name descname"><span class="pre">getNodalResult</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcOdb.html"><span class="pre">MpcOdb</span></a><span class="pre">)self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(int)i</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcOdbVirtualResultTimeInfo.html"><span class="pre">MpcOdbVirtualResultTimeInfo</span></a><span class="pre">)time</span></span></em><span class="optional">]</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcOdb.getNodalResult" title="Link to this definition"></a></dt>
+<dd><blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class MpcOdbVirtualResult getNodalResult(class boost::shared_ptr&lt;class MpcOdb&gt;,int [,struct MpcOdbVirtualResultUtils::TimeInfo])</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>getNodalResult( (MpcOdb)self, (str)name [, (MpcOdbVirtualResultTimeInfo)time [, (int)match]]) -&gt; MpcOdbVirtualResult :</p>
+<blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class MpcOdbVirtualResult getNodalResult(class boost::shared_ptr&lt;class MpcOdb&gt;,class std::basic_string&lt;char,struct std::char_traits&lt;char&gt;,class std::allocator&lt;char&gt; &gt; [,struct MpcOdbVirtualResultUtils::TimeInfo [,int]])</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>getNodalResult( (MpcOdb)self, (str)name [, (int)match [, (MpcOdbVirtualResultTimeInfo)time]]) -&gt; MpcOdbVirtualResult :</p>
+<blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class MpcOdbVirtualResult getNodalResult(class boost::shared_ptr&lt;class MpcOdb&gt;,class std::basic_string&lt;char,struct std::char_traits&lt;char&gt;,class std::allocator&lt;char&gt; &gt; [,int [,struct MpcOdbVirtualResultUtils::TimeInfo]])</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcOdb.getNodalResultIds">
+<span class="sig-name descname"><span class="pre">getNodalResultIds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcOdb.html"><span class="pre">MpcOdb</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">int_array</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcOdb.getNodalResultIds" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class std::vector&lt;int,class std::allocator&lt;int&gt; &gt; getNodalResultIds(class MpcOdb {lvalue})</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcOdb.getStageIDs">
+<span class="sig-name descname"><span class="pre">getStageIDs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcOdb.html"><span class="pre">MpcOdb</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">int_array</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcOdb.getStageIDs" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class std::vector&lt;int,class std::allocator&lt;int&gt; &gt; getStageIDs(class MpcOdb {lvalue})</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcOdb.getStepIDs">
+<span class="sig-name descname"><span class="pre">getStepIDs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcOdb.html"><span class="pre">MpcOdb</span></a><span class="pre">)arg1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(int)arg2</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">int_array</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcOdb.getStepIDs" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class std::vector&lt;int,class std::allocator&lt;int&gt; &gt; getStepIDs(class MpcOdb {lvalue},int)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcOdb.getStepTimes">
+<span class="sig-name descname"><span class="pre">getStepTimes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcOdb.html"><span class="pre">MpcOdb</span></a><span class="pre">)arg1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(int)arg2</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">double_array</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcOdb.getStepTimes" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class std::vector&lt;double,class std::allocator&lt;double&gt; &gt; getStepTimes(class MpcOdb {lvalue},int)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="PyMpc.MpcOdb.id">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#PyMpc.MpcOdb.id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="PyMpc.MpcOdb.info">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">info</span></span><a class="headerlink" href="#PyMpc.MpcOdb.info" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcOdb.open">
+<span class="sig-name descname"><span class="pre">open</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcOdb.html"><span class="pre">MpcOdb</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcOdb.open" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void open(class MpcOdb {lvalue})</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="PyMpc.MpcOdb.orientations">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">orientations</span></span><a class="headerlink" href="#PyMpc.MpcOdb.orientations" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="PyMpc.MpcOdb.parent">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">parent</span></span><a class="headerlink" href="#PyMpc.MpcOdb.parent" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcOdb.removeElementalResult">
+<span class="sig-name descname"><span class="pre">removeElementalResult</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcOdb.html"><span class="pre">MpcOdb</span></a><span class="pre">)arg1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(int)arg2</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcOdb.removeElementalResult" title="Link to this definition"></a></dt>
+<dd><blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void removeElementalResult(class MpcOdb {lvalue},int)</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>removeElementalResult( (MpcOdb)self, (str)name [, (int)match]) -&gt; None :</p>
+<blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void removeElementalResult(class boost::shared_ptr&lt;class MpcOdb&gt;,class std::basic_string&lt;char,struct std::char_traits&lt;char&gt;,class std::allocator&lt;char&gt; &gt; [,int])</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcOdb.removeNodalResult">
+<span class="sig-name descname"><span class="pre">removeNodalResult</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcOdb.html"><span class="pre">MpcOdb</span></a><span class="pre">)arg1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(int)arg2</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcOdb.removeNodalResult" title="Link to this definition"></a></dt>
+<dd><blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void removeNodalResult(class MpcOdb {lvalue},int)</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>removeNodalResult( (MpcOdb)self, (str)name [, (int)match]) -&gt; None :</p>
+<blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void removeNodalResult(class boost::shared_ptr&lt;class MpcOdb&gt;,class std::basic_string&lt;char,struct std::char_traits&lt;char&gt;,class std::allocator&lt;char&gt; &gt; [,int])</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="PyMpc.MpcOdb.sectionOffsets">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sectionOffsets</span></span><a class="headerlink" href="#PyMpc.MpcOdb.sectionOffsets" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="PyMpc.MpcOdb.selectionSets">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">selectionSets</span></span><a class="headerlink" href="#PyMpc.MpcOdb.selectionSets" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="PyMpc.MpcOdb.valid">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">valid</span></span><a class="headerlink" href="#PyMpc.MpcOdb.valid" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+</dd></dl>
+</section>
+</div>
+</div>
+<footer>
+<hr/>
+<div role="contentinfo">
+<p>© Copyright 2024 Asdea Software.</p>
+</div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+</div>
+</div>
+</section>
+</div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+</body>
+</html>

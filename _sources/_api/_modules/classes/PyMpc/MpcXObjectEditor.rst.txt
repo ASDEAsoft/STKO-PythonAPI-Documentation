@@ -1,0 +1,10 @@
+.. _MpcXObjectEditor:
+
+MpcXObjectEditor
+================
+
+.. autoclass:: PyMpc.MpcXObjectEditor
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

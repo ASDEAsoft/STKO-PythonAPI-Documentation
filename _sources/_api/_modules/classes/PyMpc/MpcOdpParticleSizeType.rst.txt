@@ -1,0 +1,10 @@
+.. _MpcOdpParticleSizeType:
+
+MpcOdpParticleSizeType
+======================
+
+.. autoclass:: PyMpc.MpcOdpParticleSizeType
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

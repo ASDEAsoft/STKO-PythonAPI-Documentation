@@ -1,0 +1,10 @@
+.. _MpcOdbNodalResult:
+
+MpcOdbNodalResult
+=================
+
+.. autoclass:: PyMpc.MpcOdbNodalResult
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

@@ -1,0 +1,10 @@
+.. _MpcElementPropertyCollection:
+
+MpcElementPropertyCollection
+============================
+
+.. autoclass:: PyMpc.MpcElementPropertyCollection
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

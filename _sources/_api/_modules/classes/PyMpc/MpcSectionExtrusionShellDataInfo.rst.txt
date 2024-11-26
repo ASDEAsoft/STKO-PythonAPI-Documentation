@@ -1,0 +1,10 @@
+.. _MpcSectionExtrusionShellDataInfo:
+
+MpcSectionExtrusionShellDataInfo
+================================
+
+.. autoclass:: PyMpc.MpcSectionExtrusionShellDataInfo
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

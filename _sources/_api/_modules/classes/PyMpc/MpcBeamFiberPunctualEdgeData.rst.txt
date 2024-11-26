@@ -1,0 +1,10 @@
+.. _MpcBeamFiberPunctualEdgeData:
+
+MpcBeamFiberPunctualEdgeData
+============================
+
+.. autoclass:: PyMpc.MpcBeamFiberPunctualEdgeData
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

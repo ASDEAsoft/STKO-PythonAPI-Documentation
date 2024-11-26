@@ -1,0 +1,10 @@
+.. _MpcLocalAxesType:
+
+MpcLocalAxesType
+================
+
+.. autoclass:: PyMpc.MpcLocalAxesType
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

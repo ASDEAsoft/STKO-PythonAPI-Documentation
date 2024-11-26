@@ -1,0 +1,10 @@
+.. _MpcChartWidget:
+
+MpcChartWidget
+==============
+
+.. autoclass:: PyMpc.MpcChartWidget
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

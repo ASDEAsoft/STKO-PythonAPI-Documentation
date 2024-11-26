@@ -1,0 +1,10 @@
+.. _MpcStandardPaths:
+
+MpcStandardPaths
+================
+
+.. autoclass:: PyMpc.MpcStandardPaths
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

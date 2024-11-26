@@ -1,0 +1,10 @@
+.. _MpcAttributeBoolean:
+
+MpcAttributeBoolean
+===================
+
+.. autoclass:: PyMpc.MpcAttributeBoolean
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

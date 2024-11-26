@@ -1,0 +1,10 @@
+.. _MpcElementQuadrilateral2D8N:
+
+MpcElementQuadrilateral2D8N
+===========================
+
+.. autoclass:: PyMpc.MpcElementQuadrilateral2D8N
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

@@ -1,0 +1,10 @@
+.. _MpcConditionVRepOrientation:
+
+MpcConditionVRepOrientation
+===========================
+
+.. autoclass:: PyMpc.MpcConditionVRepOrientation
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

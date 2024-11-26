@@ -1,0 +1,10 @@
+.. _MpcElementLine3D3N:
+
+MpcElementLine3D3N
+==================
+
+.. autoclass:: PyMpc.MpcElementLine3D3N
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

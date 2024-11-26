@@ -1,0 +1,10 @@
+.. _MpcElementPropertyAssignmentVector:
+
+MpcElementPropertyAssignmentVector
+==================================
+
+.. autoclass:: PyMpc.MpcElementPropertyAssignmentVector
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

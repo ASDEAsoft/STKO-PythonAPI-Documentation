@@ -1,0 +1,10 @@
+.. _MpcElementLink:
+
+MpcElementLink
+==============
+
+.. autoclass:: PyMpc.MpcElementLink
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

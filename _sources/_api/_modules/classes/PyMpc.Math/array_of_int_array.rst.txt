@@ -1,0 +1,10 @@
+.. _array_of_int_array:
+
+array_of_int_array
+==================
+
+.. autoclass:: PyMpc.Math.array_of_int_array
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

@@ -1,0 +1,10 @@
+.. _MpcMeshIOMpcoCdata:
+
+MpcMeshIOMpcoCdata
+==================
+
+.. autoclass:: PyMpc.MpcMeshIOMpcoCdata
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

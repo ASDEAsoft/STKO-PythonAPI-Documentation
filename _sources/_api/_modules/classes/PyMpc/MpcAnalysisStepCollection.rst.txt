@@ -1,0 +1,10 @@
+.. _MpcAnalysisStepCollection:
+
+MpcAnalysisStepCollection
+=========================
+
+.. autoclass:: PyMpc.MpcAnalysisStepCollection
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

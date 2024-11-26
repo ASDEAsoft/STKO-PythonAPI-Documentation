@@ -1,0 +1,10 @@
+.. _MpcAttribute:
+
+MpcAttribute
+============
+
+.. autoclass:: PyMpc.MpcAttribute
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

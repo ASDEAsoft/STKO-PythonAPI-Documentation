@@ -1,0 +1,10 @@
+.. _vec2_array:
+
+vec2_array
+==========
+
+.. autoclass:: PyMpc.Math.vec2_array
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

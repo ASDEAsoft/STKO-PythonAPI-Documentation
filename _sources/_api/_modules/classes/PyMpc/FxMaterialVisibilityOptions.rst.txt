@@ -1,0 +1,10 @@
+.. _FxMaterialVisibilityOptions:
+
+FxMaterialVisibilityOptions
+===========================
+
+.. autoclass:: PyMpc.FxMaterialVisibilityOptions
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

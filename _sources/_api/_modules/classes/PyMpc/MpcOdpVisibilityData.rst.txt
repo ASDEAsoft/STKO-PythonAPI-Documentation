@@ -1,0 +1,10 @@
+.. _MpcOdpVisibilityData:
+
+MpcOdpVisibilityData
+====================
+
+.. autoclass:: PyMpc.MpcOdpVisibilityData
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

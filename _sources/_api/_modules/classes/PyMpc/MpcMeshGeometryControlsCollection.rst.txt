@@ -1,0 +1,10 @@
+.. _MpcMeshGeometryControlsCollection:
+
+MpcMeshGeometryControlsCollection
+=================================
+
+.. autoclass:: PyMpc.MpcMeshGeometryControlsCollection
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

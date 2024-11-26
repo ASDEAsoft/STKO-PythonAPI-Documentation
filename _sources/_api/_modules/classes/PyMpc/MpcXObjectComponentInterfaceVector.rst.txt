@@ -1,0 +1,10 @@
+.. _MpcXObjectComponentInterfaceVector:
+
+MpcXObjectComponentInterfaceVector
+==================================
+
+.. autoclass:: PyMpc.MpcXObjectComponentInterfaceVector
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

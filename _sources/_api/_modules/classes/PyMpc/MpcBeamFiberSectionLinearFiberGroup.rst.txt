@@ -1,0 +1,10 @@
+.. _MpcBeamFiberSectionLinearFiberGroup:
+
+MpcBeamFiberSectionLinearFiberGroup
+===================================
+
+.. autoclass:: PyMpc.MpcBeamFiberSectionLinearFiberGroup
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

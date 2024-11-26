@@ -1,0 +1,10 @@
+.. _FxBndBox:
+
+FxBndBox
+========
+
+.. autoclass:: PyMpc.FxBndBox
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

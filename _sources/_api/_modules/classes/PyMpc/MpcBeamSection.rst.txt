@@ -1,0 +1,10 @@
+.. _MpcBeamSection:
+
+MpcBeamSection
+==============
+
+.. autoclass:: PyMpc.MpcBeamSection
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

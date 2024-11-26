@@ -1,0 +1,10 @@
+.. _MpcAttributeInteger:
+
+MpcAttributeInteger
+===================
+
+.. autoclass:: PyMpc.MpcAttributeInteger
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

@@ -1,0 +1,10 @@
+.. _MpcOdpSelectionData:
+
+MpcOdpSelectionData
+===================
+
+.. autoclass:: PyMpc.MpcOdpSelectionData
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

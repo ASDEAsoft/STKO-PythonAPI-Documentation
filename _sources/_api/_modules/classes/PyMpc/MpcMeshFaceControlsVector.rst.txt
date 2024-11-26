@@ -1,0 +1,10 @@
+.. _MpcMeshFaceControlsVector:
+
+MpcMeshFaceControlsVector
+=========================
+
+.. autoclass:: PyMpc.MpcMeshFaceControlsVector
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

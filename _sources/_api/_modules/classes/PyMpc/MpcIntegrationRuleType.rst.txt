@@ -1,0 +1,10 @@
+.. _MpcIntegrationRuleType:
+
+MpcIntegrationRuleType
+======================
+
+.. autoclass:: PyMpc.MpcIntegrationRuleType
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

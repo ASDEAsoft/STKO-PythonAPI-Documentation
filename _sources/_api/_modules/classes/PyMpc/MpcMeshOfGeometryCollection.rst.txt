@@ -1,0 +1,10 @@
+.. _MpcMeshOfGeometryCollection:
+
+MpcMeshOfGeometryCollection
+===========================
+
+.. autoclass:: PyMpc.MpcMeshOfGeometryCollection
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

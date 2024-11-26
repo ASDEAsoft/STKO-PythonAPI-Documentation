@@ -1,0 +1,53 @@
+PyMpc.FxOccNurbs
+================
+
+.. automodule:: PyMpc.FxOccNurbs
+
+
+Classes
+-------
+
+.. toctree::
+   :maxdepth: 1
+   :numbered: 0
+
+   classes/PyMpc.FxOccNurbs/DistanceInfo
+Functions
+---------
+
+.. autofunction:: PyMpc.FxOccNurbs.BSplineSurfaceInfo
+
+.. autofunction:: PyMpc.FxOccNurbs.applyRandomDeformation
+
+.. autofunction:: PyMpc.FxOccNurbs.computeDistance
+
+.. autofunction:: PyMpc.FxOccNurbs.fillFace
+
+.. autofunction:: PyMpc.FxOccNurbs.increaseOrder
+
+.. autofunction:: PyMpc.FxOccNurbs.isBSplineSurface
+
+.. autofunction:: PyMpc.FxOccNurbs.makeCompound
+
+.. autofunction:: PyMpc.FxOccNurbs.makeEdge
+
+.. autofunction:: PyMpc.FxOccNurbs.makeFace
+
+.. autofunction:: PyMpc.FxOccNurbs.makeHelix
+
+.. autofunction:: PyMpc.FxOccNurbs.makeShell
+
+.. autofunction:: PyMpc.FxOccNurbs.makeSolid
+
+.. autofunction:: PyMpc.FxOccNurbs.makeVertex
+
+.. autofunction:: PyMpc.FxOccNurbs.makeWire
+
+.. autofunction:: PyMpc.FxOccNurbs.merge
+
+.. autofunction:: PyMpc.FxOccNurbs.toBSplineSurface
+
+.. autofunction:: PyMpc.FxOccNurbs.visualRepresentationControlPolygon
+
+.. autofunction:: PyMpc.FxOccNurbs.visualRepresentationSurface
+

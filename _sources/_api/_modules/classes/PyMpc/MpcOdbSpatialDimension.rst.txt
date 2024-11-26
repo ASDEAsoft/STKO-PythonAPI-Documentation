@@ -1,0 +1,10 @@
+.. _MpcOdbSpatialDimension:
+
+MpcOdbSpatialDimension
+======================
+
+.. autoclass:: PyMpc.MpcOdbSpatialDimension
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

@@ -1,0 +1,10 @@
+.. _MpcGeometry:
+
+MpcGeometry
+===========
+
+.. autoclass:: PyMpc.MpcGeometry
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

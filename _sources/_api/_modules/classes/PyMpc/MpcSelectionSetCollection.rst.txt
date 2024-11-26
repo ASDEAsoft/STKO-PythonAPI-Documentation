@@ -1,0 +1,10 @@
+.. _MpcSelectionSetCollection:
+
+MpcSelectionSetCollection
+=========================
+
+.. autoclass:: PyMpc.MpcSelectionSetCollection
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

@@ -1,0 +1,10 @@
+.. _MpcOdbSelectionSetMap:
+
+MpcOdbSelectionSetMap
+=====================
+
+.. autoclass:: PyMpc.MpcOdbSelectionSetMap
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

@@ -1,0 +1,10 @@
+.. _MpcMeshPartition:
+
+MpcMeshPartition
+================
+
+.. autoclass:: PyMpc.MpcMeshPartition
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

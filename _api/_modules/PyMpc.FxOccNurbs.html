@@ -1,0 +1,300 @@
+
+<!DOCTYPE html>
+
+<html class="writer-html5" data-content_root="../../" lang="en">
+<head>
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PyMpc.FxOccNurbs — STKO Python API  documentation</title>
+<link href="../../_static/pygments.css?v=80d5e7a1" rel="stylesheet" type="text/css"/>
+<link href="../../_static/css/theme.css?v=e59714d7" rel="stylesheet" type="text/css"/>
+<link href="../../_static/css/custom.css?v=8a89d2a5" rel="stylesheet" type="text/css"/>
+<script src="../../_static/jquery.js?v=5d32c60e"></script>
+<script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+<script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+<script src="../../_static/doctools.js?v=9bcbadda"></script>
+<script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../../_static/js/theme.js"></script>
+<link href="../../genindex.html" rel="index" title="Index"/>
+<link href="../../search.html" rel="search" title="Search"/>
+<link href="classes/PyMpc.FxOccNurbs/DistanceInfo.html" rel="next" title="DistanceInfo"/>
+<link href="classes/PyMpc.FxOccBuilder/DistanceInfo.html" rel="prev" title="DistanceInfo"/>
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a href="../../index.html">
+<img alt="Logo" class="logo" src="../../_static/logo.png"/>
+</a>
+<div role="search">
+<form action="../../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div><div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Python API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="PyMpc.html">PyMpc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PyMpc.App.html">PyMpc.App</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PyMpc.FxOccBuilder.html">PyMpc.FxOccBuilder</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">PyMpc.FxOccNurbs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#classes">Classes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="classes/PyMpc.FxOccNurbs/DistanceInfo.html">DistanceInfo</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#functions">Functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#PyMpc.FxOccNurbs.BSplineSurfaceInfo"><code class="docutils literal notranslate"><span class="pre">BSplineSurfaceInfo()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#PyMpc.FxOccNurbs.applyRandomDeformation"><code class="docutils literal notranslate"><span class="pre">applyRandomDeformation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#PyMpc.FxOccNurbs.computeDistance"><code class="docutils literal notranslate"><span class="pre">computeDistance()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#PyMpc.FxOccNurbs.fillFace"><code class="docutils literal notranslate"><span class="pre">fillFace()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#PyMpc.FxOccNurbs.increaseOrder"><code class="docutils literal notranslate"><span class="pre">increaseOrder()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#PyMpc.FxOccNurbs.isBSplineSurface"><code class="docutils literal notranslate"><span class="pre">isBSplineSurface()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#PyMpc.FxOccNurbs.makeCompound"><code class="docutils literal notranslate"><span class="pre">makeCompound()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#PyMpc.FxOccNurbs.makeEdge"><code class="docutils literal notranslate"><span class="pre">makeEdge()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#PyMpc.FxOccNurbs.makeFace"><code class="docutils literal notranslate"><span class="pre">makeFace()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#PyMpc.FxOccNurbs.makeHelix"><code class="docutils literal notranslate"><span class="pre">makeHelix()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#PyMpc.FxOccNurbs.makeShell"><code class="docutils literal notranslate"><span class="pre">makeShell()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#PyMpc.FxOccNurbs.makeSolid"><code class="docutils literal notranslate"><span class="pre">makeSolid()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#PyMpc.FxOccNurbs.makeVertex"><code class="docutils literal notranslate"><span class="pre">makeVertex()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#PyMpc.FxOccNurbs.makeWire"><code class="docutils literal notranslate"><span class="pre">makeWire()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#PyMpc.FxOccNurbs.merge"><code class="docutils literal notranslate"><span class="pre">merge()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#PyMpc.FxOccNurbs.toBSplineSurface"><code class="docutils literal notranslate"><span class="pre">toBSplineSurface()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#PyMpc.FxOccNurbs.visualRepresentationControlPolygon"><code class="docutils literal notranslate"><span class="pre">visualRepresentationControlPolygon()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#PyMpc.FxOccNurbs.visualRepresentationSurface"><code class="docutils literal notranslate"><span class="pre">visualRepresentationSurface()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="PyMpc.FxOccQuery.html">PyMpc.FxOccQuery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PyMpc.IO.html">PyMpc.IO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PyMpc.Math.html">PyMpc.Math</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PyMpc.Units.html">PyMpc.Units</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PyMpc.Utils.html">PyMpc.Utils</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_examples/1_call-types/index.html">1. Call Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_examples/2_basics/index.html">2. Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_examples/3_objects/index.html">3. Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_examples/4_document/index.html">4. Document</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_examples/5_mesh/index.html">5. Mesh</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_examples/6_fiber-section/index.html">6. Fiber Section</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_examples/7_cae-document/index.html">7. Cae document</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_examples/8_post-processing/index.html">8. Post Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_examples/9_application/index.html">9. Application</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift"><nav aria-label="Mobile navigation menu" class="wy-nav-top">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../../index.html">STKO Python API</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content">
+<div aria-label="Page navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Home" class="icon icon-home" href="../../index.html"></a></li>
+<li class="breadcrumb-item"><a href="../index.html">Python API Reference</a></li>
+<li class="breadcrumb-item active">PyMpc.FxOccNurbs</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div itemprop="articleBody">
+<section id="module-PyMpc.FxOccNurbs">
+<span id="pympc-fxoccnurbs"></span><h1>PyMpc.FxOccNurbs<a class="headerlink" href="#module-PyMpc.FxOccNurbs" title="Link to this heading"></a></h1>
+<section id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="classes/PyMpc.FxOccNurbs/DistanceInfo.html">DistanceInfo</a></li>
+</ul>
+</div>
+</section>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="PyMpc.FxOccNurbs.BSplineSurfaceInfo">
+<span class="sig-name descname"><span class="pre">BSplineSurfaceInfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="classes/PyMpc/FxOccShape.html"><span class="pre">FxOccShape</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">str</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.FxOccNurbs.BSplineSurfaceInfo" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class std::basic_string&lt;char,struct std::char_traits&lt;char&gt;,class std::allocator&lt;char&gt; &gt; BSplineSurfaceInfo(class boost::shared_ptr&lt;class FxOccShape&gt;)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="PyMpc.FxOccNurbs.applyRandomDeformation">
+<span class="sig-name descname"><span class="pre">applyRandomDeformation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="classes/PyMpc/FxOccShape.html"><span class="pre">FxOccShape</span></a><span class="pre">)arg1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(float)arg2</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="classes/PyMpc/FxOccShape.html"><span class="pre">FxOccShape</span></a> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.FxOccNurbs.applyRandomDeformation" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class boost::shared_ptr&lt;class FxOccShape&gt; applyRandomDeformation(class boost::shared_ptr&lt;class FxOccShape&gt;,double)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="PyMpc.FxOccNurbs.computeDistance">
+<span class="sig-name descname"><span class="pre">computeDistance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="classes/PyMpc/FxOccShape.html"><span class="pre">FxOccShape</span></a><span class="pre">)arg1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="classes/PyMpc/FxOccShape.html"><span class="pre">FxOccShape</span></a><span class="pre">)arg2</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="classes/PyMpc.FxOccBuilder/DistanceInfo.html"><span class="pre">DistanceInfo</span></a> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.FxOccNurbs.computeDistance" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>struct <a href="#id1"><span class="problematic" id="id2">`</span></a>anonymous namespace’::DistanceInfo computeDistance(class boost::shared_ptr&lt;class FxOccShape&gt;,class boost::shared_ptr&lt;class FxOccShape&gt;)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="PyMpc.FxOccNurbs.fillFace">
+<span class="sig-name descname"><span class="pre">fillFace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="classes/PyMpc/FxOccShape.html"><span class="pre">FxOccShape</span></a><span class="pre">)arg1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="classes/PyMpc/FxOccShape.html"><span class="pre">FxOccShape</span></a><span class="pre">)arg2</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="classes/PyMpc/FxOccShape.html"><span class="pre">FxOccShape</span></a> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.FxOccNurbs.fillFace" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class boost::shared_ptr&lt;class FxOccShape&gt; fillFace(class boost::shared_ptr&lt;class FxOccShape&gt;,class boost::shared_ptr&lt;class FxOccShape&gt;)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="PyMpc.FxOccNurbs.increaseOrder">
+<span class="sig-name descname"><span class="pre">increaseOrder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="classes/PyMpc/FxOccShape.html"><span class="pre">FxOccShape</span></a><span class="pre">)arg1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(float)arg2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(float)arg3</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="classes/PyMpc/FxOccShape.html"><span class="pre">FxOccShape</span></a> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.FxOccNurbs.increaseOrder" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class boost::shared_ptr&lt;class FxOccShape&gt; increaseOrder(class boost::shared_ptr&lt;class FxOccShape&gt;,double,double)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="PyMpc.FxOccNurbs.isBSplineSurface">
+<span class="sig-name descname"><span class="pre">isBSplineSurface</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="classes/PyMpc/FxOccShape.html"><span class="pre">FxOccShape</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">bool</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.FxOccNurbs.isBSplineSurface" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>bool isBSplineSurface(class boost::shared_ptr&lt;class FxOccShape&gt;)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="PyMpc.FxOccNurbs.makeCompound">
+<span class="sig-name descname"><span class="pre">makeCompound</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(list)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="classes/PyMpc/FxOccShape.html"><span class="pre">FxOccShape</span></a> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.FxOccNurbs.makeCompound" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class boost::shared_ptr&lt;class FxOccShape&gt; makeCompound(class boost::python::list)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="PyMpc.FxOccNurbs.makeEdge">
+<span class="sig-name descname"><span class="pre">makeEdge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="classes/PyMpc/FxOccShape.html"><span class="pre">FxOccShape</span></a><span class="pre">)arg1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="classes/PyMpc/FxOccShape.html"><span class="pre">FxOccShape</span></a><span class="pre">)arg2</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="classes/PyMpc/FxOccShape.html"><span class="pre">FxOccShape</span></a> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.FxOccNurbs.makeEdge" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class boost::shared_ptr&lt;class FxOccShape&gt; makeEdge(class boost::shared_ptr&lt;class FxOccShape&gt;,class boost::shared_ptr&lt;class FxOccShape&gt;)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="PyMpc.FxOccNurbs.makeFace">
+<span class="sig-name descname"><span class="pre">makeFace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="classes/PyMpc/FxOccShape.html"><span class="pre">FxOccShape</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="classes/PyMpc/FxOccShape.html"><span class="pre">FxOccShape</span></a> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.FxOccNurbs.makeFace" title="Link to this definition"></a></dt>
+<dd><blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class boost::shared_ptr&lt;class FxOccShape&gt; makeFace(class boost::shared_ptr&lt;class FxOccShape&gt;)</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl><dl class="py function"><dt class="sig sig-object py" id="PyMpc.FxOccNurbs.makeFace"><span class="sig-name descname"><span class="pre">makeFace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="classes/PyMpc/FxOccShape.html"><span class="pre">FxOccShape</span></a><span class="pre">)arg1</span></span></em><span>, </span><em class="sig-param"><span class="n"><span class="pre">(list)arg2</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="classes/PyMpc/FxOccShape.html"><span class="pre">FxOccShape</span></a><span class="pre"> :</span></span></span><a class="headerlink" href="#PyMpc.FxOccNurbs.makeFace" title="Link to this definition"></a></dt><dd><blockquote><div><dl class="simple"><dt>C++ signature :</dt><dd><p>class boost::shared_ptr&lt;class FxOccShape&gt; makeFace(class boost::shared_ptr&lt;class FxOccShape&gt;,class boost::python::list)</p></dd></dl></div></blockquote></dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="PyMpc.FxOccNurbs.makeHelix">
+<span class="sig-name descname"><span class="pre">makeHelix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(float)arg1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(float)arg2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(int)arg3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(int)arg4</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="classes/PyMpc/FxOccShape.html"><span class="pre">FxOccShape</span></a> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.FxOccNurbs.makeHelix" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class boost::shared_ptr&lt;class FxOccShape&gt; makeHelix(double,double,int,int)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="PyMpc.FxOccNurbs.makeShell">
+<span class="sig-name descname"><span class="pre">makeShell</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(list)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="classes/PyMpc/FxOccShape.html"><span class="pre">FxOccShape</span></a> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.FxOccNurbs.makeShell" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class boost::shared_ptr&lt;class FxOccShape&gt; makeShell(class boost::python::list)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="PyMpc.FxOccNurbs.makeSolid">
+<span class="sig-name descname"><span class="pre">makeSolid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="classes/PyMpc/FxOccShape.html"><span class="pre">FxOccShape</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="classes/PyMpc/FxOccShape.html"><span class="pre">FxOccShape</span></a> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.FxOccNurbs.makeSolid" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class boost::shared_ptr&lt;class FxOccShape&gt; makeSolid(class boost::shared_ptr&lt;class FxOccShape&gt;)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="PyMpc.FxOccNurbs.makeVertex">
+<span class="sig-name descname"><span class="pre">makeVertex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(float)arg1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(float)arg2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(float)arg3</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="classes/PyMpc/FxOccShape.html"><span class="pre">FxOccShape</span></a> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.FxOccNurbs.makeVertex" title="Link to this definition"></a></dt>
+<dd><blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class boost::shared_ptr&lt;class FxOccShape&gt; makeVertex(double,double,double)</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl><dl class="py function"><dt class="sig sig-object py" id="PyMpc.FxOccNurbs.makeVertex"><span class="sig-name descname"><span class="pre">makeVertex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(tuple)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="classes/PyMpc/FxOccShape.html"><span class="pre">FxOccShape</span></a><span class="pre"> :</span></span></span><a class="headerlink" href="#PyMpc.FxOccNurbs.makeVertex" title="Link to this definition"></a></dt><dd><blockquote><div><dl class="simple"><dt>C++ signature :</dt><dd><p>class boost::shared_ptr&lt;class FxOccShape&gt; makeVertex(class boost::python::tuple)</p></dd></dl></div></blockquote></dd></dl><dl class="py function"><dt class="sig sig-object py" id="PyMpc.FxOccNurbs.makeVertex"><span class="sig-name descname"><span class="pre">makeVertex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(list)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="classes/PyMpc/FxOccShape.html"><span class="pre">FxOccShape</span></a><span class="pre"> :</span></span></span><a class="headerlink" href="#PyMpc.FxOccNurbs.makeVertex" title="Link to this definition"></a></dt><dd><blockquote><div><dl class="simple"><dt>C++ signature :</dt><dd><p>class boost::shared_ptr&lt;class FxOccShape&gt; makeVertex(class boost::python::list)</p></dd></dl></div></blockquote></dd></dl><dl class="py function"><dt class="sig sig-object py" id="PyMpc.FxOccNurbs.makeVertex"><span class="sig-name descname"><span class="pre">makeVertex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(vec)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="classes/PyMpc/FxOccShape.html"><span class="pre">FxOccShape</span></a><span class="pre"> :</span></span></span><a class="headerlink" href="#PyMpc.FxOccNurbs.makeVertex" title="Link to this definition"></a></dt><dd><blockquote><div><dl class="simple"><dt>C++ signature :</dt><dd><p>class boost::shared_ptr&lt;class FxOccShape&gt; makeVertex(class Eigen::Matrix&lt;double,-1,1,0,-1,1&gt;)</p></dd></dl></div></blockquote></dd></dl><dl class="py function"><dt class="sig sig-object py" id="PyMpc.FxOccNurbs.makeVertex"><span class="sig-name descname"><span class="pre">makeVertex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(vec3)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="classes/PyMpc/FxOccShape.html"><span class="pre">FxOccShape</span></a><span class="pre"> :</span></span></span><a class="headerlink" href="#PyMpc.FxOccNurbs.makeVertex" title="Link to this definition"></a></dt><dd><blockquote><div><dl class="simple"><dt>C++ signature :</dt><dd><p>class boost::shared_ptr&lt;class FxOccShape&gt; makeVertex(class Eigen::Matrix&lt;double,3,1,0,3,1&gt;)</p></dd></dl></div></blockquote></dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="PyMpc.FxOccNurbs.makeWire">
+<span class="sig-name descname"><span class="pre">makeWire</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(list)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="classes/PyMpc/FxOccShape.html"><span class="pre">FxOccShape</span></a> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.FxOccNurbs.makeWire" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class boost::shared_ptr&lt;class FxOccShape&gt; makeWire(class boost::python::list)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="PyMpc.FxOccNurbs.merge">
+<span class="sig-name descname"><span class="pre">merge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(list)arg1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(float)arg2</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="classes/PyMpc/FxOccShape.html"><span class="pre">FxOccShape</span></a> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.FxOccNurbs.merge" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class boost::shared_ptr&lt;class FxOccShape&gt; merge(class boost::python::list,double)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="PyMpc.FxOccNurbs.toBSplineSurface">
+<span class="sig-name descname"><span class="pre">toBSplineSurface</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="classes/PyMpc/FxOccShape.html"><span class="pre">FxOccShape</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="classes/PyMpc/FxOccShape.html"><span class="pre">FxOccShape</span></a> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.FxOccNurbs.toBSplineSurface" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class boost::shared_ptr&lt;class FxOccShape&gt; toBSplineSurface(class boost::shared_ptr&lt;class FxOccShape&gt;)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="PyMpc.FxOccNurbs.visualRepresentationControlPolygon">
+<span class="sig-name descname"><span class="pre">visualRepresentationControlPolygon</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="classes/PyMpc/FxOccShape.html"><span class="pre">FxOccShape</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="classes/PyMpc/FxShape.html"><span class="pre">FxShape</span></a> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.FxOccNurbs.visualRepresentationControlPolygon" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class boost::shared_ptr&lt;class FxShape&gt; visualRepresentationControlPolygon(class boost::shared_ptr&lt;class FxOccShape&gt;)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="PyMpc.FxOccNurbs.visualRepresentationSurface">
+<span class="sig-name descname"><span class="pre">visualRepresentationSurface</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="classes/PyMpc/FxOccShape.html"><span class="pre">FxOccShape</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="classes/PyMpc/FxShape.html"><span class="pre">FxShape</span></a> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.FxOccNurbs.visualRepresentationSurface" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class boost::shared_ptr&lt;class FxShape&gt; visualRepresentationSurface(class boost::shared_ptr&lt;class FxOccShape&gt;)</p>
+</dd>
+</dl>
+</dd></dl>
+</section>
+</section>
+</div>
+</div>
+<footer>
+<hr/>
+<div role="contentinfo">
+<p>© Copyright 2024 Asdea Software.</p>
+</div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+</div>
+</div>
+</section>
+</div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+</body>
+</html>

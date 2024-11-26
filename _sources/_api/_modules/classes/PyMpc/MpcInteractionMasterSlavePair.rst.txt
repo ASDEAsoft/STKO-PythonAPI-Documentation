@@ -1,0 +1,10 @@
+.. _MpcInteractionMasterSlavePair:
+
+MpcInteractionMasterSlavePair
+=============================
+
+.. autoclass:: PyMpc.MpcInteractionMasterSlavePair
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

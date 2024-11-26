@@ -1,0 +1,10 @@
+.. _FxOccFactory:
+
+FxOccFactory
+============
+
+.. autoclass:: PyMpc.FxOccFactory
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

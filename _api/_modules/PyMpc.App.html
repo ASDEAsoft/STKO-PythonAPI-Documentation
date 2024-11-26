@@ -1,0 +1,354 @@
+
+<!DOCTYPE html>
+
+<html class="writer-html5" data-content_root="../../" lang="en">
+<head>
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PyMpc.App — STKO Python API  documentation</title>
+<link href="../../_static/pygments.css?v=80d5e7a1" rel="stylesheet" type="text/css"/>
+<link href="../../_static/css/theme.css?v=e59714d7" rel="stylesheet" type="text/css"/>
+<link href="../../_static/css/custom.css?v=8a89d2a5" rel="stylesheet" type="text/css"/>
+<script src="../../_static/jquery.js?v=5d32c60e"></script>
+<script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+<script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+<script src="../../_static/doctools.js?v=9bcbadda"></script>
+<script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../../_static/js/theme.js"></script>
+<link href="../../genindex.html" rel="index" title="Index"/>
+<link href="../../search.html" rel="search" title="Search"/>
+<link href="classes/PyMpc.App/MpcBackgroundWorkerProgressMonitorInterface.html" rel="next" title="MpcBackgroundWorkerProgressMonitorInterface"/>
+<link href="classes/PyMpc/TopAbs_ShapeEnum.html" rel="prev" title="TopAbs_ShapeEnum"/>
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a href="../../index.html">
+<img alt="Logo" class="logo" src="../../_static/logo.png"/>
+</a>
+<div role="search">
+<form action="../../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div><div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Python API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="PyMpc.html">PyMpc</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">PyMpc.App</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#classes">Classes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="classes/PyMpc.App/MpcBackgroundWorkerProgressMonitorInterface.html">MpcBackgroundWorkerProgressMonitorInterface</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#functions">Functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#PyMpc.App.caeDocument"><code class="docutils literal notranslate"><span class="pre">caeDocument()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#PyMpc.App.clearTerminal"><code class="docutils literal notranslate"><span class="pre">clearTerminal()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#PyMpc.App.currentSolverCommand"><code class="docutils literal notranslate"><span class="pre">currentSolverCommand()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#PyMpc.App.currentSolverName"><code class="docutils literal notranslate"><span class="pre">currentSolverName()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#PyMpc.App.getReferencedComponents"><code class="docutils literal notranslate"><span class="pre">getReferencedComponents()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#PyMpc.App.getReferencingComponents"><code class="docutils literal notranslate"><span class="pre">getReferencingComponents()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#PyMpc.App.hasCurrentSolver"><code class="docutils literal notranslate"><span class="pre">hasCurrentSolver()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#PyMpc.App.isBusy"><code class="docutils literal notranslate"><span class="pre">isBusy()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#PyMpc.App.monitor"><code class="docutils literal notranslate"><span class="pre">monitor()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#PyMpc.App.postDocument"><code class="docutils literal notranslate"><span class="pre">postDocument()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#PyMpc.App.processEvents"><code class="docutils literal notranslate"><span class="pre">processEvents()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#PyMpc.App.promptBusyMessage"><code class="docutils literal notranslate"><span class="pre">promptBusyMessage()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#PyMpc.App.quit"><code class="docutils literal notranslate"><span class="pre">quit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#PyMpc.App.requestUpdateActiveView"><code class="docutils literal notranslate"><span class="pre">requestUpdateActiveView()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#PyMpc.App.requestUpdateAllViewsOfTheActiveDocument"><code class="docutils literal notranslate"><span class="pre">requestUpdateAllViewsOfTheActiveDocument()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#PyMpc.App.runCommand"><code class="docutils literal notranslate"><span class="pre">runCommand()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#PyMpc.App.runOnBlockingWorkingThread"><code class="docutils literal notranslate"><span class="pre">runOnBlockingWorkingThread()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#PyMpc.App.setActiveContext"><code class="docutils literal notranslate"><span class="pre">setActiveContext()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#PyMpc.App.setBusy"><code class="docutils literal notranslate"><span class="pre">setBusy()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#PyMpc.App.setColorWorkTreeByUsageFlag"><code class="docutils literal notranslate"><span class="pre">setColorWorkTreeByUsageFlag()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#PyMpc.App.setGUIComponentsEnabled"><code class="docutils literal notranslate"><span class="pre">setGUIComponentsEnabled()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#PyMpc.App.setRegenerateOnWorkingThreadFlag"><code class="docutils literal notranslate"><span class="pre">setRegenerateOnWorkingThreadFlag()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#PyMpc.App.updateActiveView"><code class="docutils literal notranslate"><span class="pre">updateActiveView()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#PyMpc.App.updateAllViewsOfTheActiveDocument"><code class="docutils literal notranslate"><span class="pre">updateAllViewsOfTheActiveDocument()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="PyMpc.FxOccBuilder.html">PyMpc.FxOccBuilder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PyMpc.FxOccNurbs.html">PyMpc.FxOccNurbs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PyMpc.FxOccQuery.html">PyMpc.FxOccQuery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PyMpc.IO.html">PyMpc.IO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PyMpc.Math.html">PyMpc.Math</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PyMpc.Units.html">PyMpc.Units</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PyMpc.Utils.html">PyMpc.Utils</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_examples/1_call-types/index.html">1. Call Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_examples/2_basics/index.html">2. Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_examples/3_objects/index.html">3. Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_examples/4_document/index.html">4. Document</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_examples/5_mesh/index.html">5. Mesh</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_examples/6_fiber-section/index.html">6. Fiber Section</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_examples/7_cae-document/index.html">7. Cae document</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_examples/8_post-processing/index.html">8. Post Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_examples/9_application/index.html">9. Application</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift"><nav aria-label="Mobile navigation menu" class="wy-nav-top">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../../index.html">STKO Python API</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content">
+<div aria-label="Page navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Home" class="icon icon-home" href="../../index.html"></a></li>
+<li class="breadcrumb-item"><a href="../index.html">Python API Reference</a></li>
+<li class="breadcrumb-item active">PyMpc.App</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div itemprop="articleBody">
+<section id="module-PyMpc.App">
+<span id="pympc-app"></span><h1>PyMpc.App<a class="headerlink" href="#module-PyMpc.App" title="Link to this heading"></a></h1>
+<section id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="classes/PyMpc.App/MpcBackgroundWorkerProgressMonitorInterface.html">MpcBackgroundWorkerProgressMonitorInterface</a></li>
+</ul>
+</div>
+</section>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="PyMpc.App.caeDocument">
+<span class="sig-name descname"><span class="pre">caeDocument</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="classes/PyMpc/MpcCaeDocument.html"><span class="pre">MpcCaeDocument</span></a> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.App.caeDocument" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class boost::shared_ptr&lt;class MpcCaeDocument&gt; caeDocument()</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="PyMpc.App.clearTerminal">
+<span class="sig-name descname"><span class="pre">clearTerminal</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.App.clearTerminal" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void clearTerminal()</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="PyMpc.App.currentSolverCommand">
+<span class="sig-name descname"><span class="pre">currentSolverCommand</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">str</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.App.currentSolverCommand" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class std::basic_string&lt;char,struct std::char_traits&lt;char&gt;,class std::allocator&lt;char&gt; &gt; currentSolverCommand()</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="PyMpc.App.currentSolverName">
+<span class="sig-name descname"><span class="pre">currentSolverName</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">str</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.App.currentSolverName" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class std::basic_string&lt;char,struct std::char_traits&lt;char&gt;,class std::allocator&lt;char&gt; &gt; currentSolverName()</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="PyMpc.App.getReferencedComponents">
+<span class="sig-name descname"><span class="pre">getReferencedComponents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="classes/PyMpc/MpcXObjectComponentInterface.html"><span class="pre">MpcXObjectComponentInterface</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="classes/PyMpc/MpcXObjectComponentInterfaceVector.html"><span class="pre">MpcXObjectComponentInterfaceVector</span></a> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.App.getReferencedComponents" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class std::vector&lt;class boost::shared_ptr&lt;class MpcXObjectComponentInterface&gt;,class std::allocator&lt;class boost::shared_ptr&lt;class MpcXObjectComponentInterface&gt; &gt; &gt; getReferencedComponents(class boost::shared_ptr&lt;class MpcXObjectComponentInterface&gt;)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="PyMpc.App.getReferencingComponents">
+<span class="sig-name descname"><span class="pre">getReferencingComponents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="classes/PyMpc/MpcXObjectComponentInterface.html"><span class="pre">MpcXObjectComponentInterface</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="classes/PyMpc/MpcXObjectComponentInterfaceVector.html"><span class="pre">MpcXObjectComponentInterfaceVector</span></a> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.App.getReferencingComponents" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class std::vector&lt;class boost::shared_ptr&lt;class MpcXObjectComponentInterface&gt;,class std::allocator&lt;class boost::shared_ptr&lt;class MpcXObjectComponentInterface&gt; &gt; &gt; getReferencingComponents(class boost::shared_ptr&lt;class MpcXObjectComponentInterface&gt;)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="PyMpc.App.hasCurrentSolver">
+<span class="sig-name descname"><span class="pre">hasCurrentSolver</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">bool</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.App.hasCurrentSolver" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>bool hasCurrentSolver()</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="PyMpc.App.isBusy">
+<span class="sig-name descname"><span class="pre">isBusy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">bool</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.App.isBusy" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>bool isBusy()</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="PyMpc.App.monitor">
+<span class="sig-name descname"><span class="pre">monitor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="classes/PyMpc.App/MpcBackgroundWorkerProgressMonitorInterface.html"><span class="pre">MpcBackgroundWorkerProgressMonitorInterface</span></a> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.App.monitor" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class boost::shared_ptr&lt;class <a href="#id1"><span class="problematic" id="id2">`</span></a>anonymous namespace’::monitor_wrapper&gt; monitor()</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="PyMpc.App.postDocument">
+<span class="sig-name descname"><span class="pre">postDocument</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="classes/PyMpc/MpcPostDocument.html"><span class="pre">MpcPostDocument</span></a> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.App.postDocument" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class boost::shared_ptr&lt;class MpcPostDocument&gt; postDocument()</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="PyMpc.App.processEvents">
+<span class="sig-name descname"><span class="pre">processEvents</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.App.processEvents" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void processEvents()</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="PyMpc.App.promptBusyMessage">
+<span class="sig-name descname"><span class="pre">promptBusyMessage</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.App.promptBusyMessage" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void promptBusyMessage()</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="PyMpc.App.quit">
+<span class="sig-name descname"><span class="pre">quit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.App.quit" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void quit()</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="PyMpc.App.requestUpdateActiveView">
+<span class="sig-name descname"><span class="pre">requestUpdateActiveView</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.App.requestUpdateActiveView" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void requestUpdateActiveView()</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="PyMpc.App.requestUpdateAllViewsOfTheActiveDocument">
+<span class="sig-name descname"><span class="pre">requestUpdateAllViewsOfTheActiveDocument</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.App.requestUpdateAllViewsOfTheActiveDocument" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void requestUpdateAllViewsOfTheActiveDocument()</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="PyMpc.App.runCommand">
+<span class="sig-name descname"><span class="pre">runCommand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(str)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.App.runCommand" title="Link to this definition"></a></dt>
+<dd><blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void runCommand(class std::basic_string&lt;char,struct std::char_traits&lt;char&gt;,class std::allocator&lt;char&gt; &gt;)</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl><dl class="py function"><dt class="sig sig-object py" id="PyMpc.App.runCommand"><span class="sig-name descname"><span class="pre">runCommand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(str)arg1</span></span></em><span>, </span><em class="sig-param"><span class="n"><span class="pre">(str)arg2</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span><span class="pre"> :</span></span></span><a class="headerlink" href="#PyMpc.App.runCommand" title="Link to this definition"></a></dt><dd><blockquote><div><dl class="simple"><dt>C++ signature :</dt><dd><p>void runCommand(class std::basic_string&lt;char,struct std::char_traits&lt;char&gt;,class std::allocator&lt;char&gt; &gt;,class std::basic_string&lt;char,struct std::char_traits&lt;char&gt;,class std::allocator&lt;char&gt; &gt;)</p></dd></dl></div></blockquote></dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="PyMpc.App.runOnBlockingWorkingThread">
+<span class="sig-name descname"><span class="pre">runOnBlockingWorkingThread</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(object)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.App.runOnBlockingWorkingThread" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void runOnBlockingWorkingThread(class boost::python::api::object)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="PyMpc.App.setActiveContext">
+<span class="sig-name descname"><span class="pre">setActiveContext</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="classes/PyMpc/MpcContext.html"><span class="pre">MpcContext</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.App.setActiveContext" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void setActiveContext(enum MpcContext)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="PyMpc.App.setBusy">
+<span class="sig-name descname"><span class="pre">setBusy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(bool)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.App.setBusy" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void setBusy(bool)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="PyMpc.App.setColorWorkTreeByUsageFlag">
+<span class="sig-name descname"><span class="pre">setColorWorkTreeByUsageFlag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(bool)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.App.setColorWorkTreeByUsageFlag" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void setColorWorkTreeByUsageFlag(bool)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="PyMpc.App.setGUIComponentsEnabled">
+<span class="sig-name descname"><span class="pre">setGUIComponentsEnabled</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="classes/PyMpc/MpcGUIComponents.html"><span class="pre">MpcGUIComponents</span></a><span class="pre">)arg1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(bool)arg2</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.App.setGUIComponentsEnabled" title="Link to this definition"></a></dt>
+<dd><blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void setGUIComponentsEnabled(enum MpcGUIComponents,bool)</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl><dl class="py function"><dt class="sig sig-object py" id="PyMpc.App.setGUIComponentsEnabled"><span class="sig-name descname"><span class="pre">setGUIComponentsEnabled</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(int)arg1</span></span></em><span>, </span><em class="sig-param"><span class="n"><span class="pre">(bool)arg2</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span><span class="pre"> :</span></span></span><a class="headerlink" href="#PyMpc.App.setGUIComponentsEnabled" title="Link to this definition"></a></dt><dd><blockquote><div><dl class="simple"><dt>C++ signature :</dt><dd><p>void setGUIComponentsEnabled(int,bool)</p></dd></dl></div></blockquote></dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="PyMpc.App.setRegenerateOnWorkingThreadFlag">
+<span class="sig-name descname"><span class="pre">setRegenerateOnWorkingThreadFlag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(bool)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.App.setRegenerateOnWorkingThreadFlag" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void setRegenerateOnWorkingThreadFlag(bool)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="PyMpc.App.updateActiveView">
+<span class="sig-name descname"><span class="pre">updateActiveView</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.App.updateActiveView" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void updateActiveView()</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="PyMpc.App.updateAllViewsOfTheActiveDocument">
+<span class="sig-name descname"><span class="pre">updateAllViewsOfTheActiveDocument</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.App.updateAllViewsOfTheActiveDocument" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void updateAllViewsOfTheActiveDocument()</p>
+</dd>
+</dl>
+</dd></dl>
+</section>
+</section>
+</div>
+</div>
+<footer>
+<hr/>
+<div role="contentinfo">
+<p>© Copyright 2024 Asdea Software.</p>
+</div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+</div>
+</div>
+</section>
+</div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+</body>
+</html>

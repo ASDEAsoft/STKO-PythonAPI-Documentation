@@ -1,0 +1,10 @@
+.. _int_set:
+
+int_set
+=======
+
+.. autoclass:: PyMpc.Math.int_set
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

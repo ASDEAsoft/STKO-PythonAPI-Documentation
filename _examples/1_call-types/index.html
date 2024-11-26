@@ -1,0 +1,625 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1. Call Types &mdash; STKO Python API  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=8a89d2a5" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="2. Basics" href="../2_basics/index.html" />
+    <link rel="prev" title="PyMpc.Utils" href="../../_api/_modules/PyMpc.Utils.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_api/index.html">Python API Reference</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">1. Call Types</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#standard">1.1. Standard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#process-events">1.2. Process events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#working-thread">1.3. Working thread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#working-thread-with-gui-operation-and-callback">1.4. Working thread with GUI-operation and callback</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#blocking-thread">1.5. Blocking thread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#threadutils">1.6. ThreadUtils</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../2_basics/index.html">2. Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_objects/index.html">3. Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_document/index.html">4. Document</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_mesh/index.html">5. Mesh</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_fiber-section/index.html">6. Fiber Section</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7_cae-document/index.html">7. Cae document</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../8_post-processing/index.html">8. Post Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../9_application/index.html">9. Application</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">STKO Python API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">1. Call Types</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="call-types">
+<h1>1. Call Types<a class="headerlink" href="#call-types" title="Link to this heading"></a></h1>
+<p>Using Python from a GUI (Graphic User Interface) presents differences compared to the normal usage that it is done of the programming language from a simple console application, and it requires a series of considerations.</p>
+<p>The following examples are not related to specific PyMpc classes, functions or methods, they are just proposed here to illustrate different ways of carrying out processes with Python for the STKO interface. Basics of GUI programming could be of use to explore the full potentials of the Python interface in STKO, and understand better how to program your scripts correctly both as a user and a programmer producing scripts for others. A series of examples on call types are provided in the following subsections. Call types are a series of different methods to, in fact, call a process from the GUI. A .zip file containing all the examples is provided at the end of the section.</p>
+<section id="standard">
+<h2>1.1. Standard<a class="headerlink" href="#standard" title="Link to this heading"></a></h2>
+<p>The first example is a single standard call type with no additional setups. The function sleep is introduced to simulate a lengthy operation. If you run the following script you will notice your GUI blocks for 0.5 seconds when the sleep function is called. If you were to run the following script from a console application, the thread running the program is not occupied in generating any graphic interface, and it will not freeze the visualization during the process. It works simply as sequential programming.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;start&quot;</span><span class="p">)</span>
+<span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;iteration </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">counter</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;end&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A GUI works differently from a console application, as it does not run on a specific thread, simply from the beginning to the end of a script. Instead it creates an infinite loop called process events, on which it receives information from the actual interface, the windows with which the user interacts with the software. Therefore the thread on which we run a standard call type is not just sequentially operating our script, but it is also busy running the process events infinite loop. When we run a function that lasts more than one second, the STKO application will not respond, as it is busy with the script we just launched. This will not mean that the application is crushing, just that it is busy with the script and it cannot update the graphic.</p>
+<p>In order to perform finite element analysis using either <strong>Tcl</strong> or <strong>Python</strong>, the user must understand the existing commands available in the scripting languages (and here the <strong>Tcl</strong> and <strong>Python</strong> languages will differ) and the new commands.</p>
+</section>
+<section id="process-events">
+<h2>1.2. Process events<a class="headerlink" href="#process-events" title="Link to this heading"></a></h2>
+<p>There are different ways to avoid that the GUI will freeze as we are running our scripts, the easiest one is to use the processEvents method from the App sub-module. This function will allow to split the effort of the thread between our script and the GUI. Inserting it the standard call type example from before, just placing it at the end of each iteration we will now be able to interact with the GUI while our script is running, but experiencing some lagging. This way the user understands that there is not a problem with the software, it is just working. Including the processEvent, you can try to run the following script for yourself.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="kn">from</span> <span class="nn">PyMpc</span> <span class="kn">import</span> <span class="n">App</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;start&quot;</span><span class="p">)</span>
+<span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;iteration </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">counter</span><span class="p">))</span>
+    <span class="n">App</span><span class="o">.</span><span class="n">processEvents</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;end&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="working-thread">
+<h2>1.3. Working thread<a class="headerlink" href="#working-thread" title="Link to this heading"></a></h2>
+<p>Another way to call your process and avoid that the GUI will freeze while it is running, is using a working thread. Here, it is necessary to use the <a class="reference external" href="https://pypi.org/project/PySide2/">PySide2</a> library, which is used to build the STKO GUI. The <a class="reference external" href="https://pypi.org/project/PySide2/">PySide2</a> library is already installed on the Python embedded in STKO, if you are using another Python, reference this link for the installation of <a class="reference external" href="https://pypi.org/project/PySide2/">PySide2</a>. You will need to be familiar with the concepts of polymorphism in Python, child and parent classes and inheritance, to understand the following script. The same lengthy function used in the previous two examples is used here, but it is not called directly. First you need to create a Worker class, and use a mechanism available in <a class="reference external" href="https://pypi.org/project/PySide2/">PySide2</a> called signal and slot delivery, which is used for communication between objects. A signal is emitted when a particular event occur and a function (the slot) is called in response to that particular signal. Check out more on signal and slot mechanisms in the <a class="reference external" href="https://doc.qt.io/qtforpython/overviews/signalsandslots.html">Qt Documentation</a>  or through your own research. Therefore, the following script includes a worker class, a signal which will notify the main thread when our process is finished. Inside this class, a function called run is tagged as a slot with the symbol &#64;, which will run the same lengthy function we used before on a parallel working thread.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="kn">from</span> <span class="nn">PySide2.QtCore</span> <span class="kn">import</span> <span class="n">Qt</span><span class="p">,</span> <span class="n">QObject</span><span class="p">,</span> <span class="n">Signal</span><span class="p">,</span> <span class="n">Slot</span><span class="p">,</span> <span class="n">QThread</span><span class="p">,</span> <span class="n">QEventLoop</span>
+
+<span class="k">class</span> <span class="nc">Worker</span><span class="p">(</span><span class="n">QObject</span><span class="p">):</span>
+    <span class="n">finished</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">()</span>         <span class="c1">#signals</span>
+    <span class="nd">@Slot</span><span class="p">()</span>                     <span class="c1">#lengthy function</span>
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>              <span class="c1">#paste your function here, inside run...</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span>
+
+        <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+            <span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+            <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;iteration </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">counter</span><span class="p">))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">finished</span><span class="o">.</span><span class="n">emit</span><span class="p">()</span>    <span class="c1"># Done</span>
+</pre></div>
+</div>
+<p>After defining this class, you can create an event loop that will block the script till the end. Then the thread, the worker, and move the worker to a parallel thread. Then you need to connect the signal to some slots, defining connections, telling the worker to stop the process, to delete itself as soon as it’s over. Further, set up a signal to start calling the run function on the parallel thread. If you were to call the run function directly in your script, without using the QThread class methods, it will run on the GUI thread and not on a parallel one. Same for the worker, you say to the thread to delete when finished and to quit. Then you start the thread, you wait for it to finish and finally run the event loop. Prints can be added to check what is happening in the terminal.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">loop</span> <span class="o">=</span> <span class="n">QEventLoop</span><span class="p">()</span>
+
+<span class="n">thread</span> <span class="o">=</span> <span class="n">QThread</span><span class="p">()</span>
+<span class="n">worker</span> <span class="o">=</span> <span class="n">Worker</span><span class="p">()</span>
+<span class="n">worker</span><span class="o">.</span><span class="n">moveToThread</span><span class="p">(</span><span class="n">thread</span><span class="p">)</span>
+
+<span class="n">worker</span><span class="o">.</span><span class="n">finished</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">thread</span><span class="o">.</span><span class="n">quit</span><span class="p">)</span>
+<span class="n">worker</span><span class="o">.</span><span class="n">finished</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">worker</span><span class="o">.</span><span class="n">deleteLater</span><span class="p">)</span>
+<span class="n">thread</span><span class="o">.</span><span class="n">started</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">worker</span><span class="o">.</span><span class="n">run</span><span class="p">)</span>
+<span class="n">thread</span><span class="o">.</span><span class="n">finished</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">thread</span><span class="o">.</span><span class="n">deleteLater</span><span class="p">)</span>
+<span class="n">thread</span><span class="o">.</span><span class="n">finished</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">loop</span><span class="o">.</span><span class="n">quit</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Starting thread...&#39;</span><span class="p">)</span>
+<span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;   Thread started&#39;</span><span class="p">)</span>
+
+<span class="n">loop</span><span class="o">.</span><span class="n">exec_</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;DONE!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Using the function exec_() from the QEventLoop ensures that you have waited for the thread to finish. It is suggested to always use the event loop, to avoid crashing or other errors in STKO. If you run the example script just provided, you can see that interacting with STKO GUI is possible, as our lengthy function is running. What may happen is that the user decides to change the model, as the process is running, altering the data possibly needed by the script. This could result in the crushing of the application. Crushing could also occur if the same script is rerun before the first process is completed.</p>
+</section>
+<section id="working-thread-with-gui-operation-and-callback">
+<h2>1.4. Working thread with GUI-operation and callback<a class="headerlink" href="#working-thread-with-gui-operation-and-callback" title="Link to this heading"></a></h2>
+<p>All the operations that is related to the GUI can only be performing on the GUI thread, because that thread is the one that is listening to the operating system events. If you try to perform a GUI operation on a parallel working thread, your STKO will most probably crash. One of the most common GUI operation is the opening of a message box, communicating a message to the user and waiting for an input to continue. It is therefore a possible mistake to run a GUI operation on a parallel thread. See for example what happens if you run the following script in your STKO, where a GUI operation is added in the run function from the previous example.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="kn">from</span> <span class="nn">PySide2.QtCore</span> <span class="kn">import</span> <span class="n">Qt</span><span class="p">,</span> <span class="n">QObject</span><span class="p">,</span> <span class="n">Signal</span><span class="p">,</span> <span class="n">Slot</span><span class="p">,</span> <span class="n">QThread</span><span class="p">,</span> <span class="n">QEventLoop</span>
+<span class="kn">from</span> <span class="nn">PySide2.QtWidgets</span> <span class="kn">import</span> <span class="n">QMessageBox</span>
+
+<span class="k">class</span> <span class="nc">Worker</span><span class="p">(</span><span class="n">QObject</span><span class="p">):</span>
+
+    <span class="n">finished</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">()</span>
+
+    <span class="nd">@Slot</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">QMessageBox</span><span class="o">.</span><span class="n">information</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;Title&quot;</span><span class="p">,</span> <span class="s2">&quot;Message: Hi there!&quot;</span><span class="p">)</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span>
+
+        <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+            <span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+            <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;iteration </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">counter</span><span class="p">))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">finished</span><span class="o">.</span><span class="n">emit</span><span class="p">()</span>
+
+<span class="n">loop</span> <span class="o">=</span> <span class="n">QEventLoop</span><span class="p">()</span>
+
+<span class="n">thread</span> <span class="o">=</span> <span class="n">QThread</span><span class="p">()</span>
+<span class="n">worker</span> <span class="o">=</span> <span class="n">Worker</span><span class="p">()</span>
+<span class="n">worker</span><span class="o">.</span><span class="n">moveToThread</span><span class="p">(</span><span class="n">thread</span><span class="p">)</span>
+
+<span class="n">worker</span><span class="o">.</span><span class="n">finished</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">thread</span><span class="o">.</span><span class="n">quit</span><span class="p">)</span>
+<span class="n">worker</span><span class="o">.</span><span class="n">finished</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">worker</span><span class="o">.</span><span class="n">deleteLater</span><span class="p">)</span>
+<span class="n">thread</span><span class="o">.</span><span class="n">started</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">worker</span><span class="o">.</span><span class="n">run</span><span class="p">)</span>
+<span class="n">thread</span><span class="o">.</span><span class="n">finished</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">thread</span><span class="o">.</span><span class="n">deleteLater</span><span class="p">)</span>
+<span class="n">thread</span><span class="o">.</span><span class="n">finished</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">loop</span><span class="o">.</span><span class="n">quit</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Starting thread...&#39;</span><span class="p">)</span>
+<span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;   Thread started&#39;</span><span class="p">)</span>
+
+<span class="n">loop</span><span class="o">.</span><span class="n">exec_</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;DONE!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>It is possible to include in the worker class, a method to run specific functions on the main thread. You can see in the following script, where an additional class called QBlockingSlot, derived from QObject, is created to requests the call for a function, and connect it to the one running of the parallel thread. Whenever the call request is invoked, it will run on the thread that is hosting the class in which the call was created.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="kn">from</span> <span class="nn">PySide2.QtCore</span> <span class="kn">import</span> <span class="n">Qt</span><span class="p">,</span> <span class="n">QObject</span><span class="p">,</span> <span class="n">Signal</span><span class="p">,</span> <span class="n">Slot</span><span class="p">,</span> <span class="n">QThread</span><span class="p">,</span> <span class="n">QEventLoop</span>
+<span class="kn">from</span> <span class="nn">PySide2.QtWidgets</span> <span class="kn">import</span> <span class="n">QMessageBox</span><span class="p">,</span> <span class="n">QApplication</span>
+
+<span class="k">class</span> <span class="nc">QBlockingSlot</span><span class="p">(</span><span class="n">QObject</span><span class="p">):</span>
+<span class="n">requestCall</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">()</span>
+<span class="n">done</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">()</span>
+<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function</span><span class="p">,</span> <span class="n">parent</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="nb">super</span><span class="p">(</span><span class="n">QBlockingSlot</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">requestCall</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">run</span><span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">function</span> <span class="o">=</span> <span class="n">function</span>
+<span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">function</span><span class="p">()</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">done</span><span class="o">.</span><span class="n">emit</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="n">loop</span> <span class="o">=</span> <span class="n">QEventLoop</span><span class="p">()</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">done</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">loop</span><span class="o">.</span><span class="n">quit</span><span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">requestCall</span><span class="o">.</span><span class="n">emit</span><span class="p">()</span>
+<span class="n">loop</span><span class="o">.</span><span class="n">exec_</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">runOnMainThread</span><span class="p">(</span><span class="n">what</span><span class="p">):</span>
+<span class="n">bslot</span> <span class="o">=</span> <span class="n">QBlockingSlot</span><span class="p">(</span><span class="n">what</span><span class="p">)</span>
+<span class="n">bslot</span><span class="o">.</span><span class="n">moveToThread</span><span class="p">(</span><span class="n">QApplication</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">thread</span><span class="p">())</span>
+<span class="n">bslot</span><span class="o">.</span><span class="n">call</span><span class="p">()</span>
+
+<span class="k">class</span> <span class="nc">Worker</span><span class="p">(</span><span class="n">QObject</span><span class="p">):</span>
+
+<span class="n">finished</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">()</span>
+
+<span class="nd">@Slot</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">QThread</span><span class="o">.</span><span class="n">currentThread</span><span class="p">())</span>
+<span class="k">def</span> <span class="nf">what_to_run</span><span class="p">():</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">QThread</span><span class="o">.</span><span class="n">currentThread</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">QApplication</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">thread</span><span class="p">())</span>
+<span class="n">QMessageBox</span><span class="o">.</span><span class="n">information</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;Title&#39;</span><span class="p">,</span> <span class="s1">&#39;Hi There!&#39;</span><span class="p">)</span>
+<span class="n">runOnMainThread</span><span class="p">(</span><span class="k">lambda</span> <span class="p">:</span> <span class="n">what_to_run</span><span class="p">())</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span>
+
+<span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+<span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;iteration </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">counter</span><span class="p">))</span>
+
+<span class="bp">self</span><span class="o">.</span><span class="n">finished</span><span class="o">.</span><span class="n">emit</span><span class="p">()</span>
+
+<span class="n">loop</span> <span class="o">=</span> <span class="n">QEventLoop</span><span class="p">()</span>
+
+<span class="n">thread</span> <span class="o">=</span> <span class="n">QThread</span><span class="p">()</span>
+<span class="n">worker</span> <span class="o">=</span> <span class="n">Worker</span><span class="p">()</span>
+<span class="n">worker</span><span class="o">.</span><span class="n">moveToThread</span><span class="p">(</span><span class="n">thread</span><span class="p">)</span>
+
+<span class="n">worker</span><span class="o">.</span><span class="n">finished</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">thread</span><span class="o">.</span><span class="n">quit</span><span class="p">)</span>
+<span class="n">worker</span><span class="o">.</span><span class="n">finished</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">worker</span><span class="o">.</span><span class="n">deleteLater</span><span class="p">)</span>
+<span class="n">thread</span><span class="o">.</span><span class="n">started</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">worker</span><span class="o">.</span><span class="n">run</span><span class="p">)</span>
+<span class="n">thread</span><span class="o">.</span><span class="n">finished</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">thread</span><span class="o">.</span><span class="n">deleteLater</span><span class="p">)</span>
+<span class="n">thread</span><span class="o">.</span><span class="n">finished</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">loop</span><span class="o">.</span><span class="n">quit</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Starting thread...&#39;</span><span class="p">)</span>
+<span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;   Thread started&#39;</span><span class="p">)</span>
+
+<span class="n">loop</span><span class="o">.</span><span class="n">exec_</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;DONE!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The prints set up in the script will show you that the first call is different from the others, and both the main and parallel working thread are involved in the operations.</p>
+</section>
+<section id="blocking-thread">
+<h2>1.5. Blocking thread<a class="headerlink" href="#blocking-thread" title="Link to this heading"></a></h2>
+<p>The blocking and working thread use the same concept, the only difference is that here you will have a dialog, which will prevent the user from interacting with the GUI, and notify him/her that a process is running and there will not be the doubt that the software is not responding anymore. You can see in the following script, which has the addition of the WorkerDialog function, derived for the PySide2 QDialog class. The dialog should not close when the user presses the button, or the Escape key, otherwise the thread would stop.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="kn">from</span> <span class="nn">PySide2.QtCore</span> <span class="kn">import</span> <span class="n">Qt</span><span class="p">,</span> <span class="n">QObject</span><span class="p">,</span> <span class="n">Signal</span><span class="p">,</span> <span class="n">Slot</span><span class="p">,</span> <span class="n">QThread</span><span class="p">,</span> <span class="n">QEventLoop</span><span class="p">,</span> <span class="n">QTimer</span>
+<span class="kn">from</span> <span class="nn">PySide2.QtWidgets</span> <span class="kn">import</span> <span class="n">QMessageBox</span><span class="p">,</span> <span class="n">QApplication</span><span class="p">,</span> <span class="n">QDialog</span><span class="p">,</span> <span class="n">QLabel</span><span class="p">,</span> <span class="n">QProgressBar</span><span class="p">,</span> <span class="n">QVBoxLayout</span>
+
+<span class="k">class</span> <span class="nc">QBlockingSlot</span><span class="p">(</span><span class="n">QObject</span><span class="p">):</span>
+    <span class="n">requestCall</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">()</span>
+    <span class="n">done</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">()</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function</span><span class="p">,</span> <span class="n">parent</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">QBlockingSlot</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">requestCall</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">run</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">function</span> <span class="o">=</span> <span class="n">function</span>
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">function</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">done</span><span class="o">.</span><span class="n">emit</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">loop</span> <span class="o">=</span> <span class="n">QEventLoop</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">done</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">loop</span><span class="o">.</span><span class="n">quit</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">requestCall</span><span class="o">.</span><span class="n">emit</span><span class="p">()</span>
+        <span class="n">loop</span><span class="o">.</span><span class="n">exec_</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">runOnMainThread</span><span class="p">(</span><span class="n">what</span><span class="p">):</span>
+    <span class="n">bslot</span> <span class="o">=</span> <span class="n">QBlockingSlot</span><span class="p">(</span><span class="n">what</span><span class="p">)</span>
+    <span class="n">bslot</span><span class="o">.</span><span class="n">moveToThread</span><span class="p">(</span><span class="n">QApplication</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">thread</span><span class="p">())</span>
+    <span class="n">bslot</span><span class="o">.</span><span class="n">call</span><span class="p">()</span>
+
+<span class="k">class</span> <span class="nc">WorkerDialog</span><span class="p">(</span><span class="n">QDialog</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">WorkerDialog</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">setWindowFlags</span><span class="p">(</span><span class="n">Qt</span><span class="o">.</span><span class="n">Window</span> <span class="o">|</span> <span class="n">Qt</span><span class="o">.</span><span class="n">WindowTitleHint</span> <span class="o">|</span> <span class="n">Qt</span><span class="o">.</span><span class="n">CustomizeWindowHint</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="n">Qt</span><span class="o">.</span><span class="n">WA_DeleteOnClose</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setLayout</span><span class="p">(</span><span class="n">QVBoxLayout</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="p">()</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">QLabel</span><span class="p">(</span><span class="s2">&quot;Work in progres. Please wait&quot;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pbar</span> <span class="o">=</span> <span class="n">QProgressBar</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pbar</span><span class="o">.</span><span class="n">setRange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pbar</span><span class="o">.</span><span class="n">setTextVisible</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="p">()</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pbar</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">setWindowOpacity</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">delay</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timer</span> <span class="o">=</span> <span class="n">QTimer</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timer</span><span class="o">.</span><span class="n">setInterval</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timer</span><span class="o">.</span><span class="n">timeout</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">onTimerTimeOut</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">showEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;showEvent&#39;</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">WorkerDialog</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">showEvent</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">reject</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">pass</span>
+<span class="nd">@Slot</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">setPercentage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">pbar</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+<span class="nd">@Slot</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">onTimerTimeOut</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">delay</span> <span class="o">&lt;</span> <span class="mf">1.0</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">delay</span> <span class="o">+=</span> <span class="mf">0.05</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setWindowOpacity</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">windowOpacity</span><span class="p">()</span> <span class="o">+</span> <span class="mf">0.05</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">windowOpacity</span><span class="p">()</span> <span class="o">==</span> <span class="mf">1.0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">timer</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">timer</span><span class="o">.</span><span class="n">timeout</span><span class="o">.</span><span class="n">disconnect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">onTimerTimeOut</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Worker</span><span class="p">(</span><span class="n">QObject</span><span class="p">):</span>
+    <span class="n">sendPercentage</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">finished</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">()</span>
+
+    <span class="nd">@Slot</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">QThread</span><span class="o">.</span><span class="n">currentThread</span><span class="p">())</span>
+        <span class="k">def</span> <span class="nf">what_to_run</span><span class="p">():</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">QThread</span><span class="o">.</span><span class="n">currentThread</span><span class="p">())</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">QApplication</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">thread</span><span class="p">())</span>
+            <span class="n">QMessageBox</span><span class="o">.</span><span class="n">information</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;Title&#39;</span><span class="p">,</span> <span class="s1">&#39;Hi There!&#39;</span><span class="p">)</span>
+        <span class="n">runOnMainThread</span><span class="p">(</span><span class="k">lambda</span> <span class="p">:</span> <span class="n">what_to_run</span><span class="p">())</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span>
+
+        <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+            <span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+            <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;iteration </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">counter</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sendPercentage</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mf">10.0</span><span class="o">*</span><span class="mf">100.0</span><span class="p">))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">finished</span><span class="o">.</span><span class="n">emit</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The rest of the script is the same as the one shown in the working thread example, just instead of an event loop here we have a dialog, and there is new connection established in between the worker and the dialog to send the percentage of process completion, to understand how long it is taking to complete the operation.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dialog</span> <span class="o">=</span> <span class="n">WorkerDialog</span><span class="p">()</span>
+
+<span class="n">thread</span> <span class="o">=</span> <span class="n">QThread</span><span class="p">()</span>
+<span class="n">worker</span> <span class="o">=</span> <span class="n">Worker</span><span class="p">()</span>
+<span class="n">worker</span><span class="o">.</span><span class="n">moveToThread</span><span class="p">(</span><span class="n">thread</span><span class="p">)</span>
+
+<span class="n">worker</span><span class="o">.</span><span class="n">finished</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">thread</span><span class="o">.</span><span class="n">quit</span><span class="p">)</span>
+<span class="n">worker</span><span class="o">.</span><span class="n">finished</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">worker</span><span class="o">.</span><span class="n">deleteLater</span><span class="p">)</span>
+<span class="n">thread</span><span class="o">.</span><span class="n">started</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">worker</span><span class="o">.</span><span class="n">run</span><span class="p">)</span>
+<span class="n">thread</span><span class="o">.</span><span class="n">finished</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">thread</span><span class="o">.</span><span class="n">deleteLater</span><span class="p">)</span>
+<span class="n">worker</span><span class="o">.</span><span class="n">sendPercentage</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">dialog</span><span class="o">.</span><span class="n">setPercentage</span><span class="p">)</span>
+<span class="n">thread</span><span class="o">.</span><span class="n">finished</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">dialog</span><span class="o">.</span><span class="n">accept</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Starting thread...&#39;</span><span class="p">)</span>
+<span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;   Thread started&#39;</span><span class="p">)</span>
+
+<span class="n">dialog</span><span class="o">.</span><span class="n">exec_</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;DONE!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>With this script the GUI is blocked, visibly, and you can not interact with it as your process is running. This is the best and most reliable way to interact with STKO from the Python API.</p>
+</section>
+<section id="threadutils">
+<h2>1.6. ThreadUtils<a class="headerlink" href="#threadutils" title="Link to this heading"></a></h2>
+<p>Every time you need to run a new script you do not need to add all of this code to your programs. We created a specific file for you called TreadUtils.py that you can reference in your scripts, calling the following classes and functions and use the same concepts we just explained in a simple and direct manner.</p>
+<p>The classes and functions in ThreadUtils are shown below for clarity. The file starts importing everything you need:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PySide2.QtCore</span> <span class="kn">import</span> <span class="n">Qt</span><span class="p">,</span> <span class="n">QObject</span><span class="p">,</span> <span class="n">Signal</span><span class="p">,</span> <span class="n">Slot</span><span class="p">,</span> <span class="n">QThread</span><span class="p">,</span> <span class="n">QEventLoop</span><span class="p">,</span> <span class="n">QTimer</span>
+<span class="kn">from</span> <span class="nn">PySide2.QtWidgets</span> <span class="kn">import</span> <span class="n">QMessageBox</span><span class="p">,</span> <span class="n">QApplication</span><span class="p">,</span> <span class="n">QDialog</span><span class="p">,</span> <span class="n">QLabel</span><span class="p">,</span> <span class="n">QProgressBar</span><span class="p">,</span> <span class="n">QVBoxLayout</span>
+</pre></div>
+</div>
+<p>You can find the following:</p>
+<ul class="simple">
+<li><p>A simple QObject that wraps a user-defined function, and calls this function waiting for it to finish.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">QBlockingSlot</span><span class="p">(</span><span class="n">QObject</span><span class="p">):</span>
+    <span class="n">requestCall</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">()</span>
+    <span class="n">done</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">()</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function</span><span class="p">,</span> <span class="n">parent</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">QBlockingSlot</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">requestCall</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">run</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">function</span> <span class="o">=</span> <span class="n">function</span>
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">function</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">done</span><span class="o">.</span><span class="n">emit</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">loop</span> <span class="o">=</span> <span class="n">QEventLoop</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">done</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">loop</span><span class="o">.</span><span class="n">quit</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">requestCall</span><span class="o">.</span><span class="n">emit</span><span class="p">()</span>
+        <span class="n">loop</span><span class="o">.</span><span class="n">exec_</span><span class="p">()</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>A utility to run a function with a QBlockingSlot on the GUI thread.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">runOnMainThread</span><span class="p">(</span><span class="n">what</span><span class="p">):</span>
+    <span class="n">bslot</span> <span class="o">=</span> <span class="n">QBlockingSlot</span><span class="p">(</span><span class="n">what</span><span class="p">)</span>
+    <span class="n">bslot</span><span class="o">.</span><span class="n">moveToThread</span><span class="p">(</span><span class="n">QApplication</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">thread</span><span class="p">())</span>
+    <span class="n">bslot</span><span class="o">.</span><span class="n">call</span><span class="p">()</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>A simple worker dialog, with a progress bar to track the percentage of an operation.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">WorkerDialog</span><span class="p">(</span><span class="n">QDialog</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">WorkerDialog</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">setWindowFlags</span><span class="p">(</span><span class="n">Qt</span><span class="o">.</span><span class="n">Window</span> <span class="o">|</span> <span class="n">Qt</span><span class="o">.</span><span class="n">WindowTitleHint</span> <span class="o">|</span> <span class="n">Qt</span><span class="o">.</span><span class="n">CustomizeWindowHint</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="n">Qt</span><span class="o">.</span><span class="n">WA_DeleteOnClose</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setLayout</span><span class="p">(</span><span class="n">QVBoxLayout</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="p">()</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">QLabel</span><span class="p">(</span><span class="s2">&quot;Work in progres. Please wait&quot;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pbar</span> <span class="o">=</span> <span class="n">QProgressBar</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pbar</span><span class="o">.</span><span class="n">setRange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pbar</span><span class="o">.</span><span class="n">setTextVisible</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="p">()</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pbar</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">setWindowOpacity</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">delay</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timer</span> <span class="o">=</span> <span class="n">QTimer</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timer</span><span class="o">.</span><span class="n">setInterval</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timer</span><span class="o">.</span><span class="n">timeout</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">onTimerTimeOut</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">showEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;showEvent&#39;</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">WorkerDialog</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">showEvent</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">reject</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">pass</span>
+<span class="nd">@Slot</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">setPercentage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">pbar</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+<span class="nd">@Slot</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">onTimerTimeOut</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">delay</span> <span class="o">&lt;</span> <span class="mf">1.0</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">delay</span> <span class="o">+=</span> <span class="mf">0.05</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setWindowOpacity</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">windowOpacity</span><span class="p">()</span> <span class="o">+</span> <span class="mf">0.05</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">windowOpacity</span><span class="p">()</span> <span class="o">==</span> <span class="mf">1.0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">timer</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">timer</span><span class="o">.</span><span class="n">timeout</span><span class="o">.</span><span class="n">disconnect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">onTimerTimeOut</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>A function which runs the worker (an instance of a class derived from Worker) on a working thread using the provided dialog. The dialog should have the sendPercentage(int) signal defined and should derive from QDialog</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">runOnWorkerThread</span><span class="p">(</span><span class="n">worker</span><span class="p">,</span> <span class="n">dialog</span> <span class="o">=</span> <span class="n">WorkerDialog</span><span class="p">()):</span>
+<span class="c1"># initial checks</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">worker</span><span class="p">,</span> <span class="n">QObject</span><span class="p">):</span>
+    <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;the worker object should inherit from QObject&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">worker</span><span class="p">,</span> <span class="s1">&#39;finished&#39;</span><span class="p">):</span>
+    <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;the worker object should have the finished() signal&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">worker</span><span class="p">,</span> <span class="s1">&#39;sendPercentage&#39;</span><span class="p">):</span>
+    <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;the worker object should have the sendPercentage(int) signal&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dialog</span><span class="p">,</span> <span class="n">QDialog</span><span class="p">):</span>
+    <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;the dialog object should inherit from QDialog&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">dialog</span><span class="p">,</span> <span class="s1">&#39;setPercentage&#39;</span><span class="p">):</span>
+    <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;the dialog object should have a method called setPercentage(int)&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="nb">callable</span><span class="p">(</span><span class="n">dialog</span><span class="o">.</span><span class="n">setPercentage</span><span class="p">):</span>
+    <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;the dialog object setPercentage attribute is not a callable&#39;</span><span class="p">)</span>
+
+<span class="c1"># create a dialog or an event loop that will block the script till the end</span>
+<span class="n">dialog</span> <span class="o">=</span> <span class="n">WorkerDialog</span><span class="p">()</span>
+
+<span class="c1"># create the thread, the worker, and move the worker to the thread</span>
+<span class="n">thread</span> <span class="o">=</span> <span class="n">QThread</span><span class="p">()</span>
+<span class="n">worker</span><span class="o">.</span><span class="n">moveToThread</span><span class="p">(</span><span class="n">thread</span><span class="p">)</span>
+
+<span class="c1"># set up worker and thread connections</span>
+<span class="n">worker</span><span class="o">.</span><span class="n">finished</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">thread</span><span class="o">.</span><span class="n">quit</span><span class="p">)</span>
+<span class="n">worker</span><span class="o">.</span><span class="n">finished</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">worker</span><span class="o">.</span><span class="n">deleteLater</span><span class="p">)</span>
+<span class="n">thread</span><span class="o">.</span><span class="n">started</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">worker</span><span class="o">.</span><span class="n">run</span><span class="p">)</span>
+<span class="n">thread</span><span class="o">.</span><span class="n">finished</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">thread</span><span class="o">.</span><span class="n">deleteLater</span><span class="p">)</span>
+<span class="n">worker</span><span class="o">.</span><span class="n">sendPercentage</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">dialog</span><span class="o">.</span><span class="n">setPercentage</span><span class="p">)</span>
+<span class="n">thread</span><span class="o">.</span><span class="n">finished</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">dialog</span><span class="o">.</span><span class="n">accept</span><span class="p">)</span>
+
+<span class="c1"># start the thread</span>
+<span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+<span class="c1"># run dialog event loop</span>
+<span class="n">dialog</span><span class="o">.</span><span class="n">exec_</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Importing ThreadUtils in your script, after placing it in a folder named “utils” in the directory loaded in your Script Explored, you can use the blocking thread with a much lighter script as following.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="kn">import</span> <span class="nn">importlib</span>
+<span class="kn">import</span> <span class="nn">utils.ThreadUtils</span>
+<span class="n">importlib</span><span class="o">.</span><span class="n">reload</span><span class="p">(</span><span class="n">utils</span><span class="o">.</span><span class="n">ThreadUtils</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">utils.ThreadUtils</span> <span class="k">as</span> <span class="nn">tu</span>
+<span class="kn">from</span> <span class="nn">PySide2.QtCore</span> <span class="kn">import</span> <span class="n">Qt</span><span class="p">,</span> <span class="n">QObject</span><span class="p">,</span> <span class="n">Signal</span><span class="p">,</span> <span class="n">Slot</span><span class="p">,</span> <span class="n">QThread</span>
+<span class="kn">from</span> <span class="nn">PySide2.QtWidgets</span> <span class="kn">import</span> <span class="n">QMessageBox</span><span class="p">,</span> <span class="n">QApplication</span>
+
+<span class="k">class</span> <span class="nc">Worker</span><span class="p">(</span><span class="n">QObject</span><span class="p">):</span>
+    <span class="n">sendPercentage</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">finished</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">()</span>
+
+    <span class="nd">@Slot</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">QThread</span><span class="o">.</span><span class="n">currentThread</span><span class="p">())</span>
+        <span class="k">def</span> <span class="nf">what_to_run</span><span class="p">():</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">QThread</span><span class="o">.</span><span class="n">currentThread</span><span class="p">())</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">QApplication</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">thread</span><span class="p">())</span>
+            <span class="n">QMessageBox</span><span class="o">.</span><span class="n">information</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;Title&#39;</span><span class="p">,</span> <span class="s1">&#39;Hi There!&#39;</span><span class="p">)</span>
+        <span class="n">tu</span><span class="o">.</span><span class="n">runOnMainThread</span><span class="p">(</span><span class="k">lambda</span> <span class="p">:</span> <span class="n">what_to_run</span><span class="p">())</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span>
+
+        <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+            <span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+            <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;iteration </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">counter</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sendPercentage</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mf">10.0</span><span class="o">*</span><span class="mf">100.0</span><span class="p">))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">finished</span><span class="o">.</span><span class="n">emit</span><span class="p">()</span>
+
+<span class="n">tu</span><span class="o">.</span><span class="n">runOnWorkerThread</span><span class="p">(</span><span class="n">Worker</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Additionally if you want to add an exception to your function before you emit the signal to the thread that the process is finished you can use the sub-module <a class="reference external" href="../../_api/_modules/PyMpc.IO.html">IO</a>, referenced in section Input/Output, substituting the last line of codes in your run function with the following.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>
+    <span class="n">IO</span><span class="o">.</span><span class="n">write_cerr</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">ex</span><span class="p">))</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">finished</span><span class="o">.</span><span class="n">emit</span><span class="p">()</span> <span class="c1"># Done</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024 Asdea Software.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

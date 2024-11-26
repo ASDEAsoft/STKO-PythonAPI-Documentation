@@ -1,0 +1,10 @@
+.. _MpcMeshVRepMapOfElements:
+
+MpcMeshVRepMapOfElements
+========================
+
+.. autoclass:: PyMpc.MpcMeshVRepMapOfElements
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

@@ -1,0 +1,14 @@
+PyMpc.IO
+========
+
+.. automodule:: PyMpc.IO
+
+Functions
+---------
+
+.. autofunction:: PyMpc.IO.write_cerr
+
+.. autofunction:: PyMpc.IO.write_clog
+
+.. autofunction:: PyMpc.IO.write_cout
+

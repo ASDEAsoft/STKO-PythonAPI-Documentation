@@ -1,0 +1,10 @@
+.. _MpcElementQuadrilateralCohesiveBand3D4N:
+
+MpcElementQuadrilateralCohesiveBand3D4N
+=======================================
+
+.. autoclass:: PyMpc.MpcElementQuadrilateralCohesiveBand3D4N
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

@@ -1,0 +1,10 @@
+.. _FxSelectionResult:
+
+FxSelectionResult
+=================
+
+.. autoclass:: PyMpc.FxSelectionResult
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

@@ -1,0 +1,10 @@
+.. _MpcOdbVirtualResultTimeInfo:
+
+MpcOdbVirtualResultTimeInfo
+===========================
+
+.. autoclass:: PyMpc.MpcOdbVirtualResultTimeInfo
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

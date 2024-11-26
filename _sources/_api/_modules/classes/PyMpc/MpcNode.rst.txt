@@ -1,0 +1,10 @@
+.. _MpcNode:
+
+MpcNode
+=======
+
+.. autoclass:: PyMpc.MpcNode
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

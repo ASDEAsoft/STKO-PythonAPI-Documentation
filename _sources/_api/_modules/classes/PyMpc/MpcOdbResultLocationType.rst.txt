@@ -1,0 +1,10 @@
+.. _MpcOdbResultLocationType:
+
+MpcOdbResultLocationType
+========================
+
+.. autoclass:: PyMpc.MpcOdbResultLocationType
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

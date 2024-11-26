@@ -1,0 +1,10 @@
+.. _FxOccFactoryCurve:
+
+FxOccFactoryCurve
+=================
+
+.. autoclass:: PyMpc.FxOccFactoryCurve
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

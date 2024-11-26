@@ -1,0 +1,10 @@
+.. _MpcOdpRegeneratorUpdateInfo:
+
+MpcOdpRegeneratorUpdateInfo
+===========================
+
+.. autoclass:: PyMpc.MpcOdpRegeneratorUpdateInfo
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

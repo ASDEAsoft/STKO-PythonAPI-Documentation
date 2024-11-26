@@ -1,0 +1,10 @@
+.. _MpcMeshOfGeometry:
+
+MpcMeshOfGeometry
+=================
+
+.. autoclass:: PyMpc.MpcMeshOfGeometry
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

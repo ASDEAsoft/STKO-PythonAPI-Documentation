@@ -1,0 +1,479 @@
+
+<!DOCTYPE html>
+
+<html class="writer-html5" data-content_root="../../../../" lang="en">
+<head>
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MpcElementLine2D2N — STKO Python API  documentation</title>
+<link href="../../../../_static/pygments.css?v=80d5e7a1" rel="stylesheet" type="text/css"/>
+<link href="../../../../_static/css/theme.css?v=e59714d7" rel="stylesheet" type="text/css"/>
+<link href="../../../../_static/css/custom.css?v=8a89d2a5" rel="stylesheet" type="text/css"/>
+<script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+<script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+<script src="../../../../_static/documentation_options.js?v=5929fcd5"></script>
+<script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+<script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../../../../_static/js/theme.js"></script>
+<link href="../../../../genindex.html" rel="index" title="Index"/>
+<link href="../../../../search.html" rel="search" title="Search"/>
+<link href="MpcElementLine2D3N.html" rel="next" title="MpcElementLine2D3N"/>
+<link href="MpcElementHexahedron3D8N.html" rel="prev" title="MpcElementHexahedron3D8N"/>
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a href="../../../../index.html">
+<img alt="Logo" class="logo" src="../../../../_static/logo.png"/>
+</a>
+<div role="search">
+<form action="../../../../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div><div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../../index.html">Python API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../PyMpc.html">PyMpc</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../../PyMpc.html#categories">Categories</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../../categories/PyMpc/Fx.html">Fx (PyMpc)</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../../categories/PyMpc/Mpc.html">Mpc (PyMpc)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../PyMpc.html#classes">Classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../PyMpc.html#functions">Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../PyMpc.App.html">PyMpc.App</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../PyMpc.FxOccBuilder.html">PyMpc.FxOccBuilder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../PyMpc.FxOccNurbs.html">PyMpc.FxOccNurbs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../PyMpc.FxOccQuery.html">PyMpc.FxOccQuery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../PyMpc.IO.html">PyMpc.IO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../PyMpc.Math.html">PyMpc.Math</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../PyMpc.Units.html">PyMpc.Units</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../PyMpc.Utils.html">PyMpc.Utils</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../_examples/1_call-types/index.html">1. Call Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../_examples/2_basics/index.html">2. Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../_examples/3_objects/index.html">3. Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../_examples/4_document/index.html">4. Document</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../_examples/5_mesh/index.html">5. Mesh</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../_examples/6_fiber-section/index.html">6. Fiber Section</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../_examples/7_cae-document/index.html">7. Cae document</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../_examples/8_post-processing/index.html">8. Post Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../_examples/9_application/index.html">9. Application</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift"><nav aria-label="Mobile navigation menu" class="wy-nav-top">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../../../../index.html">STKO Python API</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content">
+<div aria-label="Page navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Home" class="icon icon-home" href="../../../../index.html"></a></li>
+<li class="breadcrumb-item"><a href="../../../index.html">Python API Reference</a></li>
+<li class="breadcrumb-item"><a href="../../PyMpc.html">PyMpc</a></li>
+<li class="breadcrumb-item"><a href="../../categories/PyMpc/Mpc.html">Mpc (PyMpc)</a></li>
+<li class="breadcrumb-item active">MpcElementLine2D2N</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div itemprop="articleBody">
+<section id="mpcelementline2d2n">
+<span id="id1"></span><h1>MpcElementLine2D2N<a class="headerlink" href="#mpcelementline2d2n" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="PyMpc.MpcElementLine2D2N">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><a class="reference internal" href="MpcElementLine2D2N.html"><span class="pre">MpcElementLine2D2N</span></a></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(object)arg1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(int)arg2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcIntegrationRule.html"><span class="pre">MpcIntegrationRule</span></a><span class="pre">)arg3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcElementConnectivityCollection.html"><span class="pre">MpcElementConnectivityCollection</span></a><span class="pre">)arg4</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PyMpc.MpcElementLine2D2N" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="MpcElement.html#PyMpc.MpcElement" title="PyMpc.MpcElement"><code class="xref py py-class docutils literal notranslate"><span class="pre">MpcElement</span></code></a></p>
+<dl class="simple">
+<dt>C++ signature :</dt><dd><p>void __init__(struct _object * __ptr64,int,class boost::shared_ptr&lt;class MpcIntegrationRule&gt;,class std::vector&lt;class boost::shared_ptr&lt;class MpcNode&gt;,class std::allocator&lt;class boost::shared_ptr&lt;class MpcNode&gt; &gt; &gt;)</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcElementLine2D2N.area">
+<span class="sig-name descname"><span class="pre">area</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcElement.html"><span class="pre">MpcElement</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">float</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcElementLine2D2N.area" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>double area(class MpcElement {lvalue})</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="PyMpc.MpcElementLine2D2N.boundaryEdges">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">boundaryEdges</span></span><a class="headerlink" href="#PyMpc.MpcElementLine2D2N.boundaryEdges" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcElementLine2D2N.boundaryFaceNodeIndexToParent">
+<span class="sig-name descname"><span class="pre">boundaryFaceNodeIndexToParent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcElement.html"><span class="pre">MpcElement</span></a><span class="pre">)arg1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(int)arg2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(int)arg3</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">int</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcElementLine2D2N.boundaryFaceNodeIndexToParent" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>unsigned __int64 boundaryFaceNodeIndexToParent(class MpcElement {lvalue},int,unsigned __int64)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="PyMpc.MpcElementLine2D2N.boundaryFaces">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">boundaryFaces</span></span><a class="headerlink" href="#PyMpc.MpcElementLine2D2N.boundaryFaces" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcElementLine2D2N.check">
+<span class="sig-name descname"><span class="pre">check</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcElement.html"><span class="pre">MpcElement</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcElementLine2D2N.check" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void check(class MpcElement {lvalue})</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcElementLine2D2N.clearBoundaryEdges">
+<span class="sig-name descname"><span class="pre">clearBoundaryEdges</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcElement.html"><span class="pre">MpcElement</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcElementLine2D2N.clearBoundaryEdges" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void clearBoundaryEdges(class MpcElement {lvalue})</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcElementLine2D2N.clearBoundaryFaces">
+<span class="sig-name descname"><span class="pre">clearBoundaryFaces</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcElement.html"><span class="pre">MpcElement</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcElementLine2D2N.clearBoundaryFaces" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void clearBoundaryFaces(class MpcElement {lvalue})</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcElementLine2D2N.clone">
+<span class="sig-name descname"><span class="pre">clone</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcElement.html"><span class="pre">MpcElement</span></a><span class="pre">)arg1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(int)arg2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcElementConnectivityCollection.html"><span class="pre">MpcElementConnectivityCollection</span></a><span class="pre">)arg3</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="MpcElement.html"><span class="pre">MpcElement</span></a> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcElementLine2D2N.clone" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class boost::shared_ptr&lt;class MpcElement&gt; clone(class MpcElement {lvalue},int,class std::vector&lt;class boost::shared_ptr&lt;class MpcNode&gt;,class std::allocator&lt;class boost::shared_ptr&lt;class MpcNode&gt; &gt; &gt;)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcElementLine2D2N.computeCenter">
+<span class="sig-name descname"><span class="pre">computeCenter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcElement.html"><span class="pre">MpcElement</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">vec3</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcElementLine2D2N.computeCenter" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class Eigen::Matrix&lt;double,3,1,0,3,1&gt; computeCenter(class MpcElement {lvalue})</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcElementLine2D2N.computeExtrusionVisualRepresentation">
+<span class="sig-name descname"><span class="pre">computeExtrusionVisualRepresentation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcElement.html"><span class="pre">MpcElement</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="FxShape.html"><span class="pre">FxShape</span></a> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcElementLine2D2N.computeExtrusionVisualRepresentation" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class boost::shared_ptr&lt;class FxShape&gt; computeExtrusionVisualRepresentation(class boost::shared_ptr&lt;class MpcElement&gt;)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcElementLine2D2N.computeLumpingFactors">
+<span class="sig-name descname"><span class="pre">computeLumpingFactors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcElement.html"><span class="pre">MpcElement</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">vec</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcElementLine2D2N.computeLumpingFactors" title="Link to this definition"></a></dt>
+<dd><blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class Eigen::Matrix&lt;double,-1,1,0,-1,1&gt; computeLumpingFactors(class MpcElement {lvalue})</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>computeLumpingFactors( (MpcElement)arg1, (vec)arg2, (mat)arg3, (mat)arg4, (vec)arg5) -&gt; None :</p>
+<blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void computeLumpingFactors(class MpcElement {lvalue},class Eigen::Matrix&lt;double,-1,1,0,-1,1&gt; {lvalue},class Eigen::Matrix&lt;double,-1,-1,0,-1,-1&gt; {lvalue},class Eigen::Matrix&lt;double,-1,-1,0,-1,-1&gt; {lvalue},class Eigen::Matrix&lt;double,-1,1,0,-1,1&gt; {lvalue})</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcElementLine2D2N.createBoundaryEdgeElement">
+<span class="sig-name descname"><span class="pre">createBoundaryEdgeElement</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcElement.html"><span class="pre">MpcElement</span></a><span class="pre">)arg1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcBoundaryEdgeInfo.html"><span class="pre">MpcBoundaryEdgeInfo</span></a><span class="pre">)arg2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcIntegrationRuleRegistry.html"><span class="pre">MpcIntegrationRuleRegistry</span></a><span class="pre">)arg3</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcElementConnectivityCollection.html"><span class="pre">MpcElementConnectivityCollection</span></a><span class="pre">)arg4</span></span></em><span class="optional">]</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="MpcElement.html"><span class="pre">MpcElement</span></a> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcElementLine2D2N.createBoundaryEdgeElement" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class boost::shared_ptr&lt;class MpcElement&gt; createBoundaryEdgeElement(class boost::shared_ptr&lt;class MpcElement&gt;,struct MpcBoundaryEdgeInfo,class MpcIntegrationRuleRegistry [,class std::vector&lt;class boost::shared_ptr&lt;class MpcNode&gt;,class std::allocator&lt;class boost::shared_ptr&lt;class MpcNode&gt; &gt; &gt; {lvalue}])</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcElementLine2D2N.createBoundaryFaceElement">
+<span class="sig-name descname"><span class="pre">createBoundaryFaceElement</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcElement.html"><span class="pre">MpcElement</span></a><span class="pre">)arg1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcBoundaryFaceInfo.html"><span class="pre">MpcBoundaryFaceInfo</span></a><span class="pre">)arg2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcIntegrationRuleRegistry.html"><span class="pre">MpcIntegrationRuleRegistry</span></a><span class="pre">)arg3</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcElementConnectivityCollection.html"><span class="pre">MpcElementConnectivityCollection</span></a><span class="pre">)arg4</span></span></em><span class="optional">]</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="MpcElement.html"><span class="pre">MpcElement</span></a> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcElementLine2D2N.createBoundaryFaceElement" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class boost::shared_ptr&lt;class MpcElement&gt; createBoundaryFaceElement(class boost::shared_ptr&lt;class MpcElement&gt;,struct MpcBoundaryFaceInfo,class MpcIntegrationRuleRegistry [,class std::vector&lt;class boost::shared_ptr&lt;class MpcNode&gt;,class std::allocator&lt;class boost::shared_ptr&lt;class MpcNode&gt; &gt; &gt; {lvalue}])</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="PyMpc.MpcElementLine2D2N.customData">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">customData</span></span><a class="headerlink" href="#PyMpc.MpcElementLine2D2N.customData" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcElementLine2D2N.dimension">
+<span class="sig-name descname"><span class="pre">dimension</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcElement.html"><span class="pre">MpcElement</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">int</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcElementLine2D2N.dimension" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>unsigned __int64 dimension(class MpcElement {lvalue})</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcElementLine2D2N.distanceFromThis">
+<span class="sig-name descname"><span class="pre">distanceFromThis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcElement.html"><span class="pre">MpcElement</span></a><span class="pre">)arg1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(vec3)arg2</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">tuple</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcElementLine2D2N.distanceFromThis" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class boost::python::tuple distanceFromThis(class boost::shared_ptr&lt;class MpcElement&gt;,class Eigen::Matrix&lt;double,3,1,0,3,1&gt;)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcElementLine2D2N.domainSize">
+<span class="sig-name descname"><span class="pre">domainSize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcElement.html"><span class="pre">MpcElement</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">float</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcElementLine2D2N.domainSize" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>double domainSize(class MpcElement {lvalue})</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcElementLine2D2N.extrapolateToNodes">
+<span class="sig-name descname"><span class="pre">extrapolateToNodes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcElement.html"><span class="pre">MpcElement</span></a><span class="pre">)arg1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(mat)arg2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(mat)arg3</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcElementLine2D2N.extrapolateToNodes" title="Link to this definition"></a></dt>
+<dd><blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void extrapolateToNodes(class boost::shared_ptr&lt;class MpcElement&gt;,class Eigen::Matrix&lt;double,-1,-1,0,-1,-1&gt;,class Eigen::Matrix&lt;double,-1,-1,0,-1,-1&gt; {lvalue})</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>extrapolateToNodes( (MpcElement)arg1, (mat)arg2) -&gt; mat :</p>
+<blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class Eigen::Matrix&lt;double,-1,-1,0,-1,-1&gt; extrapolateToNodes(class boost::shared_ptr&lt;class MpcElement&gt;,class Eigen::Matrix&lt;double,-1,-1,0,-1,-1&gt;)</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcElementLine2D2N.geometryFamilyType">
+<span class="sig-name descname"><span class="pre">geometryFamilyType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcElement.html"><span class="pre">MpcElement</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="MpcElementGeometryFamilyType.html"><span class="pre">MpcElementGeometryFamilyType</span></a> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcElementLine2D2N.geometryFamilyType" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>enum MpcElementGeometryFamilyType geometryFamilyType(class MpcElement {lvalue})</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcElementLine2D2N.getBoundaryEdgesInfo">
+<span class="sig-name descname"><span class="pre">getBoundaryEdgesInfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcElement.html"><span class="pre">MpcElement</span></a><span class="pre">)arg1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(object)arg2</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcElementLine2D2N.getBoundaryEdgesInfo" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void getBoundaryEdgesInfo(class MpcElement {lvalue},class std::vector&lt;struct MpcBoundaryEdgeInfo,class std::allocator&lt;struct MpcBoundaryEdgeInfo&gt; &gt; {lvalue})</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcElementLine2D2N.getBoundaryFacesInfo">
+<span class="sig-name descname"><span class="pre">getBoundaryFacesInfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcElement.html"><span class="pre">MpcElement</span></a><span class="pre">)arg1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(object)arg2</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcElementLine2D2N.getBoundaryFacesInfo" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void getBoundaryFacesInfo(class MpcElement {lvalue},class std::vector&lt;struct MpcBoundaryFaceInfo,class std::allocator&lt;struct MpcBoundaryFaceInfo&gt; &gt; {lvalue})</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="PyMpc.MpcElementLine2D2N.id">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#PyMpc.MpcElementLine2D2N.id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="PyMpc.MpcElementLine2D2N.integrationRule">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">integrationRule</span></span><a class="headerlink" href="#PyMpc.MpcElementLine2D2N.integrationRule" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcElementLine2D2N.jacobianAt">
+<span class="sig-name descname"><span class="pre">jacobianAt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcElement.html"><span class="pre">MpcElement</span></a><span class="pre">)arg1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcIntegrationPoint.html"><span class="pre">MpcIntegrationPoint</span></a><span class="pre">)arg2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(mat)arg3</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">(mat)arg4</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">(mat)arg5</span></span></em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcElementLine2D2N.jacobianAt" title="Link to this definition"></a></dt>
+<dd><blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void jacobianAt(class boost::shared_ptr&lt;class MpcElement&gt;,class MpcIntegrationPoint,class Eigen::Matrix&lt;double,-1,-1,0,-1,-1&gt; [,class Eigen::Matrix&lt;double,-1,-1,0,-1,-1&gt; {lvalue} [,class Eigen::Matrix&lt;double,-1,-1,0,-1,-1&gt; {lvalue}]])</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>jacobianAt( (MpcElement)arg1, (MpcIntegrationPoint)arg2) -&gt; mat :</p>
+<blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class Eigen::Matrix&lt;double,-1,-1,0,-1,-1&gt; jacobianAt(class boost::shared_ptr&lt;class MpcElement&gt;,class MpcIntegrationPoint)</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcElementLine2D2N.length">
+<span class="sig-name descname"><span class="pre">length</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcElement.html"><span class="pre">MpcElement</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">float</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcElementLine2D2N.length" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>double length(class MpcElement {lvalue})</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcElementLine2D2N.name">
+<span class="sig-name descname"><span class="pre">name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcElement.html"><span class="pre">MpcElement</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">str</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcElementLine2D2N.name" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class std::basic_string&lt;char,struct std::char_traits&lt;char&gt;,class std::allocator&lt;char&gt; &gt; name(class MpcElement {lvalue})</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcElementLine2D2N.nodeLocalCoordinates">
+<span class="sig-name descname"><span class="pre">nodeLocalCoordinates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcElement.html"><span class="pre">MpcElement</span></a><span class="pre">)arg1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcNode.html"><span class="pre">MpcNode</span></a><span class="pre">)arg2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcIntegrationPoint.html"><span class="pre">MpcIntegrationPoint</span></a><span class="pre">)arg3</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">bool</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcElementLine2D2N.nodeLocalCoordinates" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>bool nodeLocalCoordinates(class MpcElement {lvalue},class boost::shared_ptr&lt;class MpcNode&gt;,class MpcIntegrationPoint {lvalue})</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="PyMpc.MpcElementLine2D2N.nodes">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">nodes</span></span><a class="headerlink" href="#PyMpc.MpcElementLine2D2N.nodes" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcElementLine2D2N.numberOfBoundaryEdges">
+<span class="sig-name descname"><span class="pre">numberOfBoundaryEdges</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcElement.html"><span class="pre">MpcElement</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">int</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcElementLine2D2N.numberOfBoundaryEdges" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>unsigned __int64 numberOfBoundaryEdges(class MpcElement {lvalue})</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcElementLine2D2N.numberOfBoundaryFaces">
+<span class="sig-name descname"><span class="pre">numberOfBoundaryFaces</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcElement.html"><span class="pre">MpcElement</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">int</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcElementLine2D2N.numberOfBoundaryFaces" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>unsigned __int64 numberOfBoundaryFaces(class MpcElement {lvalue})</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcElementLine2D2N.numberOfIntegrationPoints">
+<span class="sig-name descname"><span class="pre">numberOfIntegrationPoints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcElement.html"><span class="pre">MpcElement</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">int</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcElementLine2D2N.numberOfIntegrationPoints" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>unsigned __int64 numberOfIntegrationPoints(class MpcElement {lvalue})</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcElementLine2D2N.numberOfMasterNodes">
+<span class="sig-name descname"><span class="pre">numberOfMasterNodes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcElement.html"><span class="pre">MpcElement</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">int</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcElementLine2D2N.numberOfMasterNodes" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>int numberOfMasterNodes(class MpcElement {lvalue})</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcElementLine2D2N.numberOfNodes">
+<span class="sig-name descname"><span class="pre">numberOfNodes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcElement.html"><span class="pre">MpcElement</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">int</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcElementLine2D2N.numberOfNodes" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>unsigned __int64 numberOfNodes(class MpcElement {lvalue})</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcElementLine2D2N.numberOfSlaveNodes">
+<span class="sig-name descname"><span class="pre">numberOfSlaveNodes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcElement.html"><span class="pre">MpcElement</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">int</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcElementLine2D2N.numberOfSlaveNodes" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>int numberOfSlaveNodes(class MpcElement {lvalue})</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcElementLine2D2N.order">
+<span class="sig-name descname"><span class="pre">order</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcElement.html"><span class="pre">MpcElement</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">int</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcElementLine2D2N.order" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>unsigned __int64 order(class MpcElement {lvalue})</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="PyMpc.MpcElementLine2D2N.orientation">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">orientation</span></span><a class="headerlink" href="#PyMpc.MpcElementLine2D2N.orientation" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcElementLine2D2N.shapeFunctionsAt">
+<span class="sig-name descname"><span class="pre">shapeFunctionsAt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcElement.html"><span class="pre">MpcElement</span></a><span class="pre">)arg1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcIntegrationPoint.html"><span class="pre">MpcIntegrationPoint</span></a><span class="pre">)arg2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(vec)arg3</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcElementLine2D2N.shapeFunctionsAt" title="Link to this definition"></a></dt>
+<dd><blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void shapeFunctionsAt(class boost::shared_ptr&lt;class MpcElement&gt;,class MpcIntegrationPoint,class Eigen::Matrix&lt;double,-1,1,0,-1,1&gt; {lvalue})</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>shapeFunctionsAt( (MpcElement)arg1, (MpcIntegrationPoint)arg2) -&gt; vec :</p>
+<blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class Eigen::Matrix&lt;double,-1,1,0,-1,1&gt; shapeFunctionsAt(class boost::shared_ptr&lt;class MpcElement&gt;,class MpcIntegrationPoint)</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcElementLine2D2N.shapeFunctionsLocalGradientsAt">
+<span class="sig-name descname"><span class="pre">shapeFunctionsLocalGradientsAt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcElement.html"><span class="pre">MpcElement</span></a><span class="pre">)arg1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcIntegrationPoint.html"><span class="pre">MpcIntegrationPoint</span></a><span class="pre">)arg2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(mat)arg3</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcElementLine2D2N.shapeFunctionsLocalGradientsAt" title="Link to this definition"></a></dt>
+<dd><blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void shapeFunctionsLocalGradientsAt(class boost::shared_ptr&lt;class MpcElement&gt;,class MpcIntegrationPoint,class Eigen::Matrix&lt;double,-1,-1,0,-1,-1&gt; {lvalue})</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>shapeFunctionsLocalGradientsAt( (MpcElement)arg1, (MpcIntegrationPoint)arg2) -&gt; vec :</p>
+<blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class Eigen::Matrix&lt;double,-1,1,0,-1,1&gt; shapeFunctionsLocalGradientsAt(class boost::shared_ptr&lt;class MpcElement&gt;,class MpcIntegrationPoint)</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcElementLine2D2N.toString">
+<span class="sig-name descname"><span class="pre">toString</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcElement.html"><span class="pre">MpcElement</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">str</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcElementLine2D2N.toString" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class std::basic_string&lt;char,struct std::char_traits&lt;char&gt;,class std::allocator&lt;char&gt; &gt; toString(class MpcElement {lvalue})</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcElementLine2D2N.topologyType">
+<span class="sig-name descname"><span class="pre">topologyType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcElement.html"><span class="pre">MpcElement</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="MpcElementTopologyType.html"><span class="pre">MpcElementTopologyType</span></a> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcElementLine2D2N.topologyType" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>enum MpcElementTopologyType topologyType(class MpcElement {lvalue})</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcElementLine2D2N.volume">
+<span class="sig-name descname"><span class="pre">volume</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcElement.html"><span class="pre">MpcElement</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">float</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcElementLine2D2N.volume" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>double volume(class MpcElement {lvalue})</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+</section>
+</div>
+</div>
+<footer>
+<hr/>
+<div role="contentinfo">
+<p>© Copyright 2024 Asdea Software.</p>
+</div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+</div>
+</div>
+</section>
+</div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+</body>
+</html>

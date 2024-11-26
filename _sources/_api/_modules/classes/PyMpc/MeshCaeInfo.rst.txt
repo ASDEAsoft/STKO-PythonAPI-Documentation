@@ -1,0 +1,10 @@
+.. _MeshCaeInfo:
+
+MeshCaeInfo
+===========
+
+.. autoclass:: PyMpc.MeshCaeInfo
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

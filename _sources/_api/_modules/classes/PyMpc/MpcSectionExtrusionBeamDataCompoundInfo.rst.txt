@@ -1,0 +1,10 @@
+.. _MpcSectionExtrusionBeamDataCompoundInfo:
+
+MpcSectionExtrusionBeamDataCompoundInfo
+=======================================
+
+.. autoclass:: PyMpc.MpcSectionExtrusionBeamDataCompoundInfo
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

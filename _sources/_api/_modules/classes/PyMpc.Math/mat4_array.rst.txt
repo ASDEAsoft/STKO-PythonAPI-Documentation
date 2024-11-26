@@ -1,0 +1,10 @@
+.. _mat4_array:
+
+mat4_array
+==========
+
+.. autoclass:: PyMpc.Math.mat4_array
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

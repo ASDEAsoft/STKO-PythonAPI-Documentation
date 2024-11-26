@@ -1,0 +1,10 @@
+.. _MpcGeometrySelectionCollection:
+
+MpcGeometrySelectionCollection
+==============================
+
+.. autoclass:: PyMpc.MpcGeometrySelectionCollection
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

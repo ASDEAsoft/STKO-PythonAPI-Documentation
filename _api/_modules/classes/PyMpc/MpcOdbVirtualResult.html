@@ -1,0 +1,523 @@
+
+<!DOCTYPE html>
+
+<html class="writer-html5" data-content_root="../../../../" lang="en">
+<head>
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MpcOdbVirtualResult — STKO Python API  documentation</title>
+<link href="../../../../_static/pygments.css?v=80d5e7a1" rel="stylesheet" type="text/css"/>
+<link href="../../../../_static/css/theme.css?v=e59714d7" rel="stylesheet" type="text/css"/>
+<link href="../../../../_static/css/custom.css?v=8a89d2a5" rel="stylesheet" type="text/css"/>
+<script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+<script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+<script src="../../../../_static/documentation_options.js?v=5929fcd5"></script>
+<script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+<script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../../../../_static/js/theme.js"></script>
+<link href="../../../../genindex.html" rel="index" title="Index"/>
+<link href="../../../../search.html" rel="search" title="Search"/>
+<link href="MpcOdbVirtualResultEvaluationOptions.html" rel="next" title="MpcOdbVirtualResultEvaluationOptions"/>
+<link href="MpcOdbVirtualOperatorBase.html" rel="prev" title="MpcOdbVirtualOperatorBase"/>
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a href="../../../../index.html">
+<img alt="Logo" class="logo" src="../../../../_static/logo.png"/>
+</a>
+<div role="search">
+<form action="../../../../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div><div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../../index.html">Python API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../PyMpc.html">PyMpc</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../../PyMpc.html#categories">Categories</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../../categories/PyMpc/Fx.html">Fx (PyMpc)</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../../categories/PyMpc/Mpc.html">Mpc (PyMpc)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../PyMpc.html#classes">Classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../PyMpc.html#functions">Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../PyMpc.App.html">PyMpc.App</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../PyMpc.FxOccBuilder.html">PyMpc.FxOccBuilder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../PyMpc.FxOccNurbs.html">PyMpc.FxOccNurbs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../PyMpc.FxOccQuery.html">PyMpc.FxOccQuery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../PyMpc.IO.html">PyMpc.IO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../PyMpc.Math.html">PyMpc.Math</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../PyMpc.Units.html">PyMpc.Units</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../PyMpc.Utils.html">PyMpc.Utils</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../_examples/1_call-types/index.html">1. Call Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../_examples/2_basics/index.html">2. Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../_examples/3_objects/index.html">3. Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../_examples/4_document/index.html">4. Document</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../_examples/5_mesh/index.html">5. Mesh</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../_examples/6_fiber-section/index.html">6. Fiber Section</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../_examples/7_cae-document/index.html">7. Cae document</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../_examples/8_post-processing/index.html">8. Post Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../_examples/9_application/index.html">9. Application</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift"><nav aria-label="Mobile navigation menu" class="wy-nav-top">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../../../../index.html">STKO Python API</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content">
+<div aria-label="Page navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Home" class="icon icon-home" href="../../../../index.html"></a></li>
+<li class="breadcrumb-item"><a href="../../../index.html">Python API Reference</a></li>
+<li class="breadcrumb-item"><a href="../../PyMpc.html">PyMpc</a></li>
+<li class="breadcrumb-item"><a href="../../categories/PyMpc/Mpc.html">Mpc (PyMpc)</a></li>
+<li class="breadcrumb-item active">MpcOdbVirtualResult</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div itemprop="articleBody">
+<section id="mpcodbvirtualresult">
+<span id="id1"></span><h1>MpcOdbVirtualResult<a class="headerlink" href="#mpcodbvirtualresult" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="PyMpc.MpcOdbVirtualResult">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(object)arg1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PyMpc.MpcOdbVirtualResult" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">instance</span></code></p>
+<blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void __init__(struct _object * __ptr64)</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>__init__( (object)arg1, (MpcOdbVirtualResult)arg2) -&gt; None :</p>
+<blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void __init__(struct _object * __ptr64,class MpcOdbVirtualResult)</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>__init__( (object)arg1, (float)arg2) -&gt; None :</p>
+<blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void __init__(struct _object * __ptr64,double)</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>__init__( (object)arg1, (vec)arg2) -&gt; None :</p>
+<blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void __init__(struct _object * __ptr64,class Eigen::Matrix&lt;double,-1,1,0,-1,1&gt;)</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>__init__( (object)arg1, (MpcOdbNodalResult)arg2) -&gt; None :</p>
+<blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void __init__(struct _object * __ptr64,class boost::shared_ptr&lt;class MpcOdbNodalResult&gt;)</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>__init__( (object)arg1, (MpcOdbElementalResult)arg2) -&gt; None :</p>
+<blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void __init__(struct _object * __ptr64,class boost::shared_ptr&lt;class MpcOdbElementalResult&gt;)</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>__init__( (object)arg1, (MpcOdbVirtualOperatorBase)arg2) -&gt; None :</p>
+<blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void __init__(struct _object * __ptr64,class boost::shared_ptr&lt;class MpcOdbVirtualOperatorBase&gt;)</p>
+</dd>
+</dl>
+</div></blockquote>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcOdbVirtualResult.abs">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">abs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcOdbVirtualResult.abs" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class MpcOdbVirtualResult abs(class MpcOdbVirtualResult)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcOdbVirtualResult.acos">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">acos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcOdbVirtualResult.acos" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class MpcOdbVirtualResult acos(class MpcOdbVirtualResult)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcOdbVirtualResult.and_">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">and_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a><span class="pre">)arg1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a><span class="pre">)arg2</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcOdbVirtualResult.and_" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class MpcOdbVirtualResult and_(class MpcOdbVirtualResult,class MpcOdbVirtualResult)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcOdbVirtualResult.asin">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">asin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcOdbVirtualResult.asin" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class MpcOdbVirtualResult asin(class MpcOdbVirtualResult)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcOdbVirtualResult.atan">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">atan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcOdbVirtualResult.atan" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class MpcOdbVirtualResult atan(class MpcOdbVirtualResult)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcOdbVirtualResult.atan2">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">atan2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a><span class="pre">)arg1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a><span class="pre">)arg2</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcOdbVirtualResult.atan2" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class MpcOdbVirtualResult atan2(class MpcOdbVirtualResult,class MpcOdbVirtualResult)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcOdbVirtualResult.begin">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">begin</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="MpcOdbVirtualResultTimeInfo.html"><span class="pre">MpcOdbVirtualResultTimeInfo</span></a> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcOdbVirtualResult.begin" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>struct MpcOdbVirtualResultUtils::TimeInfo begin()</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcOdbVirtualResult.cbrt">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cbrt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcOdbVirtualResult.cbrt" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class MpcOdbVirtualResult cbrt(class MpcOdbVirtualResult)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcOdbVirtualResult.ceil">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ceil</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcOdbVirtualResult.ceil" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class MpcOdbVirtualResult ceil(class MpcOdbVirtualResult)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcOdbVirtualResult.comp">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">comp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a><span class="pre">)arg1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(int)arg2</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcOdbVirtualResult.comp" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class MpcOdbVirtualResult comp(class MpcOdbVirtualResult,int)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcOdbVirtualResult.componentLabels">
+<span class="sig-name descname"><span class="pre">componentLabels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">string_array</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcOdbVirtualResult.componentLabels" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class std::vector&lt;class std::basic_string&lt;char,struct std::char_traits&lt;char&gt;,class std::allocator&lt;char&gt; &gt;,class std::allocator&lt;class std::basic_string&lt;char,struct std::char_traits&lt;char&gt;,class std::allocator&lt;char&gt; &gt; &gt; &gt; componentLabels(class MpcOdbVirtualResult {lvalue})</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcOdbVirtualResult.cos">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcOdbVirtualResult.cos" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class MpcOdbVirtualResult cos(class MpcOdbVirtualResult)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcOdbVirtualResult.description">
+<span class="sig-name descname"><span class="pre">description</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">str</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcOdbVirtualResult.description" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class std::basic_string&lt;char,struct std::char_traits&lt;char&gt;,class std::allocator&lt;char&gt; &gt; description(class MpcOdbVirtualResult {lvalue})</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcOdbVirtualResult.deserialize">
+<span class="sig-name descname"><span class="pre">deserialize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a><span class="pre">)arg1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(str)arg2</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">bool</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcOdbVirtualResult.deserialize" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>bool deserialize(class MpcOdbVirtualResult {lvalue},class std::basic_string&lt;char,struct std::char_traits&lt;char&gt;,class std::allocator&lt;char&gt; &gt;)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcOdbVirtualResult.displayName">
+<span class="sig-name descname"><span class="pre">displayName</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">str</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcOdbVirtualResult.displayName" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class std::basic_string&lt;char,struct std::char_traits&lt;char&gt;,class std::allocator&lt;char&gt; &gt; displayName(class MpcOdbVirtualResult {lvalue})</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcOdbVirtualResult.end">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">end</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="MpcOdbVirtualResultTimeInfo.html"><span class="pre">MpcOdbVirtualResultTimeInfo</span></a> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcOdbVirtualResult.end" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>struct MpcOdbVirtualResultUtils::TimeInfo end()</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcOdbVirtualResult.evaluate">
+<span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a><span class="pre">)arg1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcOdbVirtualResultEvaluationOptions.html"><span class="pre">MpcOdbVirtualResultEvaluationOptions</span></a><span class="pre">)arg2</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="MpcOdbResultField.html"><span class="pre">MpcOdbResultField</span></a> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcOdbVirtualResult.evaluate" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class boost::shared_ptr&lt;class MpcOdbResultField&gt; evaluate(class MpcOdbVirtualResult {lvalue},class MpcOdbVirtualResultEvaluationOptions)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcOdbVirtualResult.exp">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">exp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcOdbVirtualResult.exp" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class MpcOdbVirtualResult exp(class MpcOdbVirtualResult)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcOdbVirtualResult.floor">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">floor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcOdbVirtualResult.floor" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class MpcOdbVirtualResult floor(class MpcOdbVirtualResult)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcOdbVirtualResult.log">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">log</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcOdbVirtualResult.log" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class MpcOdbVirtualResult log(class MpcOdbVirtualResult)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcOdbVirtualResult.log10">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">log10</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcOdbVirtualResult.log10" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class MpcOdbVirtualResult log10(class MpcOdbVirtualResult)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcOdbVirtualResult.max">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">max</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a><span class="pre">)arg1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a><span class="pre">)arg2</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcOdbVirtualResult.max" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class MpcOdbVirtualResult max(class MpcOdbVirtualResult,class MpcOdbVirtualResult)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcOdbVirtualResult.min">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">min</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a><span class="pre">)arg1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a><span class="pre">)arg2</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcOdbVirtualResult.min" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class MpcOdbVirtualResult min(class MpcOdbVirtualResult,class MpcOdbVirtualResult)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcOdbVirtualResult.name">
+<span class="sig-name descname"><span class="pre">name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">str</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcOdbVirtualResult.name" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class std::basic_string&lt;char,struct std::char_traits&lt;char&gt;,class std::allocator&lt;char&gt; &gt; name(class MpcOdbVirtualResult {lvalue})</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcOdbVirtualResult.not_">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">not_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcOdbVirtualResult.not_" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class MpcOdbVirtualResult not_(class MpcOdbVirtualResult {lvalue})</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcOdbVirtualResult.or_">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">or_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a><span class="pre">)arg1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a><span class="pre">)arg2</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcOdbVirtualResult.or_" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class MpcOdbVirtualResult or_(class MpcOdbVirtualResult,class MpcOdbVirtualResult)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcOdbVirtualResult.round">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">round</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcOdbVirtualResult.round" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class MpcOdbVirtualResult round(class MpcOdbVirtualResult)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcOdbVirtualResult.serialize">
+<span class="sig-name descname"><span class="pre">serialize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">str</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcOdbVirtualResult.serialize" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class std::basic_string&lt;char,struct std::char_traits&lt;char&gt;,class std::allocator&lt;char&gt; &gt; serialize(class MpcOdbVirtualResult {lvalue})</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcOdbVirtualResult.setComponentLabels">
+<span class="sig-name descname"><span class="pre">setComponentLabels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a><span class="pre">)arg1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(list)arg2</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcOdbVirtualResult.setComponentLabels" title="Link to this definition"></a></dt>
+<dd><blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void setComponentLabels(class MpcOdbVirtualResult {lvalue},class boost::python::list)</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>setComponentLabels( (MpcOdbVirtualResult)arg1, (tuple)arg2) -&gt; None :</p>
+<blockquote>
+<div><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void setComponentLabels(class MpcOdbVirtualResult {lvalue},class boost::python::tuple)</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcOdbVirtualResult.setDescription">
+<span class="sig-name descname"><span class="pre">setDescription</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a><span class="pre">)arg1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(str)arg2</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcOdbVirtualResult.setDescription" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void setDescription(class MpcOdbVirtualResult {lvalue},class std::basic_string&lt;char,struct std::char_traits&lt;char&gt;,class std::allocator&lt;char&gt; &gt;)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcOdbVirtualResult.setDisplayName">
+<span class="sig-name descname"><span class="pre">setDisplayName</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a><span class="pre">)arg1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">(str)arg2</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcOdbVirtualResult.setDisplayName" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void setDisplayName(class MpcOdbVirtualResult {lvalue},class std::basic_string&lt;char,struct std::char_traits&lt;char&gt;,class std::allocator&lt;char&gt; &gt;)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcOdbVirtualResult.sin">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcOdbVirtualResult.sin" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class MpcOdbVirtualResult sin(class MpcOdbVirtualResult)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcOdbVirtualResult.size">
+<span class="sig-name descname"><span class="pre">size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">int</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcOdbVirtualResult.size" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>unsigned __int64 size(class MpcOdbVirtualResult {lvalue})</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcOdbVirtualResult.sqrt">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sqrt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcOdbVirtualResult.sqrt" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class MpcOdbVirtualResult sqrt(class MpcOdbVirtualResult)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcOdbVirtualResult.stageBegin">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">stageBegin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(int)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="MpcOdbVirtualResultTimeInfo.html"><span class="pre">MpcOdbVirtualResultTimeInfo</span></a> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcOdbVirtualResult.stageBegin" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>struct MpcOdbVirtualResultUtils::TimeInfo stageBegin(int)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcOdbVirtualResult.stageEnd">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">stageEnd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(int)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="MpcOdbVirtualResultTimeInfo.html"><span class="pre">MpcOdbVirtualResultTimeInfo</span></a> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcOdbVirtualResult.stageEnd" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>struct MpcOdbVirtualResultUtils::TimeInfo stageEnd(int)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcOdbVirtualResult.step">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(int)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="MpcOdbVirtualResultTimeInfo.html"><span class="pre">MpcOdbVirtualResultTimeInfo</span></a> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcOdbVirtualResult.step" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>struct MpcOdbVirtualResultUtils::TimeInfo step(int)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcOdbVirtualResult.tan">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">tan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcOdbVirtualResult.tan" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class MpcOdbVirtualResult tan(class MpcOdbVirtualResult)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcOdbVirtualResult.toNode">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">toNode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcOdbVirtualResult.toNode" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>class MpcOdbVirtualResult toNode(class MpcOdbVirtualResult)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcOdbVirtualResult.unsetComponentLabels">
+<span class="sig-name descname"><span class="pre">unsetComponentLabels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcOdbVirtualResult.unsetComponentLabels" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void unsetComponentLabels(class MpcOdbVirtualResult {lvalue})</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcOdbVirtualResult.unsetDescription">
+<span class="sig-name descname"><span class="pre">unsetDescription</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcOdbVirtualResult.unsetDescription" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void unsetDescription(class MpcOdbVirtualResult {lvalue})</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="PyMpc.MpcOdbVirtualResult.unsetDisplayName">
+<span class="sig-name descname"><span class="pre">unsetDisplayName</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">(</span><a class="reference internal" href="MpcOdbVirtualResult.html"><span class="pre">MpcOdbVirtualResult</span></a><span class="pre">)arg1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span> <span class="pre">:</span></span></span><a class="headerlink" href="#PyMpc.MpcOdbVirtualResult.unsetDisplayName" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>C++ signature :</dt><dd><p>void unsetDisplayName(class MpcOdbVirtualResult {lvalue})</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+</section>
+</div>
+</div>
+<footer>
+<hr/>
+<div role="contentinfo">
+<p>© Copyright 2024 Asdea Software.</p>
+</div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+</div>
+</div>
+</section>
+</div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+</body>
+</html>

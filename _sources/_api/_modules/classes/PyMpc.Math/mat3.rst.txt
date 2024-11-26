@@ -1,0 +1,10 @@
+.. _mat3:
+
+mat3
+====
+
+.. autoclass:: PyMpc.Math.mat3
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

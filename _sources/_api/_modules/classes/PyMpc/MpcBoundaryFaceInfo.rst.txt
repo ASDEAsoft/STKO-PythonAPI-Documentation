@@ -1,0 +1,10 @@
+.. _MpcBoundaryFaceInfo:
+
+MpcBoundaryFaceInfo
+===================
+
+.. autoclass:: PyMpc.MpcBoundaryFaceInfo
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

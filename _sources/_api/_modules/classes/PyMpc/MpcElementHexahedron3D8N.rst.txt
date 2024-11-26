@@ -1,0 +1,10 @@
+.. _MpcElementHexahedron3D8N:
+
+MpcElementHexahedron3D8N
+========================
+
+.. autoclass:: PyMpc.MpcElementHexahedron3D8N
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

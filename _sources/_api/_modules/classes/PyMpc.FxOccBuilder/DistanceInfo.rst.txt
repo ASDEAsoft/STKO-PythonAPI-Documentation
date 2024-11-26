@@ -1,0 +1,10 @@
+.. _DistanceInfo:
+
+DistanceInfo
+============
+
+.. autoclass:: PyMpc.FxOccBuilder.DistanceInfo
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

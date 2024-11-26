@@ -1,0 +1,10 @@
+.. _MpcOdpSubset:
+
+MpcOdpSubset
+============
+
+.. autoclass:: PyMpc.MpcOdpSubset
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

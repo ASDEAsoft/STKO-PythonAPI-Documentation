@@ -1,0 +1,10 @@
+.. _vec4:
+
+vec4
+====
+
+.. autoclass:: PyMpc.Math.vec4
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

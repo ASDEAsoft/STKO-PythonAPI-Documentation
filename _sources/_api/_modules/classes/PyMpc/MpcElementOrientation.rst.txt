@@ -1,0 +1,10 @@
+.. _MpcElementOrientation:
+
+MpcElementOrientation
+=====================
+
+.. autoclass:: PyMpc.MpcElementOrientation
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:

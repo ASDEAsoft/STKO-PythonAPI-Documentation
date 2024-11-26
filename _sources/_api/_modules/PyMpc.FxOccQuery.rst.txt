@@ -1,0 +1,53 @@
+PyMpc.FxOccQuery
+================
+
+.. automodule:: PyMpc.FxOccQuery
+
+
+Classes
+-------
+
+.. toctree::
+   :maxdepth: 1
+   :numbered: 0
+
+   classes/PyMpc.FxOccQuery/DistanceInfo
+Functions
+---------
+
+.. autofunction:: PyMpc.FxOccQuery.BSplineSurfaceInfo
+
+.. autofunction:: PyMpc.FxOccQuery.applyRandomDeformation
+
+.. autofunction:: PyMpc.FxOccQuery.computeDistance
+
+.. autofunction:: PyMpc.FxOccQuery.fillFace
+
+.. autofunction:: PyMpc.FxOccQuery.increaseOrder
+
+.. autofunction:: PyMpc.FxOccQuery.isBSplineSurface
+
+.. autofunction:: PyMpc.FxOccQuery.makeCompound
+
+.. autofunction:: PyMpc.FxOccQuery.makeEdge
+
+.. autofunction:: PyMpc.FxOccQuery.makeFace
+
+.. autofunction:: PyMpc.FxOccQuery.makeHelix
+
+.. autofunction:: PyMpc.FxOccQuery.makeShell
+
+.. autofunction:: PyMpc.FxOccQuery.makeSolid
+
+.. autofunction:: PyMpc.FxOccQuery.makeVertex
+
+.. autofunction:: PyMpc.FxOccQuery.makeWire
+
+.. autofunction:: PyMpc.FxOccQuery.merge
+
+.. autofunction:: PyMpc.FxOccQuery.toBSplineSurface
+
+.. autofunction:: PyMpc.FxOccQuery.visualRepresentationControlPolygon
+
+.. autofunction:: PyMpc.FxOccQuery.visualRepresentationSurface
+
