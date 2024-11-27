@@ -55,7 +55,7 @@ Specifically write_cerr can be used to raise exceptions in try loops and allow b
 2.3. Units
 #################
 
-The classes and methods in the Units sub-module of PyMpc are defined to allow the user to interact with the unit system. As it is known, OpenSees does not have the concept of unit system, so it is common practice to choose a set of reference units before starting the model and keep consistency with the units of each input. In this sub-module, a reference unit system was created, according to the International System of Units, and a few essential base and derived units were defined. There is the potential for the user to define a customized unit system and interact with it in the scripting interface, but it is still in a development phase. Hereafter, an example of what it is possible to do now with the Math sub-module.
+The classes and methods in the `Units <../../_api/_modules/PyMpc.Units.html>`_ sub-module of `PyMpc <../../_api/_modules/PyMpc.html>`_ are defined to allow the user to interact with the unit system. As it is known, OpenSees does not have the concept of unit system, so it is common practice to choose a set of reference units before starting the model and keep consistency with the units of each input. In this sub-module, a reference unit system was created, according to the International System of `Units <../../_api/_modules/PyMpc.Units.html>`_, and a few essential base and derived units were defined. There is the potential for the user to define a customized unit system and interact with it in the scripting interface, but it is still in a development phase. Hereafter, an example of what it is possible to do now with the `Math <../../_api/_modules/PyMpc.Math.html>`_ sub-module.
 
 An example of how to interact with the unit already defined in the sub-module is provided below.
 
@@ -91,9 +91,9 @@ This is the output you’ll obtain in the Terminal.
 2.4. Math
 #################
 
-The sub-module Math in PyMpc provides vector and matrix objects, available for 2, 3, 4 and n dimensions. These classes allow for mathematical operations such as dot and cross products, transpose or transformation to quaternion (for 4D). Also classes for vertex elements and quaternions are provided. Classes called for example mat_array are exported from STKO source code in C++. They behave as a list in Python, allowing concatenation, repetition, slicing, appending, and any other operation available on list objects in Python. The presence of these classesin the sub-module Math, allows interoperability between the strongly typed elements in STKO source code and the Python scripting interface.
+The sub-module `Math <../../_api/_modules/PyMpc.Math.html>`_ in PyMpc provides vector and matrix objects, available for 2, 3, 4 and n dimensions. These classes allow for mathematical operations such as dot and cross products, transpose or transformation to quaternion (for 4D). Also classes for vertex elements and quaternions are provided. Classes called for example mat_array are exported from STKO source code in C++. They behave as a list in Python, allowing concatenation, repetition, slicing, appending, and any other operation available on list objects in Python. The presence of these classesin the sub-module Math, allows interoperability between the strongly typed elements in STKO source code and the Python scripting interface.
 
-We suggest to import the Math sub-module as following, to avoid overlapping with variable names.
+We suggest to import the `Math <../../_api/_modules/PyMpc.Math.html>`_ sub-module as following, to avoid overlapping with variable names.
 
 .. code-block:: python
 
@@ -116,7 +116,7 @@ In PyMpc, there are a set of functions and classes to interact wit the CAD envir
 2.6.1. FxoccShape
 *********************
 
-In the sub-module FxoccShape, there are utilities to generate Open Cascade data for CAD, in terms of shapes, curves and surfaces.
+In the sub-module `FxoccShape <../../_api/_modules/classes/PyMpc/FxoccShape.html>`_, there are utilities to generate Open Cascade data for CAD, in terms of shapes, curves and surfaces.
 
 ********************
 2.6.2. FxoccBuilder
@@ -207,7 +207,7 @@ The following will appear in the terminal.
 2.8. Chart
 #################
 
-Three classes to call and create new Chart and ChartData are included in PyMpc. Namely: MpcChart, MpcChartData, MpcChartDataGraphicItem. The following script will illustrate how to create new elements for each of these classes. Start out as follows and use the postDocument function from the App sub-module to call the open .spd document. Then you can use a series of methods of the MpcPostDocument class, as the .spd document is an instance of that class, to clear the existing post processing session, commit the changes and set the document to dirty, so STKO will ask you to save before you close.
+Three classes to call and create new Chart and ChartData are included in PyMpc. Namely: MpcChart, MpcChartData, MpcChartDataGraphicItem. The following script will illustrate how to create new elements for each of these classes. Start out as follows and use the postDocument function from the `App <../../_api/_modules/PyMpc.App.html>`_ sub-module to call the open .spd document. Then you can use a series of methods of the MpcPostDocument class, as the .spd document is an instance of that class, to clear the existing post processing session, commit the changes and set the document to dirty, so STKO will ask you to save before you close.
 
 .. code-block:: python
 

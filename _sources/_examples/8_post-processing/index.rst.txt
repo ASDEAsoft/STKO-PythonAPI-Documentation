@@ -1,7 +1,7 @@
 8. Post Processing
 ==================
 
-In this section, we will show a few example scripts which can be used to interact with the Postprocessor environment.The classes, functions and methods available in PyMpc will allow the user to access the Postprocessor document, the databases, plots, chart data sets and charts contained in it and customize them at will as parameters of their customized code.Moreover the user will be able to add new elements in the Postprocessor (plot groups, plot, chart data and charts) and import values from outside STKO, for example to operate comparisons and checks.
+In this section, we will show a few example scripts which can be used to interact with the Postprocessor environment. The classes, functions and methods available in `PyMpc <../../_api/_modules/PyMpc.html>`_ will allow the user to access the Postprocessor document, the databases, plots, chart data sets and charts contained in it and customize them at will as parameters of their customized code.Moreover the user will be able to add new elements in the Postprocessor (plot groups, plot, chart data and charts) and import values from outside STKO, for example to operate comparisons and checks.
 
 ##################
 8.1. Document

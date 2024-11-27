@@ -55,7 +55,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#utilities">2.1. Utilities</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#input-output">2.2. Input/Output</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#units">2.3. Units</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#math">2.4. Math</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">2.4. Math</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#fx">2.5. Fx</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#open-cascade">2.6. Open Cascade</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#fxoccshape">2.6.1. FxoccShape</a></li>
@@ -140,7 +140,7 @@
 </section>
 <section id="units">
 <h2>2.3. Units<a class="headerlink" href="#units" title="Link to this heading"></a></h2>
-<p>The classes and methods in the Units sub-module of PyMpc are defined to allow the user to interact with the unit system. As it is known, OpenSees does not have the concept of unit system, so it is common practice to choose a set of reference units before starting the model and keep consistency with the units of each input. In this sub-module, a reference unit system was created, according to the International System of Units, and a few essential base and derived units were defined. There is the potential for the user to define a customized unit system and interact with it in the scripting interface, but it is still in a development phase. Hereafter, an example of what it is possible to do now with the Math sub-module.</p>
+<p>The classes and methods in the <a class="reference external" href="../../_api/_modules/PyMpc.Units.html">Units</a> sub-module of <a class="reference external" href="../../_api/_modules/PyMpc.html">PyMpc</a> are defined to allow the user to interact with the unit system. As it is known, OpenSees does not have the concept of unit system, so it is common practice to choose a set of reference units before starting the model and keep consistency with the units of each input. In this sub-module, a reference unit system was created, according to the International System of <a class="reference external" href="../../_api/_modules/PyMpc.Units.html">Units</a>, and a few essential base and derived units were defined. There is the potential for the user to define a customized unit system and interact with it in the scripting interface, but it is still in a development phase. Hereafter, an example of what it is possible to do now with the <a class="reference external" href="../../_api/_modules/PyMpc.Math.html">Math</a> sub-module.</p>
 <p>An example of how to interact with the unit already defined in the sub-module is provided below.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PyMpc</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">import</span> <span class="nn">PyMpc.Units</span> <span class="k">as</span> <span class="nn">u</span>
@@ -169,10 +169,10 @@
 </pre></div>
 </div>
 </section>
-<section id="math">
-<h2>2.4. Math<a class="headerlink" href="#math" title="Link to this heading"></a></h2>
-<p>The sub-module Math in PyMpc provides vector and matrix objects, available for 2, 3, 4 and n dimensions. These classes allow for mathematical operations such as dot and cross products, transpose or transformation to quaternion (for 4D). Also classes for vertex elements and quaternions are provided. Classes called for example mat_array are exported from STKO source code in C++. They behave as a list in Python, allowing concatenation, repetition, slicing, appending, and any other operation available on list objects in Python. The presence of these classesin the sub-module Math, allows interoperability between the strongly typed elements in STKO source code and the Python scripting interface.</p>
-<p>We suggest to import the Math sub-module as following, to avoid overlapping with variable names.</p>
+<section id="id4">
+<h2>2.4. Math<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<p>The sub-module <a class="reference external" href="../../_api/_modules/PyMpc.Math.html">Math</a> in PyMpc provides vector and matrix objects, available for 2, 3, 4 and n dimensions. These classes allow for mathematical operations such as dot and cross products, transpose or transformation to quaternion (for 4D). Also classes for vertex elements and quaternions are provided. Classes called for example mat_array are exported from STKO source code in C++. They behave as a list in Python, allowing concatenation, repetition, slicing, appending, and any other operation available on list objects in Python. The presence of these classesin the sub-module Math, allows interoperability between the strongly typed elements in STKO source code and the Python scripting interface.</p>
+<p>We suggest to import the <a class="reference external" href="../../_api/_modules/PyMpc.Math.html">Math</a> sub-module as following, to avoid overlapping with variable names.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">PyMpc.Math</span> <span class="k">as</span> <span class="nn">m</span>
 </pre></div>
 </div>
@@ -189,7 +189,7 @@
 <p>In PyMpc, there are a set of functions and classes to interact wit the CAD environment and directly query geometries, build new elements and interact with existing ones. To separate these set of classes and functions from the rest, three separate sub-modules have been developed: FxoccShape, FxoccQuery, FxoccShape. Where “occ” stands for Open Cascade and “Fx” for graphic representation for OpenGl.</p>
 <section id="fxoccshape">
 <h3>2.6.1. FxoccShape<a class="headerlink" href="#fxoccshape" title="Link to this heading"></a></h3>
-<p>In the sub-module FxoccShape, there are utilities to generate Open Cascade data for CAD, in terms of shapes, curves and surfaces.</p>
+<p>In the sub-module <a class="reference external" href="../../_api/_modules/classes/PyMpc/FxoccShape.html">FxoccShape</a>, there are utilities to generate Open Cascade data for CAD, in terms of shapes, curves and surfaces.</p>
 </section>
 <section id="fxoccbuilder">
 <h3>2.6.2. FxoccBuilder<a class="headerlink" href="#fxoccbuilder" title="Link to this heading"></a></h3>
@@ -264,7 +264,7 @@
 </section>
 <section id="chart">
 <h2>2.8. Chart<a class="headerlink" href="#chart" title="Link to this heading"></a></h2>
-<p>Three classes to call and create new Chart and ChartData are included in PyMpc. Namely: MpcChart, MpcChartData, MpcChartDataGraphicItem. The following script will illustrate how to create new elements for each of these classes. Start out as follows and use the postDocument function from the App sub-module to call the open .spd document. Then you can use a series of methods of the MpcPostDocument class, as the .spd document is an instance of that class, to clear the existing post processing session, commit the changes and set the document to dirty, so STKO will ask you to save before you close.</p>
+<p>Three classes to call and create new Chart and ChartData are included in PyMpc. Namely: MpcChart, MpcChartData, MpcChartDataGraphicItem. The following script will illustrate how to create new elements for each of these classes. Start out as follows and use the postDocument function from the <a class="reference external" href="../../_api/_modules/PyMpc.App.html">App</a> sub-module to call the open .spd document. Then you can use a series of methods of the MpcPostDocument class, as the .spd document is an instance of that class, to clear the existing post processing session, commit the changes and set the document to dirty, so STKO will ask you to save before you close.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PyMpc</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
