@@ -243,6 +243,8 @@ STKO uses Qt for its GUI and offers its use to the user thru the PySide2 package
     	mainWindow = MyMainWindow()
     	mainWindow.show()
 
+For further instructions about on how to use the PySide2 package, please refer to the `PySide2 documentation <https://doc.qt.io/qtforpython-5/PySide2/QtWidgets/index.html>`_.
+
 #################
 2.8. Chart
 #################
