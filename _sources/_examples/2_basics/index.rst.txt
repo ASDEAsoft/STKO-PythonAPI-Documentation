@@ -200,8 +200,48 @@ The following will appear in the terminal.
 2.7. Qt
 #################
 
-.. note::
-    Coming soon.
+STKO uses Qt for its GUI and offers its use to the user thru the PySide2 package. The following example shows how to create a simple GUI with a button and a label. The button will print "Hello World!" to the STKO console when clicked.
+
+.. code-block:: python
+
+    from PyMpc import *
+    from PySide2 import QtWidgets, QtCore
+    from PySide2.QtCore import Qt
+    from PySide2.QtWidgets import QPushButton, QLabel, QVBoxLayout, QWizardPage
+
+    class MyMainWindow(QtWidgets.QMainWindow):
+    	def __init__(self):
+    		super().__init__()
+    		self.setWindowTitle("")
+    		self.setWindowFlags(QtCore.Qt.WindowStaysOnTopHint)
+    
+    		page1 = MyPage(self)
+    		self.setCentralWidget(page1)
+
+    class MyPage(QWizardPage):
+    	def __init__(self, parent=None):
+    		super().__init__(parent)
+    		self.setWindowTitle("")
+    		self.setGeometry(300, 300, 400, 300)
+    
+    		self.layout = QVBoxLayout()
+
+    		self.label = QLabel('Print "Hello World!"')
+    
+    		self.button = QPushButton("Click me!")
+    		self.button.clicked.connect(self.onButtonClicked)
+    
+    		self.layout.addWidget(self.label)
+    		self.layout.addWidget(self.button)
+    		self.setLayout(self.layout)
+    
+    	def onButtonClicked(self):
+            App.clearTerminal()
+    		IO.write_cout("Hello World!\n")
+
+    if __name__ == "__main__":
+    	mainWindow = MyMainWindow()
+    	mainWindow.show()
 
 #################
 2.8. Chart
