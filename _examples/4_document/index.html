@@ -106,25 +106,121 @@
 <p>An example of this:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PyMpc</span> <span class="kn">import</span> <span class="o">*</span>
 
+<span class="n">App</span><span class="o">.</span><span class="n">clearTerminal</span><span class="p">()</span>
 <span class="n">doc</span> <span class="o">=</span> <span class="n">App</span><span class="o">.</span><span class="n">caeDocument</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">doc</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">doc</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>you’ll get an output like this:</p>
-<figure class="align-center" id="id1">
-<img alt="../../_images/fig411.png" src="../../_images/fig411.png" />
-<figcaption>
-<p><span class="caption-text">Fig. 4.2.1 <strong>Output of the aforementioned script</strong></span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
-</figcaption>
-</figure>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="vm">__class__</span>
+<span class="fm">__delattr__</span>
+<span class="vm">__dict__</span>
+<span class="fm">__dir__</span>
+<span class="vm">__doc__</span>
+<span class="fm">__eq__</span>
+<span class="fm">__format__</span>
+<span class="fm">__ge__</span>
+<span class="fm">__getattribute__</span>
+<span class="fm">__gt__</span>
+<span class="fm">__hash__</span>
+<span class="fm">__init__</span>
+<span class="n">__init_subclass__</span>
+<span class="n">__instance_size__</span>
+<span class="fm">__le__</span>
+<span class="fm">__lt__</span>
+<span class="vm">__module__</span>
+<span class="fm">__ne__</span>
+<span class="fm">__new__</span>
+<span class="n">__reduce__</span>
+<span class="n">__reduce_ex__</span>
+<span class="fm">__repr__</span>
+<span class="fm">__setattr__</span>
+<span class="n">__sizeof__</span>
+<span class="fm">__str__</span>
+<span class="n">__subclasshook__</span>
+<span class="vm">__weakref__</span>
+<span class="n">addAnalysisStep</span>
+<span class="n">addCondition</span>
+<span class="n">addCustomDrawableEntity</span>
+<span class="n">addDefinition</span>
+<span class="n">addElementProperty</span>
+<span class="n">addGeometry</span>
+<span class="n">addInteraction</span>
+<span class="n">addLocalAxes</span>
+<span class="n">addPhysicalProperty</span>
+<span class="n">addSelectionSet</span>
+<span class="n">analysisSteps</span>
+<span class="n">clearCustomDrawableEntities</span>
+<span class="n">commitChanges</span>
+<span class="n">conditions</span>
+<span class="n">definitions</span>
+<span class="n">dirty</span>
+<span class="n">documentName</span>
+<span class="n">elementProperties</span>
+<span class="n">fileName</span>
+<span class="n">geometries</span>
+<span class="n">getAnalysisStep</span>
+<span class="n">getCondition</span>
+<span class="n">getDefinition</span>
+<span class="n">getElementProperty</span>
+<span class="n">getFileExtension</span>
+<span class="n">getFileFilter</span>
+<span class="n">getGeometry</span>
+<span class="n">getInteraction</span>
+<span class="n">getLocalAxes</span>
+<span class="n">getPhysicalProperty</span>
+<span class="n">getSelectionSet</span>
+<span class="n">interactions</span>
+<span class="n">localAxes</span>
+<span class="n">mesh</span>
+<span class="n">meshControls</span>
+<span class="n">metaDataAnalysisStep</span>
+<span class="n">metaDataCondition</span>
+<span class="n">metaDataDefinition</span>
+<span class="n">metaDataElementProperty</span>
+<span class="n">metaDataPhysicalProperty</span>
+<span class="n">new</span>
+<span class="n">physicalProperties</span>
+<span class="n">randomizeMaterialColors</span>
+<span class="n">registerMetaDataAnalysisStep</span>
+<span class="n">registerMetaDataCondition</span>
+<span class="n">registerMetaDataDefinition</span>
+<span class="n">registerMetaDataElementProperty</span>
+<span class="n">registerMetaDataPhysicalProperty</span>
+<span class="n">registeredMetaDataAnalysisSteps</span>
+<span class="n">registeredMetaDataConditions</span>
+<span class="n">registeredMetaDataDefinitions</span>
+<span class="n">registeredMetaDataElementProperties</span>
+<span class="n">registeredMetaDataPhysicalProperties</span>
+<span class="n">removeCustomDrawableEntity</span>
+<span class="n">scene</span>
+<span class="n">selectionSets</span>
+<span class="n">solverName</span>
+<span class="n">solverSettings</span>
+<span class="n">unregisterMetaDataAll</span>
+<span class="n">unregisterMetaDataAnalysisStep</span>
+<span class="n">unregisterMetaDataAnalysisSteps</span>
+<span class="n">unregisterMetaDataCondition</span>
+<span class="n">unregisterMetaDataConditions</span>
+<span class="n">unregisterMetaDataDefinition</span>
+<span class="n">unregisterMetaDataDefinitions</span>
+<span class="n">unregisterMetaDataElementProperties</span>
+<span class="n">unregisterMetaDataElementProperty</span>
+<span class="n">unregisterMetaDataPhysicalProperties</span>
+<span class="n">unregisterMetaDataPhysicalProperty</span>
+<span class="n">uuid</span>
+</pre></div>
+</div>
 </section>
 <section id="geometries">
 <h2>4.2. Geometries<a class="headerlink" href="#geometries" title="Link to this heading"></a></h2>
 <p>With this example we will create new geometries in the Preprocessor, obtaining a result like this:</p>
-<figure class="align-center" id="id2">
+<figure class="align-center" id="id1">
 <img alt="../../_images/fig421.png" src="../../_images/fig421.png" />
 <figcaption>
-<p><span class="caption-text">Fig. 4.2.1 <strong>Geometry created with the following script</strong></span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+<p><span class="caption-text">Fig. 4.2.1 <strong>Geometry created with the following script</strong></span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <p>Start out as follows and use the caeDocument function from the App sub-module to call the open .scd document.</p>
