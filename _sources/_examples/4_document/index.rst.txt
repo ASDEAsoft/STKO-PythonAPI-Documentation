@@ -133,6 +133,29 @@ you'll get an output like this:
     unregisterMetaDataPhysicalProperty
     uuid
 
+These are all the different callable members of a Cae Document.
+For example the ``physicalProperties`` attribute is a list of all the physical properties defined in the document.
+You can view it like this:
+
+.. code-block:: python
+
+    from PyMpc import *
+
+    App.clearTerminal()
+    doc = App.caeDocument()
+
+    for k,v in doc.physicalProperties.items():
+    	print(k,v)
+    	print(dir(v.XObject))
+
+If you are in an empty file, the output will be blank, but if you have physical properties defined in the document, you will get something like this:
+
+.. code-block::
+
+    1 <PyMpc.MpcProperty object at 0x0000029C1262FDF0>
+    ['Xgroup', 'Xnamespace', '__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', 'attributes', 'completeName', 'createInstanceOf', 'getAttribute', 'name', 'parent']
+
+
 ##################
 4.2. Geometries
 ##################
