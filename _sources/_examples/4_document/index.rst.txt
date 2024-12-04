@@ -7,8 +7,31 @@ Four examples on how to define new and call existing property, geometry, selecti
 4.1. Properties
 ##################
 
-.. note::
-    Coming soon.
+As with most other elements of a Cae Document, its properties are also accessible via the Python API.
+
+Firstly you have to import the PyMpc module and load the cae document as a variable in Python:
+
+.. code-block:: python
+
+    from PyMpc import *
+
+    doc = App.caeDocument()
+
+After having done this, you can start querying the ``doc`` variable for its properties.
+
+An example of this:
+
+.. code-block:: python
+
+    from PyMpc import *
+
+    doc = App.caeDocument()
+    print(dir(doc))
+
+you'll get an output like this:
+
+.. code-block::
+    [ 'addAnalysisStep', 'addCondition', 'addCustomDrawableEntity', 'addDefinition', 'addElementProperty', 'addGeometry', 'addInteraction', 'addLocalAxes', 'addPhysicalProperty', 'addSelectionSet', 'analysisSteps', 'clearCustomDrawableEntities', 'commitChanges', 'conditions', 'definitions', 'dirty', 'documentName', 'elementProperties', 'fileName', 'geometries', 'getAnalysisStep', 'getCondition', 'getDefinition', 'getElementProperty', 'getFileExtension', 'getFileFilter', 'getGeometry', 'getInteraction', 'getLocalAxes', 'getPhysicalProperty', 'getSelectionSet', 'interactions', 'localAxes', 'mesh', 'meshControls', 'metaDataAnalysisStep', 'metaDataCondition', 'metaDataDefinition', 'metaDataElementProperty', 'metaDataPhysicalProperty', 'new', 'physicalProperties', 'randomizeMaterialColors', 'registerMetaDataAnalysisStep', 'registerMetaDataCondition', 'registerMetaDataDefinition', 'registerMetaDataElementProperty', 'registerMetaDataPhysicalProperty', 'registeredMetaDataAnalysisSteps', 'registeredMetaDataConditions', 'registeredMetaDataDefinitions', 'registeredMetaDataElementProperties', 'registeredMetaDataPhysicalProperties', 'removeCustomDrawableEntity', 'scene', 'selectionSets', 'solverName', 'solverSettings', 'unregisterMetaDataAll', 'unregisterMetaDataAnalysisStep', 'unregisterMetaDataAnalysisSteps', 'unregisterMetaDataCondition', 'unregisterMetaDataConditions', 'unregisterMetaDataDefinition', 'unregisterMetaDataDefinitions', 'unregisterMetaDataElementProperties', 'unregisterMetaDataElementProperty', 'unregisterMetaDataPhysicalProperties', 'unregisterMetaDataPhysicalProperty', 'uuid']
 
 ##################
 4.2. Geometries

@@ -95,10 +95,22 @@
 <p>Four examples on how to define new and call existing property, geometry, selection sets and conditions are provided below</p>
 <section id="properties">
 <h2>4.1. Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Coming soon.</p>
+<p>As with most other elements of a Cae Document, its properties are also accessible via the Python API.</p>
+<p>Firstly you have to import the PyMpc module and load the cae document as a variable in Python:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PyMpc</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">doc</span> <span class="o">=</span> <span class="n">App</span><span class="o">.</span><span class="n">caeDocument</span><span class="p">()</span>
+</pre></div>
 </div>
+<p>After having done this, you can start querying the <code class="docutils literal notranslate"><span class="pre">doc</span></code> variable for its properties.</p>
+<p>An example of this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PyMpc</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">doc</span> <span class="o">=</span> <span class="n">App</span><span class="o">.</span><span class="n">caeDocument</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">doc</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>you’ll get an output like this:</p>
 </section>
 <section id="geometries">
 <h2>4.2. Geometries<a class="headerlink" href="#geometries" title="Link to this heading"></a></h2>
