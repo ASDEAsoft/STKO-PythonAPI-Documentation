@@ -85,9 +85,23 @@
              
   <section id="application">
 <h1>9. Application<a class="headerlink" href="#application" title="Link to this heading"></a></h1>
-<p>The classes and methods described in this sub-module are instrumental to interact with the graphic user interface (GUI).</p>
-<p>They allow to identify GUI Components such as the Work Tree, the Terminal, the Editor or the Script in PyMpc (MpcGUIComponents). Moreover, they facilitate the interaction with the working thread, the definition of a new thread providing access to documents and the creation of a process monitor. The <a class="reference external" href="../../_api/_modules/PyMpc.App.html">App</a> sub-module overall enables the user to create and run utilities and custom commands. The main class in the sub-module <a class="reference external" href="../../_api/_modules/PyMpc.App.html">App</a> is the MpcBackgroundWorkerProgressMonitorInterface, a monitor interface to dialog with a process running on a separate thread. The user can therefore interact with the threads with a series of functions such as: runCommand (a utility to run a specific command), processEvents (to process all the events of the event loop that were waiting while a previous process was running), currentSolverName (to query the name of the solver in use), clearTerminal (to clear the terminal window), updateActiveView (to updated the render view), etc.</p>
-<p>The following example, references the same structure of the example in section Standard, with the additional creation of a simple function which defines a pop-up window which will monitor a process running on the working thread, by showing the number of iterations and the percentage. As mentioned in page1, classes and functions for the PySide2 package are be used in combination with PyMpc for application development in STKO.</p>
+<p>The classes and methods in this sub-module are essential for interacting with the graphical user interface (GUI) in STKO.
+They enable you to identify GUI components, such as the Work Tree, Terminal, Editor, or Script in PyMpc (MpcGUIComponents).
+Additionally, they facilitate interaction with the working thread, definition of a new thread providing access to documents,
+and creation of a process monitor.</p>
+<p>The App sub-module allows you to create and run utilities and custom commands.
+The main class in this sub-module is the <code class="docutils literal notranslate"><span class="pre">MpcBackgroundWorkerProgressMonitorInterface</span></code>,
+which is a monitor interface that enables dialogue with a process running on a separate thread.
+You can interact with threads using various functions, such as:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">runCommand</span></code>: a utility to run a specific command</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">processEvents</span></code>: to process all events in the event loop that were waiting while a previous process was running</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">currentSolverName</span></code>: to query the name of the solver in use</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">clearTerminal</span></code>: to clear the terminal window</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">updateActiveView</span></code>: to update the render view</p></li>
+</ul>
+<p>The following example demonstrates how to create a simple function that defines a pop-up window to monitor a process running
+on the working thread. This window displays the number of iterations and the percentage complete.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PyMpc.App</span> <span class="kn">import</span> <span class="p">(</span><span class="n">runOnBlockingWorkingThread</span><span class="p">,</span><span class="n">monitor</span><span class="p">)</span>
 <span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
 <span class="kn">from</span> <span class="nn">PySide2.QtCore</span> <span class="kn">import</span> <span class="n">QThread</span>
@@ -104,7 +118,9 @@
 <span class="n">runOnBlockingWorkingThread</span><span class="p">(</span><span class="n">function</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The function just created could be complemented with another one, which interrupts the process on the working thread and asks for a input to continue. Before defining the function to run in the working thread, use QApplication to get the active window, then make the counter global and set the range for the current call.</p>
+<p>You can complement this function with another one that interrupts the process on the working thread and asks for user input to continue.
+Before defining the function to run in the working thread, use QApplication to get the active window, make the counter global,
+and set the range for the current call.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PyMpc.App</span> <span class="kn">import</span> <span class="p">(</span><span class="n">runOnBlockingWorkingThread</span><span class="p">,</span><span class="n">monitor</span><span class="p">)</span>
 <span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
 <span class="kn">from</span> <span class="nn">PySide2.QtCore</span> <span class="kn">import</span> <span class="p">(</span><span class="n">QThread</span><span class="p">)</span>
@@ -129,7 +145,8 @@
         <span class="nb">print</span><span class="p">(</span><span class="n">ex</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>This time the function is called with the runOnBlockingWorkingThread of PyMpc.App inside another one which first runs part of the process, then it interrupts it at a specified threshold to query information to the user, and then completes it.</p>
+<p>This time, the function is called with the runOnBlockingWorkingThread of PyMpc.App inside another function that first runs part of
+the process, then interrupts it at a specified threshold to query the user, and finally completes it.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">main_function</span><span class="p">():</span>
     <span class="k">global</span> <span class="n">rstart</span><span class="p">,</span> <span class="n">rend</span>
 

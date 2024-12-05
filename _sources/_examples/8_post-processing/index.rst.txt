@@ -1,13 +1,34 @@
 8. Post Processing
 ==================
 
-In this section, we will show a few example scripts which can be used to interact with the Postprocessor environment. The classes, functions and methods available in `PyMpc <../../_api/_modules/PyMpc.html>`_ will allow the user to access the Postprocessor document, the databases, plots, chart data sets and charts contained in it and customize them at will as parameters of their customized code.Moreover the user will be able to add new elements in the Postprocessor (plot groups, plot, chart data and charts) and import values from outside STKO, for example to operate comparisons and checks.
+In this section, we will provide several example scripts that demonstrate how to interact
+with the Postprocessor environment using the PyMpc API.
+The classes, functions, and methods available in PyMpc enable users to access and customize various components
+of the Postprocessor document, including databases, plots, chart data sets, and charts.
+
+With PyMpc, users can not only modify existing elements but also add new ones, such as plot groups, plots, chart data, and charts.
+Furthermore, users can import values from external sources, allowing for comparisons and checks to be performed within STKO.
+
+These capabilities provide a high degree of flexibility and customization,
+enabling users to tailor the Postprocessor environment to their specific needs and workflows.
+The example scripts presented in this section will illustrate the various ways in which PyMpc can be used to interact with and
+customize the Postprocessor environment.
 
 ##################
 8.1. Document
 ##################
 
-The following example will guide you through the use of the possible interactions with the Postprocessor document, with the use of the thread utilities described in section ThreadUtils, the following script was written by calling such classes and functions explicitly, but they could be stored in the external file ThreadUtils and then exported to obtain a shorter version of the same code. It can be a useful exercise to practice python import of external functions. The Postprocessor document can be accessed as shown in the following snippet. You can choose to use a dialog to keep the script alive till the end of the thread, or simply an event loop. Then you get the Postprocessor document, defining it into a variable doc.
+The following example will guide you through the various interactions possible with the Postprocessor document.
+This script uses the thread utilities described in the ThreadUtils section. While the script explicitly calls these classes and functions,
+they could be stored in an external file (e.g., ThreadUtils.py) and imported to create a more concise version of the code.
+This exercise can help you practice importing external functions in Python.
+
+To access the Postprocessor document, you can use the following code snippet.
+You have the option to use a dialog to keep the script alive until the thread completes, or simply use an event loop.
+Then, you can retrieve the Postprocessor document and assign it to a variable named doc.
+
+This approach allows you to interact with the Postprocessor document in a flexible and customizable way,
+leveraging the power of Python scripting and the ThreadUtils library.
 
 .. code-block:: python
 
@@ -31,7 +52,19 @@ The following example will guide you through the use of the possible interaction
 
     App.runCommand(“OpenDatabase”, “C:/VBShared/di_michele/micro_inplane.mpco”)
 
-Create the simple QObject that wraps the user-defined function, and calls this function waiting for it to finish, as shown in section ThreadUtils. and then create the slots to be called on the main GUI thread, to add a plot group, chart data and charts.
+Create the simple QObject that wraps the user-defined function, and calls this function waiting for it to finish,
+as shown in section ThreadUtils. and then create the slots to be called on the main GUI thread, to add a plot group, chart data and charts.
+
+Next, define the slots that will be called on the main GUI thread to perform the following actions:
+
+* Add a plot group to the Postprocessor document.
+* Add chart data to the plot group.
+* Add charts to the plot group.
+
+By using the QBlockingSlot class and defining these slots,
+you can ensure that the GUI remains responsive while the user-defined function is executed on a separate thread.
+
+Here is an example code snippet that demonstrates this approach:
 
 .. code-block:: python
 
@@ -79,7 +112,10 @@ Create the simple QObject that wraps the user-defined function, and calls this f
 
     addChart = QBlockingSlot(addChart_function)
 
-Then define the worker class. It will run the lengthy function on a working thread and emit signals for calling the connected slots on the main thread. The lengthy function is this case consists in the creation of 10 new items in terms of plot groups, chart data sets, chart items to insert in the charts and finally the charts.
+Then define the worker class.
+It will run the lengthy function on a working thread and emit signals for calling the connected slots on the main thread.
+The lengthy function is this case consists in the creation of 10 new items in terms of plot groups, chart data sets,
+chart items to insert in the charts and finally the charts.
 
 .. code-block:: python
 
@@ -122,7 +158,8 @@ Then define the worker class. It will run the lengthy function on a working thre
 
            self.finished.emit()
 
-Create a dialog or an event loop that will block the script till the end. Then create the thread, the worker, and move the worker to the thread.
+Create a dialog or an event loop that will block the script till the end.
+Then create the thread, the worker, and move the worker to the thread.
 
 .. code-block:: python
 
@@ -169,47 +206,47 @@ Create the thread, the worker, and move the worker to the thread
 8.2. Output data plot 
 ##################
 
-In PyMpc there are a series of classes and methods to interact with the plots, data plots and their types, the plot groups, and the visibility attributes of the data plots. An example of an interaction with the output data plot could be the variation of one of the plot editor parameters, such as the deformation scale factor of the render view. Try running the following script with a database open in your STKO Postprocessor and see what happens.
+.. In PyMpc there are a series of classes and methods to interact with the plots, data plots and their types, the plot groups, and the visibility attributes of the data plots. An example of an interaction with the output data plot could be the variation of one of the plot editor parameters, such as the deformation scale factor of the render view. Try running the following script with a database open in your STKO Postprocessor and see what happens.
 
-.. code-block:: python
+.. .. code-block:: python
 
-    from PyMpc import *
-    from time import sleep
-    import traceback
-    import numpy as np
-    from PySide2.QtCore import QEventLoop, QTimer
+..     from PyMpc import *
+..     from time import sleep
+..     import traceback
+..     import numpy as np
+..     from PySide2.QtCore import QEventLoop, QTimer
 
-    App.clearTerminal()
+..     App.clearTerminal()
 
-    class gui_auto_lock:
-        def __init__(self, components):
-            self.components = components
-        def __enter__(self):
-            App.setGUIComponentsEnabled(self.components, False)
-            App.setBusy(True)
-        def __exit__(self, exc_type, exc_val, exc_tb):
-            App.setGUIComponentsEnabled(self.components, True)
-            App.setBusy(False)
+..     class gui_auto_lock:
+..         def __init__(self, components):
+..             self.components = components
+..         def __enter__(self):
+..             App.setGUIComponentsEnabled(self.components, False)
+..             App.setBusy(True)
+..         def __exit__(self, exc_type, exc_val, exc_tb):
+..             App.setGUIComponentsEnabled(self.components, True)
+..             App.setBusy(False)
 
-    with gui_auto_lock(MpcGUIComponents.All) as guilock:
-        doc = App.postDocument()
-        group = doc.activePlotGroup
-        if group and len(group.plots) > 0:
-            info = MpcOdpRegeneratorUpdateInfo()
+..     with gui_auto_lock(MpcGUIComponents.All) as guilock:
+..         doc = App.postDocument()
+..         group = doc.activePlotGroup
+..         if group and len(group.plots) > 0:
+..             info = MpcOdpRegeneratorUpdateInfo()
 
-            x = np.linspace(0.0, 30.0, 100)             # prepare scale factor history
-            y = x# np.sin(x)
-            for scale in y:
+..             x = np.linspace(0.0, 30.0, 100)             # prepare scale factor history
+..             y = x# np.sin(x)
+..             for scale in y:
 
-                for _, plot in group.plots.items():         # update scale factor for each plot
-                    if plot:
-                        plot.plotData.scale = scale
-                        plot.commitChanges()
+..                 for _, plot in group.plots.items():         # update scale factor for each plot
+..                     if plot:
+..                         plot.plotData.scale = scale
+..                         plot.commitChanges()
 
-                group.commitChanges() # redraw group
-                group.updateAndWait(info, 10000)
+..                 group.commitChanges() # redraw group
+..                 group.updateAndWait(info, 10000)
 
-Output data base
+.. Output data base
 
 .. note:: 
     Coming soon.

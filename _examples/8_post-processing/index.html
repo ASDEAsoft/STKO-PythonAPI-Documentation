@@ -91,10 +91,27 @@
              
   <section id="post-processing">
 <h1>8. Post Processing<a class="headerlink" href="#post-processing" title="Link to this heading"></a></h1>
-<p>In this section, we will show a few example scripts which can be used to interact with the Postprocessor environment. The classes, functions and methods available in <a class="reference external" href="../../_api/_modules/PyMpc.html">PyMpc</a> will allow the user to access the Postprocessor document, the databases, plots, chart data sets and charts contained in it and customize them at will as parameters of their customized code.Moreover the user will be able to add new elements in the Postprocessor (plot groups, plot, chart data and charts) and import values from outside STKO, for example to operate comparisons and checks.</p>
+<p>In this section, we will provide several example scripts that demonstrate how to interact
+with the Postprocessor environment using the PyMpc API.
+The classes, functions, and methods available in PyMpc enable users to access and customize various components
+of the Postprocessor document, including databases, plots, chart data sets, and charts.</p>
+<p>With PyMpc, users can not only modify existing elements but also add new ones, such as plot groups, plots, chart data, and charts.
+Furthermore, users can import values from external sources, allowing for comparisons and checks to be performed within STKO.</p>
+<p>These capabilities provide a high degree of flexibility and customization,
+enabling users to tailor the Postprocessor environment to their specific needs and workflows.
+The example scripts presented in this section will illustrate the various ways in which PyMpc can be used to interact with and
+customize the Postprocessor environment.</p>
 <section id="document">
 <h2>8.1. Document<a class="headerlink" href="#document" title="Link to this heading"></a></h2>
-<p>The following example will guide you through the use of the possible interactions with the Postprocessor document, with the use of the thread utilities described in section ThreadUtils, the following script was written by calling such classes and functions explicitly, but they could be stored in the external file ThreadUtils and then exported to obtain a shorter version of the same code. It can be a useful exercise to practice python import of external functions. The Postprocessor document can be accessed as shown in the following snippet. You can choose to use a dialog to keep the script alive till the end of the thread, or simply an event loop. Then you get the Postprocessor document, defining it into a variable doc.</p>
+<p>The following example will guide you through the various interactions possible with the Postprocessor document.
+This script uses the thread utilities described in the ThreadUtils section. While the script explicitly calls these classes and functions,
+they could be stored in an external file (e.g., ThreadUtils.py) and imported to create a more concise version of the code.
+This exercise can help you practice importing external functions in Python.</p>
+<p>To access the Postprocessor document, you can use the following code snippet.
+You have the option to use a dialog to keep the script alive until the thread completes, or simply use an event loop.
+Then, you can retrieve the Postprocessor document and assign it to a variable named doc.</p>
+<p>This approach allows you to interact with the Postprocessor document in a flexible and customizable way,
+leveraging the power of Python scripting and the ThreadUtils library.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PyMpc</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
@@ -116,7 +133,17 @@
 <span class="n">App</span><span class="o">.</span><span class="n">runCommand</span><span class="p">(</span><span class="err">“</span><span class="n">OpenDatabase</span><span class="err">”</span><span class="p">,</span> <span class="err">“</span><span class="n">C</span><span class="p">:</span><span class="o">/</span><span class="n">VBShared</span><span class="o">/</span><span class="n">di_michele</span><span class="o">/</span><span class="n">micro_inplane</span><span class="o">.</span><span class="n">mpco</span><span class="err">”</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Create the simple QObject that wraps the user-defined function, and calls this function waiting for it to finish, as shown in section ThreadUtils. and then create the slots to be called on the main GUI thread, to add a plot group, chart data and charts.</p>
+<p>Create the simple QObject that wraps the user-defined function, and calls this function waiting for it to finish,
+as shown in section ThreadUtils. and then create the slots to be called on the main GUI thread, to add a plot group, chart data and charts.</p>
+<p>Next, define the slots that will be called on the main GUI thread to perform the following actions:</p>
+<ul class="simple">
+<li><p>Add a plot group to the Postprocessor document.</p></li>
+<li><p>Add chart data to the plot group.</p></li>
+<li><p>Add charts to the plot group.</p></li>
+</ul>
+<p>By using the QBlockingSlot class and defining these slots,
+you can ensure that the GUI remains responsive while the user-defined function is executed on a separate thread.</p>
+<p>Here is an example code snippet that demonstrates this approach:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">QBlockingSlot</span><span class="p">(</span><span class="n">QObject</span><span class="p">):</span>
     <span class="n">requestCall</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">(</span><span class="nb">tuple</span><span class="p">)</span>
     <span class="n">done</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">()</span>
@@ -162,7 +189,10 @@
 <span class="n">addChart</span> <span class="o">=</span> <span class="n">QBlockingSlot</span><span class="p">(</span><span class="n">addChart_function</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Then define the worker class. It will run the lengthy function on a working thread and emit signals for calling the connected slots on the main thread. The lengthy function is this case consists in the creation of 10 new items in terms of plot groups, chart data sets, chart items to insert in the charts and finally the charts.</p>
+<p>Then define the worker class.
+It will run the lengthy function on a working thread and emit signals for calling the connected slots on the main thread.
+The lengthy function is this case consists in the creation of 10 new items in terms of plot groups, chart data sets,
+chart items to insert in the charts and finally the charts.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Worker</span><span class="p">(</span><span class="n">QObject</span><span class="p">):</span>
    <span class="n">sendPercentage</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
    <span class="n">finished</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">()</span>
@@ -203,7 +233,8 @@
        <span class="bp">self</span><span class="o">.</span><span class="n">finished</span><span class="o">.</span><span class="n">emit</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Create a dialog or an event loop that will block the script till the end. Then create the thread, the worker, and move the worker to the thread.</p>
+<p>Create a dialog or an event loop that will block the script till the end.
+Then create the thread, the worker, and move the worker to the thread.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">use_dialog</span><span class="p">:</span>
     <span class="n">dialog</span> <span class="o">=</span> <span class="n">QDialog</span><span class="p">()</span>
     <span class="n">dialog</span><span class="o">.</span><span class="n">setLayout</span><span class="p">(</span><span class="n">QVBoxLayout</span><span class="p">())</span>
@@ -245,45 +276,6 @@
 </section>
 <section id="output-data-plot">
 <h2>8.2. Output data plot<a class="headerlink" href="#output-data-plot" title="Link to this heading"></a></h2>
-<p>In PyMpc there are a series of classes and methods to interact with the plots, data plots and their types, the plot groups, and the visibility attributes of the data plots. An example of an interaction with the output data plot could be the variation of one of the plot editor parameters, such as the deformation scale factor of the render view. Try running the following script with a database open in your STKO Postprocessor and see what happens.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PyMpc</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
-<span class="kn">import</span> <span class="nn">traceback</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">PySide2.QtCore</span> <span class="kn">import</span> <span class="n">QEventLoop</span><span class="p">,</span> <span class="n">QTimer</span>
-
-<span class="n">App</span><span class="o">.</span><span class="n">clearTerminal</span><span class="p">()</span>
-
-<span class="k">class</span> <span class="nc">gui_auto_lock</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">components</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">components</span> <span class="o">=</span> <span class="n">components</span>
-    <span class="k">def</span> <span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">App</span><span class="o">.</span><span class="n">setGUIComponentsEnabled</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">components</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
-        <span class="n">App</span><span class="o">.</span><span class="n">setBusy</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-    <span class="k">def</span> <span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_val</span><span class="p">,</span> <span class="n">exc_tb</span><span class="p">):</span>
-        <span class="n">App</span><span class="o">.</span><span class="n">setGUIComponentsEnabled</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">components</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
-        <span class="n">App</span><span class="o">.</span><span class="n">setBusy</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-
-<span class="k">with</span> <span class="n">gui_auto_lock</span><span class="p">(</span><span class="n">MpcGUIComponents</span><span class="o">.</span><span class="n">All</span><span class="p">)</span> <span class="k">as</span> <span class="n">guilock</span><span class="p">:</span>
-    <span class="n">doc</span> <span class="o">=</span> <span class="n">App</span><span class="o">.</span><span class="n">postDocument</span><span class="p">()</span>
-    <span class="n">group</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">activePlotGroup</span>
-    <span class="k">if</span> <span class="n">group</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">group</span><span class="o">.</span><span class="n">plots</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">info</span> <span class="o">=</span> <span class="n">MpcOdpRegeneratorUpdateInfo</span><span class="p">()</span>
-
-        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">30.0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>             <span class="c1"># prepare scale factor history</span>
-        <span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="c1"># np.sin(x)</span>
-        <span class="k">for</span> <span class="n">scale</span> <span class="ow">in</span> <span class="n">y</span><span class="p">:</span>
-
-            <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">plot</span> <span class="ow">in</span> <span class="n">group</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>         <span class="c1"># update scale factor for each plot</span>
-                <span class="k">if</span> <span class="n">plot</span><span class="p">:</span>
-                    <span class="n">plot</span><span class="o">.</span><span class="n">plotData</span><span class="o">.</span><span class="n">scale</span> <span class="o">=</span> <span class="n">scale</span>
-                    <span class="n">plot</span><span class="o">.</span><span class="n">commitChanges</span><span class="p">()</span>
-
-            <span class="n">group</span><span class="o">.</span><span class="n">commitChanges</span><span class="p">()</span> <span class="c1"># redraw group</span>
-            <span class="n">group</span><span class="o">.</span><span class="n">updateAndWait</span><span class="p">(</span><span class="n">info</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Output data base</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Coming soon.</p>
