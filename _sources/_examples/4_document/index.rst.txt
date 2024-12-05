@@ -1,15 +1,15 @@
 4. Document
 ===========
 
-Four examples on how to define new and call existing property, geometry, selection sets and conditions are provided below
+This section provides four examples of how to define new and call existing properties,
+geometries, selection sets, and conditions in STKO.
 
 ##################
 4.1. Properties
 ##################
 
-As with most other elements of a Cae Document, its properties are also accessible via the Python API.
-
-Firstly you have to import the PyMpc module and load the cae document as a variable in Python:
+In STKO, properties are accessible via the Python API.
+To start, import the PyMpc module and load the cae document as a variable in Python:
 
 .. code-block:: python
 
@@ -17,9 +17,9 @@ Firstly you have to import the PyMpc module and load the cae document as a varia
 
     doc = App.caeDocument()
 
-After having done this, you can start querying the ``doc`` variable for its properties.
+You can then query the ``doc`` variable for its properties.
 
-An example of this:
+For example, to view all the physical properties defined in the document:
 
 .. code-block:: python
 
@@ -31,7 +31,7 @@ An example of this:
     for item in dir(doc):
 	    print(item)
 
-you'll get an output like this: 
+This will output a list of all the physical properties, along with their attributes and methods.
 
 .. code-block::
     
@@ -64,14 +64,14 @@ If you are in an empty file, the output will be blank, but if you have physical 
 4.2. Geometries
 ##################
 
-With this example we will create new geometries in the Preprocessor, obtaining a result like this:
+In this example, we will create new geometries in the Preprocessor using the PyMpc API.
 
 .. figure:: ../../_static/img/examples/4_document/fig421.png
     :align: center
 
     Fig. 4.2.1 **Geometry created with the following script**
 
-Start out as follows and use the caeDocument function from the App sub-module to call the open .scd document.
+First, import the necessary modules and load the cae document:
 
 .. code-block:: python
 
@@ -82,7 +82,8 @@ Start out as follows and use the caeDocument function from the App sub-module to
 
     doc = App.caeDocument()
 
-The function caeDocument calls the class MpcCaeDocument. All of its attributes and method are now available to be used. The geometries we will create need to be numbered in the model. It is important to make sure that the numbering will be consistent with the one of the geometries already present in the model. We initialize the id at 0 and then set an if loop which checks if there are existing geometries and resets the id to the greatest existing index plus one. Then we need a function to call and assign the id to new geometries.
+Next, initialize the id at 0 and set an if loop to check if there are existing geometries and
+reset the id to the greatest existing index plus one:
 
 .. code-block:: python
 
@@ -96,7 +97,7 @@ The function caeDocument calls the class MpcCaeDocument. All of its attributes a
         id += 1
         return id
 
-After, you can create a new function to add geometries to the document, commit the changes and define the document as dirty (so STKO will recognize the presence of unsaved changes) and finally regenerate the render view, processing all the events waiting on the event loop.
+Then, define a function to add geometries to the document, commit the changes, and define the document as dirty:
 
 .. code-block:: python
 
@@ -107,7 +108,7 @@ After, you can create a new function to add geometries to the document, commit t
         App.runCommand("Regenerate")
         App.processEvents()
 
-Initially we want to draw a face with a hole in the center, scaling the perimeters of the two shapes of 0.5 one in respect to the other. Therefore, another function show be set to create a wire, with an argument scale, to then quickly draw the 2 wires.
+Create a new function to draw a wire with an argument scale:
 
 .. code-block:: python
 
@@ -138,7 +139,7 @@ Initially we want to draw a face with a hole in the center, scaling the perimete
         add_geom(MpcGeometry(get_id(), "W1", w1))
         return w1
 
-The two wires can then be created, and after a face with a hole with reference to the second wire.
+Create the two wires and a face with a hole:
 
 .. code-block:: python
 
@@ -148,7 +149,7 @@ The two wires can then be created, and after a face with a hole with reference t
     f1 = FxOccBuilder.makeFace(w1, [w2])
     add_geom(MpcGeometry(get_id(), "F1", f1))
 
-Similarly, a solid can be created by defining its vertices, then the edges connecting them connected as wires, the faces on each side transformed in shells and finally the solid including all those shells.
+Similarly, create a solid by defining its vertices, edges, wires, faces, and shells:
 
 .. code-block:: python
 

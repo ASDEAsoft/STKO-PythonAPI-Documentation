@@ -12,14 +12,29 @@
 3.2. X-objects
 ##################
 
-X-Objects in STKO refer to 6 basic categories: conditions, selection sets, definitions, element properties, physical properties and analysis steps. The simplest operations that can be carried out interacting from the Python Scripting Interface with the Preprocessor, using PyMpc, are basic calls of X-objects properties already existing in the model. Imagine you wish to create a graph or a table and you want to include information that are already stored in the Preprocessor document, the cae document, like for example the increment and values of a timeSeries or the physical properties of a section. To automatically import such parameters you can use a simple script as following. Import PyMpc and define a instance of the caeDocument with the caeDocument method in the App sub-module. This operation is simply calling the document you have already open in STKO
+In STKO, X-Objects are categorized into six fundamental types:
+conditions, selection sets, definitions, element properties, physical properties, and analysis steps.
+One of the simplest ways to interact with the Preprocessor using PyMpc
+is to access and retrieve properties of existing X-Objectsin the model.
+
+Imagine you want to create a graph or table that includes information already stored in the Preprocessor document,
+such as the increment and values of a timeSeries or the physical properties of a section.
+To automatically import these parameters, you can use a simple script.
+
+First, import PyMpc and create an instance of the caeDocument using the caeDocument method in the App sub-module.
+This operation essentially calls the document that is already open in STKO.
 
 .. code-block:: python
 
     from PyMpc import *
     doc = App.caeDocument()
 
-Assuming you already defined a timeSeries.Path in your model. You can define variables corresponding to metadata existing in such definitions by getting the definition, defining the X-Object and getting the corresponding attribute.
+Assuming you have already defined a timeSeries.Path in your model,
+you can define variables that correspond to metadata existing in such definitions by getting the definition,
+defining the X-Object, and getting the corresponding attribute.
+
+This approach allows you to easily access and reuse existing data in your model,
+streamlining your workflow and reducing manual input errors.
 
 .. code-block:: python
 
@@ -28,4 +43,15 @@ Assuming you already defined a timeSeries.Path in your model. You can define var
     increment = xobj_timeS.getAttribute('dt').real
     series = xobj_timeS.getAttribute("list_of_values").quantityVector.value
 
-It is important to notice that the method getDefinition (and the same goes for other methods such as getPhysicalProperty or getCondition) takes as an argument the corresponding index visible in the Work Tree. In fact, all X-Objects in STKO have as an attribute and index value, an integer. When created manually, these indices are created starting from 1. If an X-Object is erased, the counter will not update the indices of the others. In each of the 6 categories of X-Objects the counter is restarted. Therefore, in the example about, the definition selected in the second added to the Work Tree. Another aspect to be noted, is that in order to obtain the value of an attribute, you need to know the correspondent type of that attribute. If necessary, you can always use the method type to query the attribute and the Python function dir() to return the list of the attributes and methods of the object.
+It is important to notice that the method getDefinition
+(and the same goes for other methods such as getPhysicalProperty or getCondition)
+takes as an argument the corresponding index visible in the Work Tree.
+In fact, all X-Objects in STKO have as an attribute and index value, an integer.
+When created manually, these indices are created starting from 1.
+If an X-Object is erased, the counter will not update the indices of the others.
+In each of the 6 categories of X-Objects the counter is restarted.
+Therefore, in the example about, the definition selected in the second added to the Work Tree.
+Another aspect to be noted, is that in order to obtain the value of an attribute,
+you need to know the correspondent type of that attribute.
+If necessary, you can always use the method type to query the attribute and the Python function dir()
+to return the list of the attributes and methods of the object.
