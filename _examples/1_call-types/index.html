@@ -138,8 +138,12 @@ which must be taken into account when scripting.</p>
 <section id="process-events">
 <h2>1.2. Process events<a class="headerlink" href="#process-events" title="Link to this heading"></a></h2>
 <p>To prevent the GUI from freezing while running scripts, several approaches can be taken.
-One of the simplest solutions is to utilize the processEvents method from the App sub-module.
+One of the simplest solutions is to utilize the <code class="docutils literal notranslate"><span class="pre">processEvents</span></code> method from the <a class="reference external" href="../../_api/_modules/PyMpc.App.html">App</a> sub-module.
 This function enables the thread to divide its attention between the script and the GUI, allowing for more responsive interaction.</p>
+<p>By inserting <code class="docutils literal notranslate"><span class="pre">processEvents</span></code> at the end of each iteration in the standard call type example,
+you can now interact with the GUI while the script is running, although you may experience some lag.
+This subtle feedback informs the user that the software is still operational, merely busy processing the script.
+To see this in action, try running the following script:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
 <span class="kn">from</span> <span class="nn">PyMpc</span> <span class="kn">import</span> <span class="n">App</span>
@@ -157,10 +161,29 @@ This function enables the thread to divide its attention between the script and 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;end&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>By incorporating <code class="docutils literal notranslate"><span class="pre">processEvents</span></code>, you can create a more user-friendly experience,
+even when running computationally intensive scripts.
+This technique helps to maintain a responsive GUI,
+providing reassurance that the software is functioning as intended.</p>
 </section>
 <section id="working-thread">
 <h2>1.3. Working thread<a class="headerlink" href="#working-thread" title="Link to this heading"></a></h2>
-<p>Another way to call your process and avoid that the GUI will freeze while it is running, is using a working thread. Here, it is necessary to use the <a class="reference external" href="https://pypi.org/project/PySide2/">PySide2</a> library, which is used to build the STKO GUI. The <a class="reference external" href="https://pypi.org/project/PySide2/">PySide2</a> library is already installed on the Python embedded in STKO, if you are using another Python, reference this link for the installation of <a class="reference external" href="https://pypi.org/project/PySide2/">PySide2</a>. You will need to be familiar with the concepts of polymorphism in Python, child and parent classes and inheritance, to understand the following script. The same lengthy function used in the previous two examples is used here, but it is not called directly. First you need to create a Worker class, and use a mechanism available in <a class="reference external" href="https://pypi.org/project/PySide2/">PySide2</a> called signal and slot delivery, which is used for communication between objects. A signal is emitted when a particular event occur and a function (the slot) is called in response to that particular signal. Check out more on signal and slot mechanisms in the <a class="reference external" href="https://doc.qt.io/qtforpython/overviews/signalsandslots.html">Qt Documentation</a>  or through your own research. Therefore, the following script includes a worker class, a signal which will notify the main thread when our process is finished. Inside this class, a function called run is tagged as a slot with the symbol &#64;, which will run the same lengthy function we used before on a parallel working thread.</p>
+<p>An alternative approach to prevent the GUI from freezing while running a process is to utilize a worker thread.
+This requires leveraging the <a class="reference external" href="https://pypi.org/project/PySide2/">PySide2</a> library,
+which is used to build the STKO GUI and is already installed on the Python embedded in STKO.
+If you’re using a different Python environment,
+you can install <a class="reference external" href="https://pypi.org/project/PySide2/">PySide2</a> by referring to the link provided.</p>
+<p>To implement this approach, you’ll need to be familiar with Python concepts such as polymorphism,
+child and parent classes, and inheritance. The example script below uses the same lengthy function as before,
+but instead of calling it directly,
+we create a Worker class that utilizes the signal and slot delivery mechanism provided by <a class="reference external" href="https://pypi.org/project/PySide2/">PySide2</a>.
+This mechanism enables communication between objects by emitting signals when specific events occur,
+which in turn trigger the execution of designated functions (slots).</p>
+<p>For more information on signal and slot mechanisms,
+please refer to the <a class="reference external" href="https://doc.qt.io/qtforpython/overviews/signalsandslots.html">Qt Documentation</a> or conduct your own research.</p>
+<p>In the script below, we define a <strong>Worker</strong> class that includes a signal to notify the main thread when our process is complete.
+Within this class, we define a run function tagged as a slot using the <em>&#64;</em> symbol,
+which executes the lengthy function on a parallel worker thread.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
 <span class="kn">from</span> <span class="nn">PySide2.QtCore</span> <span class="kn">import</span> <span class="n">Qt</span><span class="p">,</span> <span class="n">QObject</span><span class="p">,</span> <span class="n">Signal</span><span class="p">,</span> <span class="n">Slot</span><span class="p">,</span> <span class="n">QThread</span><span class="p">,</span> <span class="n">QEventLoop</span>
@@ -182,7 +205,8 @@ This function enables the thread to divide its attention between the script and 
         <span class="bp">self</span><span class="o">.</span><span class="n">finished</span><span class="o">.</span><span class="n">emit</span><span class="p">()</span>    <span class="c1"># Done</span>
 </pre></div>
 </div>
-<p>After defining this class, you can create an event loop that will block the script till the end. Then the thread, the worker, and move the worker to a parallel thread. Then you need to connect the signal to some slots, defining connections, telling the worker to stop the process, to delete itself as soon as it’s over. Further, set up a signal to start calling the run function on the parallel thread. If you were to call the run function directly in your script, without using the QThread class methods, it will run on the GUI thread and not on a parallel one. Same for the worker, you say to the thread to delete when finished and to quit. Then you start the thread, you wait for it to finish and finally run the event loop. Prints can be added to check what is happening in the terminal.</p>
+<p>y using a worker thread and the signal and slot delivery mechanism, we can decouple the GUI from the processing task,
+ensuring a responsive and interactive user experience even when performing computationally intensive tasks.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">loop</span> <span class="o">=</span> <span class="n">QEventLoop</span><span class="p">()</span>
 
 <span class="n">thread</span> <span class="o">=</span> <span class="n">QThread</span><span class="p">()</span>
@@ -203,11 +227,33 @@ This function enables the thread to divide its attention between the script and 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;DONE!&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Using the function exec_() from the QEventLoop ensures that you have waited for the thread to finish. It is suggested to always use the event loop, to avoid crashing or other errors in STKO. If you run the example script just provided, you can see that interacting with STKO GUI is possible, as our lengthy function is running. What may happen is that the user decides to change the model, as the process is running, altering the data possibly needed by the script. This could result in the crushing of the application. Crushing could also occur if the same script is rerun before the first process is completed.</p>
+<p>To ensure that the thread has completed its execution, it’s recommended to use the <code class="docutils literal notranslate"><span class="pre">exec_()</span></code> function from the QEventLoop class.
+This function blocks the main thread until the event loop is finished, preventing potential crashes or errors in STKO.</p>
+<p>When running the example script, you’ll notice that interacting with the STKO GUI is possible while the lengthy function is executing.
+However, this flexibility also introduces a potential risk: if the user modifies the model while the script is running,
+it may alter the data required by the script, leading to application crashes.
+Similarly, if the same script is re-run before the first process has completed, it may also cause the application to crash.</p>
+<p>To mitigate these risks, it’s essential to implement proper synchronization mechanisms, such as using event loops,
+to ensure that the script execution is properly coordinated with the GUI interactions.
+By doing so, you can prevent potential crashes and ensure a more robust and reliable user experience.</p>
+<p>It’s worth noting that using event loops can help prevent common issues such as:</p>
+<ul class="simple">
+<li><p>Crashes caused by concurrent access to shared data</p></li>
+<li><p>Errors resulting from incomplete or inconsistent data</p></li>
+<li><p>Unexpected behavior due to concurrent execution of multiple scripts</p></li>
+</ul>
+<p>By incorporating event loops into your script design,
+you can create more robust and reliable scripts that interact seamlessly with the STKO GUI.</p>
 </section>
 <section id="working-thread-with-gui-operation-and-callback">
 <h2>1.4. Working thread with GUI-operation and callback<a class="headerlink" href="#working-thread-with-gui-operation-and-callback" title="Link to this heading"></a></h2>
-<p>All the operations that is related to the GUI can only be performing on the GUI thread, because that thread is the one that is listening to the operating system events. If you try to perform a GUI operation on a parallel working thread, your STKO will most probably crash. One of the most common GUI operation is the opening of a message box, communicating a message to the user and waiting for an input to continue. It is therefore a possible mistake to run a GUI operation on a parallel thread. See for example what happens if you run the following script in your STKO, where a GUI operation is added in the run function from the previous example.</p>
+<p>When working with GUI applications, it’s essential to remember that all GUI-related operations must be performed on the GUI thread.
+This thread is responsible for listening to operating system events,
+and attempting to perform GUI operations on a parallel thread can lead to crashes.</p>
+<p>One common GUI operation is displaying a message box to communicate with the user and wait for input.
+However, if you try to perform this operation on a parallel thread, your STKO application will likely crash.</p>
+<p>To demonstrate this, let’s examine the following script,
+which adds a GUI operation to the run function from the previous example.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
 <span class="kn">from</span> <span class="nn">PySide2.QtCore</span> <span class="kn">import</span> <span class="n">Qt</span><span class="p">,</span> <span class="n">QObject</span><span class="p">,</span> <span class="n">Signal</span><span class="p">,</span> <span class="n">Slot</span><span class="p">,</span> <span class="n">QThread</span><span class="p">,</span> <span class="n">QEventLoop</span>
@@ -252,7 +298,12 @@ This function enables the thread to divide its attention between the script and 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;DONE!&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>It is possible to include in the worker class, a method to run specific functions on the main thread. You can see in the following script, where an additional class called QBlockingSlot, derived from QObject, is created to requests the call for a function, and connect it to the one running of the parallel thread. Whenever the call request is invoked, it will run on the thread that is hosting the class in which the call was created.</p>
+<p>As you can see, the script attempts to display a message box on a parallel thread,
+which can cause the application to crash.</p>
+<p>To avoid this issue, you can create a method within the Worker class that runs specific functions on the main thread.
+One way to achieve this is by using a QBlockingSlot class, which is derived from QObject.
+This class requests the call for a function and connects it to the parallel thread.</p>
+<p>Here’s an updated script that demonstrates this approach:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
 <span class="kn">from</span> <span class="nn">PySide2.QtCore</span> <span class="kn">import</span> <span class="n">Qt</span><span class="p">,</span> <span class="n">QObject</span><span class="p">,</span> <span class="n">Signal</span><span class="p">,</span> <span class="n">Slot</span><span class="p">,</span> <span class="n">QThread</span><span class="p">,</span> <span class="n">QEventLoop</span>
@@ -323,11 +374,26 @@ This function enables the thread to divide its attention between the script and 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;DONE!&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The prints set up in the script will show you that the first call is different from the others, and both the main and parallel working thread are involved in the operations.</p>
+<p>In this script, we create a QBlockingSlot class that allows us to run a function on the main thread.
+We then use this class to display a message box on the main thread, while the parallel thread continues to run.</p>
+<p>The print statements in the script show that the first call is different from the others,
+and both the main and parallel threads are involved in the operations.
+This demonstrates that we have successfully run a GUI operation on the main thread, while avoiding potential crashes.</p>
+<p>By using this approach, you can ensure that your GUI applications remain stable and responsive,
+even when performing complex operations on parallel threads.</p>
 </section>
 <section id="blocking-thread">
 <h2>1.5. Blocking thread<a class="headerlink" href="#blocking-thread" title="Link to this heading"></a></h2>
-<p>The blocking and working thread use the same concept, the only difference is that here you will have a dialog, which will prevent the user from interacting with the GUI, and notify him/her that a process is running and there will not be the doubt that the software is not responding anymore. You can see in the following script, which has the addition of the WorkerDialog function, derived for the PySide2 QDialog class. The dialog should not close when the user presses the button, or the Escape key, otherwise the thread would stop.</p>
+<p>To ensure a seamless user experience, it’s essential to provide visual feedback when performing time-consuming operations.
+One way to achieve this is by using a blocking dialog,
+which prevents the user from interacting with the GUI while the operation is in progress.</p>
+<p>In this example, we’ll modify the previous script to include a WorkerDialog class, derived from QDialog.
+This dialog will display a progress bar and a label indicating that the operation is in progress.</p>
+<p>The key difference between this approach and the previous one is that the dialog will remain visible until the operation is complete,
+providing a clear indication of the progress.
+Additionally, the dialog will not close when the user presses the button or the Escape key,
+ensuring that the thread continues to run uninterrupted.</p>
+<p>Here’s the updated script:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
 <span class="kn">from</span> <span class="nn">PySide2.QtCore</span> <span class="kn">import</span> <span class="n">Qt</span><span class="p">,</span> <span class="n">QObject</span><span class="p">,</span> <span class="n">Signal</span><span class="p">,</span> <span class="n">Slot</span><span class="p">,</span> <span class="n">QThread</span><span class="p">,</span> <span class="n">QEventLoop</span><span class="p">,</span> <span class="n">QTimer</span>
@@ -420,7 +486,13 @@ This function enables the thread to divide its attention between the script and 
         <span class="bp">self</span><span class="o">.</span><span class="n">finished</span><span class="o">.</span><span class="n">emit</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>The rest of the script is the same as the one shown in the working thread example, just instead of an event loop here we have a dialog, and there is new connection established in between the worker and the dialog to send the percentage of process completion, to understand how long it is taking to complete the operation.</p>
+<p>As you can see, the WorkerDialog class is designed to display a progress bar and a label,
+while also preventing the user from interacting with the GUI.
+The showEvent method is overridden to start a timer that gradually increases the dialog’s opacity, creating a smooth fade-in effect.</p>
+<p>The Worker class remains largely unchanged, with the addition of a sendPercentage signal that emits the progress percentage to the dialog.
+This allows the dialog to update the progress bar accordingly.</p>
+<p>The rest of the script is similar to the previous example,
+with the addition of a new connection between the Worker and the WorkerDialog to send the progress percentage.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dialog</span> <span class="o">=</span> <span class="n">WorkerDialog</span><span class="p">()</span>
 
 <span class="n">thread</span> <span class="o">=</span> <span class="n">QThread</span><span class="p">()</span>
@@ -442,131 +514,24 @@ This function enables the thread to divide its attention between the script and 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;DONE!&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>With this script the GUI is blocked, visibly, and you can not interact with it as your process is running. This is the best and most reliable way to interact with STKO from the Python API.</p>
+<p>By using this approach, you can provide a more intuitive and user-friendly experience,
+while also ensuring that the GUI remains responsive and stable.
+This is the recommended way to interact with STKO from the Python API,
+as it provides a clear indication of the progress and prevents the user from interacting with the GUI while the operation is in progress.</p>
 </section>
 <section id="threadutils">
 <h2>1.6. ThreadUtils<a class="headerlink" href="#threadutils" title="Link to this heading"></a></h2>
-<p>Every time you need to run a new script you do not need to add all of this code to your programs. We created a specific file for you called TreadUtils.py that you can reference in your scripts, calling the following classes and functions and use the same concepts we just explained in a simple and direct manner.</p>
-<p>The classes and functions in ThreadUtils are shown below for clarity. The file starts importing everything you need:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PySide2.QtCore</span> <span class="kn">import</span> <span class="n">Qt</span><span class="p">,</span> <span class="n">QObject</span><span class="p">,</span> <span class="n">Signal</span><span class="p">,</span> <span class="n">Slot</span><span class="p">,</span> <span class="n">QThread</span><span class="p">,</span> <span class="n">QEventLoop</span><span class="p">,</span> <span class="n">QTimer</span>
-<span class="kn">from</span> <span class="nn">PySide2.QtWidgets</span> <span class="kn">import</span> <span class="n">QMessageBox</span><span class="p">,</span> <span class="n">QApplication</span><span class="p">,</span> <span class="n">QDialog</span><span class="p">,</span> <span class="n">QLabel</span><span class="p">,</span> <span class="n">QProgressBar</span><span class="p">,</span> <span class="n">QVBoxLayout</span>
-</pre></div>
-</div>
-<p>You can find the following:</p>
+<p>To simplify the process of running scripts with a blocking thread, we’ve created a utility file called ThreadUtils.py.
+This file contains a set of classes and functions that can be used to run scripts with a blocking thread,
+without having to repeat the same code in every script.</p>
+<p>The ThreadUtils.py file includes the following classes and functions:</p>
 <ul class="simple">
-<li><p>A simple QObject that wraps a user-defined function, and calls this function waiting for it to finish.</p></li>
+<li><p><strong>QBlockingSlot</strong>: a simple <code class="docutils literal notranslate"><span class="pre">QObject</span></code> that wraps a user-defined function and calls it, waiting for it to finish.</p></li>
+<li><p><strong>runOnMainThread</strong>: a utility function that runs a function with a <code class="docutils literal notranslate"><span class="pre">QBlockingSlot</span></code> on the GUI thread.</p></li>
+<li><p><strong>WorkerDialog</strong>: a simple worker dialog with a progress bar to track the percentage of an operation.</p></li>
+<li><p><strong>runOnWorkerThread</strong>: a function that runs a worker (an instance of a class derived from <code class="docutils literal notranslate"><span class="pre">Worker</span></code>) on a working thread using the provided dialog.</p></li>
 </ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">QBlockingSlot</span><span class="p">(</span><span class="n">QObject</span><span class="p">):</span>
-    <span class="n">requestCall</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">()</span>
-    <span class="n">done</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">()</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function</span><span class="p">,</span> <span class="n">parent</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">QBlockingSlot</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">requestCall</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">run</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">function</span> <span class="o">=</span> <span class="n">function</span>
-    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">function</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">done</span><span class="o">.</span><span class="n">emit</span><span class="p">()</span>
-    <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">loop</span> <span class="o">=</span> <span class="n">QEventLoop</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">done</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">loop</span><span class="o">.</span><span class="n">quit</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">requestCall</span><span class="o">.</span><span class="n">emit</span><span class="p">()</span>
-        <span class="n">loop</span><span class="o">.</span><span class="n">exec_</span><span class="p">()</span>
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>A utility to run a function with a QBlockingSlot on the GUI thread.</p></li>
-</ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">runOnMainThread</span><span class="p">(</span><span class="n">what</span><span class="p">):</span>
-    <span class="n">bslot</span> <span class="o">=</span> <span class="n">QBlockingSlot</span><span class="p">(</span><span class="n">what</span><span class="p">)</span>
-    <span class="n">bslot</span><span class="o">.</span><span class="n">moveToThread</span><span class="p">(</span><span class="n">QApplication</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">thread</span><span class="p">())</span>
-    <span class="n">bslot</span><span class="o">.</span><span class="n">call</span><span class="p">()</span>
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>A simple worker dialog, with a progress bar to track the percentage of an operation.</p></li>
-</ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">WorkerDialog</span><span class="p">(</span><span class="n">QDialog</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
-
-        <span class="nb">super</span><span class="p">(</span><span class="n">WorkerDialog</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">setWindowFlags</span><span class="p">(</span><span class="n">Qt</span><span class="o">.</span><span class="n">Window</span> <span class="o">|</span> <span class="n">Qt</span><span class="o">.</span><span class="n">WindowTitleHint</span> <span class="o">|</span> <span class="n">Qt</span><span class="o">.</span><span class="n">CustomizeWindowHint</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="n">Qt</span><span class="o">.</span><span class="n">WA_DeleteOnClose</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">setLayout</span><span class="p">(</span><span class="n">QVBoxLayout</span><span class="p">())</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="p">()</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">QLabel</span><span class="p">(</span><span class="s2">&quot;Work in progres. Please wait&quot;</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">pbar</span> <span class="o">=</span> <span class="n">QProgressBar</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">pbar</span><span class="o">.</span><span class="n">setRange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">pbar</span><span class="o">.</span><span class="n">setTextVisible</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="p">()</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pbar</span><span class="p">)</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">setWindowOpacity</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">delay</span> <span class="o">=</span> <span class="mf">0.0</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">timer</span> <span class="o">=</span> <span class="n">QTimer</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">timer</span><span class="o">.</span><span class="n">setInterval</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">timer</span><span class="o">.</span><span class="n">timeout</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">onTimerTimeOut</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">showEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
-
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;showEvent&#39;</span><span class="p">)</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">WorkerDialog</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">showEvent</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
-
-<span class="k">def</span> <span class="nf">reject</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="k">pass</span>
-<span class="nd">@Slot</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">setPercentage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">pbar</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
-<span class="nd">@Slot</span><span class="p">()</span>
-<span class="k">def</span> <span class="nf">onTimerTimeOut</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">delay</span> <span class="o">&lt;</span> <span class="mf">1.0</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">delay</span> <span class="o">+=</span> <span class="mf">0.05</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">setWindowOpacity</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">windowOpacity</span><span class="p">()</span> <span class="o">+</span> <span class="mf">0.05</span><span class="p">)</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">windowOpacity</span><span class="p">()</span> <span class="o">==</span> <span class="mf">1.0</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">timer</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">timer</span><span class="o">.</span><span class="n">timeout</span><span class="o">.</span><span class="n">disconnect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">onTimerTimeOut</span><span class="p">)</span>
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>A function which runs the worker (an instance of a class derived from Worker) on a working thread using the provided dialog. The dialog should have the sendPercentage(int) signal defined and should derive from QDialog</p></li>
-</ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">runOnWorkerThread</span><span class="p">(</span><span class="n">worker</span><span class="p">,</span> <span class="n">dialog</span> <span class="o">=</span> <span class="n">WorkerDialog</span><span class="p">()):</span>
-<span class="c1"># initial checks</span>
-<span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">worker</span><span class="p">,</span> <span class="n">QObject</span><span class="p">):</span>
-    <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;the worker object should inherit from QObject&#39;</span><span class="p">)</span>
-<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">worker</span><span class="p">,</span> <span class="s1">&#39;finished&#39;</span><span class="p">):</span>
-    <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;the worker object should have the finished() signal&#39;</span><span class="p">)</span>
-<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">worker</span><span class="p">,</span> <span class="s1">&#39;sendPercentage&#39;</span><span class="p">):</span>
-    <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;the worker object should have the sendPercentage(int) signal&#39;</span><span class="p">)</span>
-<span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dialog</span><span class="p">,</span> <span class="n">QDialog</span><span class="p">):</span>
-    <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;the dialog object should inherit from QDialog&#39;</span><span class="p">)</span>
-<span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">dialog</span><span class="p">,</span> <span class="s1">&#39;setPercentage&#39;</span><span class="p">):</span>
-    <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;the dialog object should have a method called setPercentage(int)&#39;</span><span class="p">)</span>
-<span class="k">if</span> <span class="ow">not</span> <span class="nb">callable</span><span class="p">(</span><span class="n">dialog</span><span class="o">.</span><span class="n">setPercentage</span><span class="p">):</span>
-    <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;the dialog object setPercentage attribute is not a callable&#39;</span><span class="p">)</span>
-
-<span class="c1"># create a dialog or an event loop that will block the script till the end</span>
-<span class="n">dialog</span> <span class="o">=</span> <span class="n">WorkerDialog</span><span class="p">()</span>
-
-<span class="c1"># create the thread, the worker, and move the worker to the thread</span>
-<span class="n">thread</span> <span class="o">=</span> <span class="n">QThread</span><span class="p">()</span>
-<span class="n">worker</span><span class="o">.</span><span class="n">moveToThread</span><span class="p">(</span><span class="n">thread</span><span class="p">)</span>
-
-<span class="c1"># set up worker and thread connections</span>
-<span class="n">worker</span><span class="o">.</span><span class="n">finished</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">thread</span><span class="o">.</span><span class="n">quit</span><span class="p">)</span>
-<span class="n">worker</span><span class="o">.</span><span class="n">finished</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">worker</span><span class="o">.</span><span class="n">deleteLater</span><span class="p">)</span>
-<span class="n">thread</span><span class="o">.</span><span class="n">started</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">worker</span><span class="o">.</span><span class="n">run</span><span class="p">)</span>
-<span class="n">thread</span><span class="o">.</span><span class="n">finished</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">thread</span><span class="o">.</span><span class="n">deleteLater</span><span class="p">)</span>
-<span class="n">worker</span><span class="o">.</span><span class="n">sendPercentage</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">dialog</span><span class="o">.</span><span class="n">setPercentage</span><span class="p">)</span>
-<span class="n">thread</span><span class="o">.</span><span class="n">finished</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">dialog</span><span class="o">.</span><span class="n">accept</span><span class="p">)</span>
-
-<span class="c1"># start the thread</span>
-<span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
-
-<span class="c1"># run dialog event loop</span>
-<span class="n">dialog</span><span class="o">.</span><span class="n">exec_</span><span class="p">()</span>
-</pre></div>
-</div>
-<p>Importing ThreadUtils in your script, after placing it in a folder named “utils” in the directory loaded in your Script Explored, you can use the blocking thread with a much lighter script as following.</p>
+<p>Here’s an example of using ThreadUtils in your script:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
 <span class="kn">import</span> <span class="nn">importlib</span>
@@ -604,7 +569,11 @@ This function enables the thread to divide its attention between the script and 
 <span class="n">tu</span><span class="o">.</span><span class="n">runOnWorkerThread</span><span class="p">(</span><span class="n">Worker</span><span class="p">())</span>
 </pre></div>
 </div>
-<p>Additionally if you want to add an exception to your function before you emit the signal to the thread that the process is finished you can use the sub-module <a class="reference external" href="../../_api/_modules/PyMpc.IO.html">IO</a>, referenced in section Input/Output, substituting the last line of codes in your run function with the following.</p>
+<p>In this example, we define a Worker class that inherits from QObject and has the necessary signals and slots.
+We then use the runOnWorkerThread function from ThreadUtils to run the worker on a working thread, using the provided dialog.</p>
+<p>Additionally, if you want to add exception handling to your function before emitting the signal to the thread that the process is finished,
+you can use the IO sub-module, referenced in the Input/Output section.
+Here’s an example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>
     <span class="n">IO</span><span class="o">.</span><span class="n">write_cerr</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">ex</span><span class="p">))</span>
 <span class="k">finally</span><span class="p">:</span>
