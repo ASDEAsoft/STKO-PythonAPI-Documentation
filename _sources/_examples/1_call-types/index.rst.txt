@@ -1,15 +1,25 @@
 1. Call Types
 =============
 
-Using Python from a GUI (Graphic User Interface) presents differences compared to the normal usage that it is done of the programming language from a simple console application, and it requires a series of considerations.
+Using Python within a Graphical User Interface (GUI) differs significantly from its typical usage in a console application,
+requiring special considerations.
 
-The following examples are not related to specific PyMpc classes, functions or methods, they are just proposed here to illustrate different ways of carrying out processes with Python for the STKO interface. Basics of GUI programming could be of use to explore the full potentials of the Python interface in STKO, and understand better how to program your scripts correctly both as a user and a programmer producing scripts for others. A series of examples on call types are provided in the following subsections. Call types are a series of different methods to, in fact, call a process from the GUI. A .zip file containing all the examples is provided at the end of the section.
+The following examples are not specific to PyMpc classes, functions, or methods,
+but rather serve to illustrate various approaches to working with Python in the STKO interface.
+Familiarity with GUI programming fundamentals can help unlock the full potential of the Python interface in STKO,
+enabling you to write effective scripts both as a user and as a developer creating scripts for others.
+This section provides a series of examples on call types, which are different methods for invoking processes from the GUI.
 
 #############
 1.1. Standard
 #############
 
-The first example is a single standard call type with no additional setups. The function sleep is introduced to simulate a lengthy operation. If you run the following script you will notice your GUI blocks for 0.5 seconds when the sleep function is called. If you were to run the following script from a console application, the thread running the program is not occupied in generating any graphic interface, and it will not freeze the visualization during the process. It works simply as sequential programming.
+The first example demonstrates a standard call type with no additional setup.
+To simulate a time-consuming operation, the ``sleep`` function is used.
+Running this script will cause the GUI to freeze for 0.5 seconds when the ``sleep`` function is called.
+In contrast, running this script from a console application would not freeze the visualization,
+as the thread running the program is not responsible for generating a graphical interface.
+Instead, it would execute sequentially, as expected.
 
 .. code-block:: python
 
@@ -27,15 +37,25 @@ The first example is a single standard call type with no additional setups. The 
         print('iteration {}'.format(counter))
     print("end")
 
-A GUI works differently from a console application, as it does not run on a specific thread, simply from the beginning to the end of a script. Instead it creates an infinite loop called process events, on which it receives information from the actual interface, the windows with which the user interacts with the software. Therefore the thread on which we run a standard call type is not just sequentially operating our script, but it is also busy running the process events infinite loop. When we run a function that lasts more than one second, the STKO application will not respond, as it is busy with the script we just launched. This will not mean that the application is crushing, just that it is busy with the script and it cannot update the graphic.
+Unlike console applications, GUIs do not run scripts from start to finish on a single thread.
+Instead, they create an infinite loop called the event loop, which processes user interactions and updates the graphical interface.
+When a standard call type is executed, it shares the same thread as the event loop.
+As a result, if a function takes more than a second to complete, the STKO application will become unresponsive, appearing to freeze.
+However, this does not indicate a crash; the application is simply busy executing the script and unable to update the GUI.
 
-In order to perform finite element analysis using either **Tcl** or **Python**, the user must understand the existing commands available in the scripting languages (and here the **Tcl** and **Python** languages will differ) and the new commands.
+To effectively perform finite element analysis using **Tcl** or **Python**,
+it is essential to understand the available commands in each scripting language,
+as well as any new commands specific to the STKO interface.
+Note that the **Tcl** and **Python** languages have distinct command sets,
+which must be taken into account when scripting.
 
 ################
 1.2. Process events
 ################
 
-There are different ways to avoid that the GUI will freeze as we are running our scripts, the easiest one is to use the processEvents method from the App sub-module. This function will allow to split the effort of the thread between our script and the GUI. Inserting it the standard call type example from before, just placing it at the end of each iteration we will now be able to interact with the GUI while our script is running, but experiencing some lagging. This way the user understands that there is not a problem with the software, it is just working. Including the processEvent, you can try to run the following script for yourself.
+To prevent the GUI from freezing while running scripts, several approaches can be taken.
+One of the simplest solutions is to utilize the processEvents method from the App sub-module.
+This function enables the thread to divide its attention between the script and the GUI, allowing for more responsive interaction.
 
 .. code-block:: python
 
