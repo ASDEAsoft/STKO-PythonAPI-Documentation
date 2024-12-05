@@ -205,7 +205,7 @@ which executes the lengthy function on a parallel worker thread.</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">finished</span><span class="o">.</span><span class="n">emit</span><span class="p">()</span>    <span class="c1"># Done</span>
 </pre></div>
 </div>
-<p>y using a worker thread and the signal and slot delivery mechanism, we can decouple the GUI from the processing task,
+<p>By using a worker thread and the signal and slot delivery mechanism, we can decouple the GUI from the processing task,
 ensuring a responsive and interactive user experience even when performing computationally intensive tasks.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">loop</span> <span class="o">=</span> <span class="n">QEventLoop</span><span class="p">()</span>
 
@@ -227,7 +227,7 @@ ensuring a responsive and interactive user experience even when performing compu
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;DONE!&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>To ensure that the thread has completed its execution, it’s recommended to use the <code class="docutils literal notranslate"><span class="pre">exec_()</span></code> function from the QEventLoop class.
+<p>To ensure that the thread has completed its execution, it’s recommended to use the <code class="docutils literal notranslate"><span class="pre">exec_()</span></code> function from the <strong>QEventLoop</strong> class.
 This function blocks the main thread until the event loop is finished, preventing potential crashes or errors in STKO.</p>
 <p>When running the example script, you’ll notice that interacting with the STKO GUI is possible while the lengthy function is executing.
 However, this flexibility also introduces a potential risk: if the user modifies the model while the script is running,
@@ -300,8 +300,8 @@ which adds a GUI operation to the run function from the previous example.</p>
 </div>
 <p>As you can see, the script attempts to display a message box on a parallel thread,
 which can cause the application to crash.</p>
-<p>To avoid this issue, you can create a method within the Worker class that runs specific functions on the main thread.
-One way to achieve this is by using a QBlockingSlot class, which is derived from QObject.
+<p>To avoid this issue, you can create a method within the <strong>Worker</strong> class that runs specific functions on the main thread.
+One way to achieve this is by using a <strong>QBlockingSlot</strong> class, which is derived from <strong>QObject</strong>.
 This class requests the call for a function and connects it to the parallel thread.</p>
 <p>Here’s an updated script that demonstrates this approach:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>

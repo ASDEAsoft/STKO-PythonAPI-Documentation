@@ -1,15 +1,16 @@
 2. Basics
 =========
 
-In this section a few basic examples on how to use the most simple classes and functions in `PyMpc <../../_api/_modules/PyMpc.html>`_ are provided.
-
-In the subsections you will find code snippets that you can directly test in your STKO, by copy-pasting them in the Scripting Interface.
+In this section,
+we provide a few basic examples of how to use the most simple classes and functions in `PyMpc <../../_api/_modules/PyMpc.html>`_.
 
 #############
 2.1. Utilities
 #############
 
-In the `Utils <../../_api/_modules/PyMpc.Utils.html>`_ sub-module, two useful functions to query the directory of the STKO application and the OpenSees external solvers are provided. They can be used as following.
+The `Utils <../../_api/_modules/PyMpc.Utils.html>`_ sub-module provides two useful functions
+to query the directory of the STKO application and the OpenSees external solvers.
+Here's an example of how to use them:
 
 .. code-block:: python
 
@@ -24,15 +25,14 @@ Most likely the following will appear in the Terminal.
 .. code-block::
 
     C:/Program Files/STKO
-    C:/Program Files/STKO\external_solvers
+    C:/Program Files/STKO/external_solvers
 
 #################
 2.2. Input/Output
 #################
 
-In the `IO <../../_api/_modules/PyMpc.IO.html>`_ sub-module, three additional functions allow the user to color-code the output text in the terminal. These functions can be useful for checking operations in long text outputs.
-
-An example on how they can be used in STKO. Try it yourself and observe the output in the Terminal.
+The `IO <../../_api/_modules/PyMpc.IO.html>`_ sub-module provides three functions to color-code the output text in the terminal.
+Here's an example of how to use them:
 
 .. code-block:: python
 
@@ -41,7 +41,8 @@ An example on how they can be used in STKO. Try it yourself and observe the outp
     IO.write_clog("This is an log")
     IO.write_cerr("This is an error")
 
-Specifically write_cerr can be used to raise exceptions in try loops and allow better readability of the output. For example:
+Specifically write_cerr can be used to raise exceptions in try loops and allow for better readability of the output.
+For example:
 
 .. code-block:: python
 
@@ -55,9 +56,8 @@ Specifically write_cerr can be used to raise exceptions in try loops and allow b
 2.3. Units
 #################
 
-The classes and methods in the `Units <../../_api/_modules/PyMpc.Units.html>`_ sub-module of `PyMpc <../../_api/_modules/PyMpc.html>`_ are defined to allow the user to interact with the unit system. As it is known, OpenSees does not have the concept of unit system, so it is common practice to choose a set of reference units before starting the model and keep consistency with the units of each input. In this sub-module, a reference unit system was created, according to the International System of `Units <../../_api/_modules/PyMpc.Units.html>`_, and a few essential base and derived units were defined. There is the potential for the user to define a customized unit system and interact with it in the scripting interface, but it is still in a development phase. Hereafter, an example of what it is possible to do now with the `Math <../../_api/_modules/PyMpc.Math.html>`_ sub-module.
-
-An example of how to interact with the unit already defined in the sub-module is provided below.
+The `Units <../../_api/_modules/PyMpc.Units.html>`_ sub-module provides classes and methods to interact with the unit system.
+Here's an example of how to use them:
 
 .. code-block:: python
 
@@ -76,7 +76,8 @@ An example of how to interact with the unit already defined in the sub-module is
     print (P)
 
 .. note::
-    ``clearTerminal()`` is a function of the sub-module `App <../../_api/_modules/PyMpc.App.html>`_ used to clear the terminal from previous printed output.
+    ``clearTerminal()`` is a function of the sub-module `App <../../_api/_modules/PyMpc.App.html>`_ used to clear the terminal
+    from previous printed output.
 
 This is the output you’ll obtain in the Terminal.
 
@@ -91,9 +92,9 @@ This is the output you’ll obtain in the Terminal.
 2.4. Math
 #################
 
-The sub-module `Math <../../_api/_modules/PyMpc.Math.html>`_ in PyMpc provides vector and matrix objects, available for 2, 3, 4 and n dimensions. These classes allow for mathematical operations such as dot and cross products, transpose or transformation to quaternion (for 4D). Also classes for vertex elements and quaternions are provided. Classes called for example mat_array are exported from STKO source code in C++. They behave as a list in Python, allowing concatenation, repetition, slicing, appending, and any other operation available on list objects in Python. The presence of these classesin the sub-module Math, allows interoperability between the strongly typed elements in STKO source code and the Python scripting interface.
-
-We suggest to import the `Math <../../_api/_modules/PyMpc.Math.html>`_ sub-module as following, to avoid overlapping with variable names.
+The `Math <../../_api/_modules/PyMpc.Math.html>`_ sub-module provides vector and matrix objects,
+available for 2, 3, 4, and n dimensions.
+Here's an example of how to use them:
 
 .. code-block:: python
 
@@ -104,31 +105,41 @@ We suggest to import the `Math <../../_api/_modules/PyMpc.Math.html>`_ sub-modul
 #################
 
 .. note::
-    At this stage the classes referring to the graphic representation for OpenGL still need to be documented.
+    The classes referring to the graphic representation for OpenGL still need to be documented.
 
 #################
 2.6. Open Cascade
 #################
 
-In PyMpc, there are a set of functions and classes to interact wit the CAD environment and directly query geometries, build new elements and interact with existing ones. To separate these set of classes and functions from the rest, three separate sub-modules have been developed: FxoccShape, FxoccQuery, FxoccShape. Where “occ” stands for Open Cascade and “Fx” for graphic representation for OpenGl.
+In PyMpc, there are a set of functions and classes to interact wit the CAD environment and directly query geometries,
+build new elements and interact with existing ones.
+To separate these set of classes and functions from the rest,
+three separate sub-modules have been developed: FxoccShape, FxoccQuery, FxoccShape.
+Where “occ” stands for Open Cascade and “Fx” for graphic representation for OpenGl.
 
 *********************
 2.6.1. FxoccShape
 *********************
 
-In the sub-module `FxoccShape <../../_api/_modules/classes/PyMpc/FxoccShape.html>`_, there are utilities to generate Open Cascade data for CAD, in terms of shapes, curves and surfaces.
+In the sub-module `FxoccShape <../../_api/_modules/classes/PyMpc/FxoccShape.html>`_,
+there are utilities used to generate Open Cascade data for CAD, in terms of shapes, curves and surfaces.
 
 ********************
 2.6.2. FxoccBuilder
 ********************
 
-The sub-module FxoccBuilder includes functions to create vertices, edges and faces and creating from them wires, compounds and shells. An example on how to use this sub-module will be provided in section Geometries.
+The sub-module FxoccBuilder includes functions to create vertices,
+edges and faces and creating from them wires, compounds and shells.
+An example on how to use this sub-module will be provided in section Geometries.
 
 ********************
 2.6.3. FxoccQuery
 ********************
 
-In the sub-module FxoccQuery the class DistanceInfo and method computeDistance can be used to query information on the distance of two FxOccShape instances. The following example will illustrate how to create new geometric elements in the Preprocessor environment and successively query information about their respective position.
+In the sub-module FxoccQuery the class DistanceInfo and method computeDistance can be used
+to query information on the distance of two FxOccShape instances.
+The following example will illustrate how to create new geometric elements in
+the Preprocessor environment and successively query information about their respective position.
 
 First let’s initialize our script and call the MpcCaeDocument class and assign it to the variable doc.
 
@@ -139,7 +150,9 @@ First let’s initialize our script and call the MpcCaeDocument class and assign
     App.clearTerminal()
     doc = App.caeDocument()
 
-All geometries created need to be indexed. To ensure consistency between existing indices and new ones follow these steps (further explanation is provided in section Geometries)
+All geometries created need to be indexed.
+To ensure consistency between existing indices and new ones follow these steps
+(further explanation is provided in section Geometries)
 
 .. code-block:: python
 
@@ -170,7 +183,9 @@ Let’s create two edges, a vertical one and an horizontal one.
     add_geom(MpcGeometry(get_id(), "Shape1", e1))
     add_geom(MpcGeometry(get_id(), "Shape2", e2))
 
-Finally, compute the distance between two shapes and then query information on it. The distance will be 0.0, and the parameters p1 and p2 will coincide in each solution, given that there is an intersection between the two shapes.
+Finally, compute the distance between two shapes and then query information on it.
+The distance will be 0.0, and the parameters p1 and p2 will coincide in each solution,
+given that there is an intersection between the two shapes.
 
 .. code-block:: python
 
@@ -200,7 +215,8 @@ The following will appear in the terminal.
 2.7. Qt
 #################
 
-STKO uses Qt for its GUI and offers its use to the user thru the PySide2 package. The following example shows how to create a simple GUI with a button and a label. The button will print "Hello World!" to the STKO console when clicked.
+STKO uses Qt for its GUI and offers its use to the user through the PySide2 package.
+Here's an example of how to create a simple GUI with a button and a label:
 
 .. code-block:: python
 
@@ -243,13 +259,15 @@ STKO uses Qt for its GUI and offers its use to the user thru the PySide2 package
     	mainWindow = MyMainWindow()
     	mainWindow.show()
 
-For further instructions about on how to use the PySide2 package, please refer to the `PySide2 documentation <https://doc.qt.io/qtforpython-5/PySide2/QtWidgets/index.html>`_.
+For further instructions about on how to use the PySide2 package,
+please refer to the `PySide2 documentation <https://doc.qt.io/qtforpython-5/PySide2/QtWidgets/index.html>`_.
 
 #################
 2.8. Chart
 #################
 
-Three classes to call and create new Chart and ChartData are included in PyMpc. Namely: MpcChart, MpcChartData, MpcChartDataGraphicItem. The following script will illustrate how to create new elements for each of these classes. Start out as follows and use the postDocument function from the `App <../../_api/_modules/PyMpc.App.html>`_ sub-module to call the open .spd document. Then you can use a series of methods of the MpcPostDocument class, as the .spd document is an instance of that class, to clear the existing post processing session, commit the changes and set the document to dirty, so STKO will ask you to save before you close.
+The MpcChart sub-module provides classes to create new charts and chart data.
+Here's an example of how to use them:
 
 .. code-block:: python
 
@@ -264,7 +282,14 @@ Three classes to call and create new Chart and ChartData are included in PyMpc. 
     doc.commitChanges()
     doc.dirty = True
 
-To illustrate the creation in turn of new chart data sets, new chart data items to input in the charts and finally new charts, a for loop of 10 iterations has been set as follows. In the first block of code inside the loop a new MpcChartData instance is created, and several attributes are assigned to it: an id, a name, and labels for the x and y axis. Random values are assigned to x and y in this example, but the user could choose to call an data from the .spd file or even call data saved externally. For example, with this method it will be possible to operate comparisons directly inside STKO with experimental data.
+To illustrate the creation in turn of new chart data sets,
+new chart data items to input in the charts and finally new charts,
+a for loop of 10 iterations has been set as follows.
+In the first block of code inside the loop a new MpcChartData instance is created,
+and several attributes are assigned to it: an id, a name, and labels for the x and y axis.
+Random values are assigned to x and y in this example,
+but the user could choose to call an data from the .spd file or even call data saved externally.
+For example, with this method it will be possible to operate comparisons directly inside STKO with experimental data.
 
 .. code-block:: python
 
@@ -285,7 +310,9 @@ To illustrate the creation in turn of new chart data sets, new chart data items 
         App.processEvents()
         sleep(0.2)
 
-After, always writing inside the for loop, an MpcChartDataGraphicItem for cdata is instantiated. It is necessary to create an instance of this class in order to visualize the chart data in the chart. Attributes such as color, thickness and penStyle of the item can be assigned.
+After, always writing inside the for loop, an MpcChartDataGraphicItem for cdata is instantiated.
+It is necessary to create an instance of this class in order to visualize the chart data in the chart.
+Attributes such as color, thickness and penStyle of the item can be assigned.
 
 .. code-block:: python
 
